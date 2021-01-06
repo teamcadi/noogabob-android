@@ -1,9 +1,9 @@
 
-package com.example.nugabob.ui.main
+package com.example.noogabab.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.nugabob.R
+import com.example.noogabab.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

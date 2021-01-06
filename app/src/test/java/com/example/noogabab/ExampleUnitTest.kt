@@ -1,4 +1,4 @@
-package com.example.nugabob
+package com.example.noogabab
 
 import org.junit.Test
 
