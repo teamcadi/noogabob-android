@@ -18,7 +18,7 @@
     <!--일반 입력 플레인텍스트-->
     <color name="colorCommonPlain">#cccccc</color>
 
-    <color name="colorStartActiveButton">#aa5900</color>
+    <color name="colorStartActive">#aa5900</color>
     <color name="colorStartInactiveButton">#d4ab7f</color>
 
 </resources>

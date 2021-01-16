@@ -8,6 +8,7 @@ import android.os.Looper
 import android.view.WindowManager
 import com.example.noogabab.R
 import com.example.noogabab.ui.main.MainActivity
+import com.example.noogabab.ui.start.StartActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startSplash() {
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, StartActivity::class.java))
             finish()
         }, 2000)
     }

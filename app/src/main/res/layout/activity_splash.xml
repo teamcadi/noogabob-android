@@ -7,19 +7,50 @@
     android:background="@color/colorBase"
     tools:context="com.example.noogabab.ui.splash.SplashActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.444">
+
+        <ImageView
+            android:id="@+id/splash_ic_bab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="119dp"
+            android:layout_marginBottom="36dp"
+            app:srcCompat="@drawable/ic_bab" />
+
+        <ImageView
+            android:id="@+id/splash_ic_dog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/ic_dog" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/txt_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="48dp"
         android:fontFamily="@font/godo_round_r"
         android:lineSpacingExtra="3sp"
         android:text="noogabob"
-        android:textStyle="normal"
         android:textColor="#ffffff"
         android:textSize="20sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.989" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
