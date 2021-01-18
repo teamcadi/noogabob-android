@@ -9,6 +9,8 @@
     <!--상태바 컬러-->
     <color name="colorStatusBar">#ffffff</color>
 
+    <color name="colorTabBar">#ffb254</color>
+
     <!--강조 텍스트-->
     <color name="colorFocusText">#4a3319</color>
 
