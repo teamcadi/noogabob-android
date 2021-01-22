@@ -1,4 +1,4 @@
-package com.example.noogabab.ui.start.create
+package com.example.noogabab.presentation.ui.start.create
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

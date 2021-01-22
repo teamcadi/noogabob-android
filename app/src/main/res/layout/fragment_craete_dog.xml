@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.start.create.CreateDogFragment">
+    tools:context=".presentation.ui.start.create.CreateDogFragment">
 
 
     <LinearLayout
@@ -21,29 +21,30 @@
             android:orientation="horizontal">
 
             <TextView
-                android:lineSpacingExtra="9sp"
-                android:fontFamily="@font/noto_sans_cjkkr_medium"
-                android:textStyle="normal"
-                android:textSize="18sp"
-                android:textColor="@color/colorFocusText"
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:text="이름" />
+                android:fontFamily="@font/noto_sans_cjkkr_medium"
+                android:lineSpacingExtra="9sp"
+                android:text="이름"
+                android:textColor="@color/colorFocusText"
+                android:textSize="18sp"
+                android:textStyle="normal" />
 
             <TextView
-                android:lineSpacingExtra="9sp"
-                android:fontFamily="@font/noto_sans_cjkkr_medium"
-                android:textStyle="normal"
-                android:textSize="18sp"
-                android:textColor="@color/colorFocusText"
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                android:text="나이" />
+                android:fontFamily="@font/noto_sans_cjkkr_medium"
+                android:lineSpacingExtra="9sp"
+                android:text="나이"
+                android:textColor="@color/colorFocusText"
+                android:textSize="18sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,33 +53,34 @@
             android:orientation="horizontal">
 
             <EditText
-                android:fontFamily="@font/noto_sans_cjkkr_regular"
-                android:textStyle="normal"
-                android:textSize="16sp"
-                android:textColor="#707070"
-                android:lineSpacingExtra="8sp"
                 android:id="@+id/editTextTextPersonName4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:fontFamily="@font/noto_sans_cjkkr_regular"
                 android:hint="꼬미"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:lineSpacingExtra="8sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
             <EditText
-                android:fontFamily="@font/noto_sans_cjkkr_regular"
-                android:textStyle="normal"
-                android:textSize="16sp"
-                android:textColor="#707070"
-                android:lineSpacingExtra="8sp"
                 android:id="@+id/editTextTextPersonName5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:fontFamily="@font/noto_sans_cjkkr_regular"
                 android:hint="4세"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:lineSpacingExtra="8sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <TextView
@@ -118,12 +120,13 @@
             android:layout_height="wrap_content"
             android:text="식사 시간" />
 
-        <EditText
-            android:id="@+id/editTextTime"
+        <ListView
+            android:id="@+id/list_view_bab_time"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:scrollbars="none"
+            tools:listitem="@layout/item_bab_time" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:layout_marginTop="30dp"
@@ -144,7 +147,7 @@
             android:textStyle="bold"
             android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="54dp"

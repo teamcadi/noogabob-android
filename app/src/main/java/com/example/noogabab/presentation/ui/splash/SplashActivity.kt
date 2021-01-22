@@ -1,4 +1,4 @@
-package com.example.noogabab.ui.splash
+package com.example.noogabab.presentation.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import com.example.noogabab.R
-import com.example.noogabab.ui.start.StartActivity
+import com.example.noogabab.presentation.ui.start.StartActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

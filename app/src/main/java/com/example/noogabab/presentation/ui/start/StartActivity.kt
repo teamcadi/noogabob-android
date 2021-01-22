@@ -1,12 +1,11 @@
-package com.example.noogabab.ui.start
+package com.example.noogabab.presentation.ui.start
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.example.noogabab.R
-import com.example.noogabab.ui.start.create.CreateActivity
+import com.example.noogabab.presentation.ui.start.create.CreateActivity
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity : AppCompatActivity() {
