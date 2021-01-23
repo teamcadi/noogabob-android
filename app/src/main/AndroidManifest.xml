@@ -10,10 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.noogabab.presentation.ui.start.create.CreateActivity"></activity>
-        <activity android:name="com.example.noogabab.presentation.ui.start.StartActivity" />
-        <activity android:name="com.example.noogabab.presentation.ui.main.MainActivity" />
-        <activity android:name="com.example.noogabab.presentation.ui.splash.SplashActivity">
+        <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity"></activity>
+        <activity
+            android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".presentation.ui.start.StartActivity" />
+        <activity android:name=".presentation.ui.main.MainActivity" />
+        <activity android:name=".presentation.ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

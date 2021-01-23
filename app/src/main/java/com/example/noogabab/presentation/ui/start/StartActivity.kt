@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.start.create.CreateActivity
+import com.example.noogabab.presentation.ui.start.createGroup.CreateGroupActivity
+import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupActivity
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity : AppCompatActivity() {
@@ -18,8 +19,11 @@ class StartActivity : AppCompatActivity() {
         )
 
         btn_start.setOnClickListener {
-            startActivity(Intent(this, CreateActivity::class.java))
-            finish()
+            startActivity(Intent(this, EnterGroupActivity::class.java))
+        }
+
+        btn_create_group.setOnClickListener {
+            startActivity(Intent(this, CreateGroupActivity::class.java))
         }
     }
 }

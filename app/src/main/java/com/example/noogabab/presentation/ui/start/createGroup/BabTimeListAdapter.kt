@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.start.create
+package com.example.noogabab.presentation.ui.start.createGroup
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,9 @@ import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterBabTime
 import kotlinx.android.synthetic.main.item_bab_time.view.*
 
+class BabTimeListAdapter: BaseAdapter() {
+    private val items = ArrayList<PresenterBabTime>()
 
-class CreateDogListAdapter(private val items: MutableList<PresenterBabTime>): BaseAdapter() {
     override fun getCount() = items.size
     override fun getItem(p: Int) = items[p]
     override fun getItemId(p: Int) = p.toLong()
@@ -23,4 +24,11 @@ class CreateDogListAdapter(private val items: MutableList<PresenterBabTime>): Ba
         return convertView
     }
 
+    fun addItem(item: PresenterBabTime) {
+        items.add(item)
+    }
+
+    fun deleteItem(p: Int) {
+        items.removeAt(p)
+    }
 }

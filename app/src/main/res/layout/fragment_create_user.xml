@@ -1,19 +1,23 @@
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.start.create.CreateUserFragment">
+        tools:context=".presentation.ui.start.createUser.CreateUserFragment">
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView"
@@ -67,22 +71,16 @@
                 android:textSize="16sp"
                 android:textStyle="normal" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="54dp"
-                    android:backgroundTint="@color/colorStartActive"
-                    android:fontFamily="@font/noto_sans_cjkkr_regular"
-                    android:text="정보 등록"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+
+        <ImageView
+            android:id="@+id/btn_create_user_to_dog"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="54dp"
+            android:src="@drawable/ic_baseline_arrow_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

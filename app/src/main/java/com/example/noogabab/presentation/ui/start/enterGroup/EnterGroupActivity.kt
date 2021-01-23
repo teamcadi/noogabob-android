@@ -1,14 +1,17 @@
-package com.example.noogabab.presentation.ui.start.create
+package com.example.noogabab.presentation.ui.start.enterGroup
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.noogabab.R
+import com.example.noogabab.presentation.ui.start.createDog.CreateDogFragment
+import com.example.noogabab.presentation.ui.start.createGroup.CreateFragmentAdapter
+import com.example.noogabab.presentation.ui.start.createUser.CreateUserFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_create.*
 
-class CreateActivity : AppCompatActivity() {
-    private val tabTextList = listOf("사용자", "반려동물")
+class EnterGroupActivity : AppCompatActivity() {
+    private val tabTextList = listOf("사용자", "반려동물 정보")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,5 +27,9 @@ class CreateActivity : AppCompatActivity() {
         adapter.addFragment(CreateDogFragment())
         vp_create.adapter = adapter
         TabLayoutMediator(tab_create, vp_create) { t, p -> t.text = tabTextList[p] }.attach()
+    }
+
+    fun nextPage() {
+        vp_create.setCurrentItem(1, true)
     }
 }
