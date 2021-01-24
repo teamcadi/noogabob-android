@@ -4,9 +4,6 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.start.createDog.CreateDogFragment
-import com.example.noogabab.presentation.ui.start.createGroup.CreateFragmentAdapter
-import com.example.noogabab.presentation.ui.start.createUser.CreateUserFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_create.*
 
@@ -22,9 +19,9 @@ class EnterGroupActivity : AppCompatActivity() {
     }
 
     private fun loadTab() {
-        val adapter = CreateFragmentAdapter(this)
+        val adapter = ViewPagerAdapter(this)
         adapter.addFragment(CreateUserFragment())
-        adapter.addFragment(CreateDogFragment())
+        adapter.addFragment(ReadOnlyDogFragment())
         vp_create.adapter = adapter
         TabLayoutMediator(tab_create, vp_create) { t, p -> t.text = tabTextList[p] }.attach()
     }

@@ -8,7 +8,7 @@ import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterBabTime
 import kotlinx.android.synthetic.main.item_bab_time.view.*
 
-class BabTimeListAdapter: BaseAdapter() {
+class BabTimeListAdapter : BaseAdapter() {
     private val items = ArrayList<PresenterBabTime>()
 
     override fun getCount() = items.size
@@ -16,7 +16,8 @@ class BabTimeListAdapter: BaseAdapter() {
     override fun getItemId(p: Int) = p.toLong()
     override fun getView(p: Int, view: View?, parent: ViewGroup?): View {
         var convertView = view
-        if (convertView == null) convertView = LayoutInflater.from(parent?.context).inflate(R.layout.item_bab_time, parent, false)
+        if (convertView == null) convertView =
+            LayoutInflater.from(parent?.context).inflate(R.layout.item_bab_time, parent, false)
         val item: PresenterBabTime = items[p]
         convertView!!.txt_count_bab.text = item.bab
         convertView.txt_bab_meridiem.text = item.meridiem
@@ -30,5 +31,9 @@ class BabTimeListAdapter: BaseAdapter() {
 
     fun deleteItem(p: Int) {
         items.removeAt(p)
+    }
+
+    fun setItem(p: Int, bab: String, meridiem: String, time: String) {
+        items[p] = PresenterBabTime(bab, meridiem, time)
     }
 }

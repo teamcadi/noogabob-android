@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.start.createDog.CreateDogFragment">
+    tools:context=".presentation.ui.start.enterGroup.ReadOnlyDogFragment">
 
 
     <LinearLayout
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical">
 
@@ -82,15 +82,15 @@
         </LinearLayout>
 
         <TextView
-            android:layout_marginTop="30dp"
-            android:lineSpacingExtra="9sp"
-            android:fontFamily="@font/noto_sans_cjkkr_medium"
-            android:textStyle="normal"
-            android:textSize="18sp"
-            android:textColor="@color/colorFocusText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="품종" />
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/noto_sans_cjkkr_medium"
+            android:lineSpacingExtra="9sp"
+            android:text="품종"
+            android:textColor="@color/colorFocusText"
+            android:textSize="18sp"
+            android:textStyle="normal" />
 
         <AutoCompleteTextView
             android:id="@+id/edit_dog_kind"
@@ -135,8 +135,9 @@
         <ListView
             android:id="@+id/list_view_bab_time"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="149dp"
             android:layout_marginTop="10dp"
+            android:nestedScrollingEnabled="false"
             android:scrollbars="none"
             tools:listitem="@layout/item_bab_time" />
 

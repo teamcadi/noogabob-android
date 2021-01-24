@@ -1,10 +1,9 @@
-package com.example.noogabab.presentation.ui.start.createUser
+package com.example.noogabab.presentation.ui.start.enterGroup
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupActivity
 import kotlinx.android.synthetic.main.fragment_create_user.*
 
 class CreateUserFragment : Fragment(R.layout.fragment_create_user) {
