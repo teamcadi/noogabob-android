@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity"></activity>
+        <activity android:name=".presentation.ui.timeline.TimeLineActivity"></activity>
+        <activity android:name=".presentation.ui.timeline.ExampleActivity" />
+        <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity" />
         <activity
             android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"
             android:windowSoftInputMode="adjustPan" />
