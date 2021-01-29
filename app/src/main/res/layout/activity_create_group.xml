@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.start.enterGroup.ReadOnlyDogFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/noto_sans_cjkkr_medium"
+                android:lineSpacingExtra="9sp"
+                android:text="이름"
+                android:textColor="@color/colorFocusText"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/noto_sans_cjkkr_medium"
+                android:lineSpacingExtra="9sp"
+                android:text="나이"
+                android:textColor="@color/colorFocusText"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edit_dog_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="@font/noto_sans_cjkkr_regular"
+                android:hint="꼬미"
+                android:inputType="textPersonName"
+                android:lineSpacingExtra="8sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/edit_dog_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="@font/noto_sans_cjkkr_regular"
+                android:hint="4세"
+                android:inputType="textPersonName"
+                android:lineSpacingExtra="8sp"
+                android:textColor="#707070"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/noto_sans_cjkkr_medium"
+            android:lineSpacingExtra="9sp"
+            android:text="품종"
+            android:textColor="@color/colorFocusText"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+        <AutoCompleteTextView
+            android:id="@+id/edit_dog_kind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="2"
+            android:drawableLeft="@drawable/ic_baseline_search"
+            android:fontFamily="@font/noto_sans_cjkkr_regular"
+            android:hint="포메라니안"
+            android:lineSpacingExtra="8sp"
+            android:textColor="#707070"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_cjkkr_medium"
+                android:lineSpacingExtra="9sp"
+                android:text="식사 시간"
+                android:textColor="@color/colorFocusText"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+            <ImageButton
+                android:id="@+id/btn_add_bab_time"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_time_add" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_view_bab_time"
+            android:layout_width="match_parent"
+            android:layout_height="149dp"
+            android:layout_marginTop="10dp"
+            android:nestedScrollingEnabled="false"
+            android:scrollbars="none"
+            tools:listitem="@layout/item_bab_time" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_get_key"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="54dp"
+            android:backgroundTint="@color/colorStartActive"
+            android:fontFamily="@font/noto_sans_cjkkr_regular"
+            android:text="키 발급받기"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
