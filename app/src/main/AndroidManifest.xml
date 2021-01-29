@@ -10,15 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.ui.timeline.TimeLineActivity"></activity>
-        <activity android:name=".presentation.ui.timeline.ExampleActivity" />
+<!--        <activity android:name=".presentation.ui.timeline.TimeLineActivity"></activity>-->
         <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity" />
         <activity
             android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".presentation.ui.start.StartActivity" />
         <activity android:name=".presentation.ui.main.MainActivity" />
-        <activity android:name=".presentation.ui.splash.SplashActivity">
+        <activity android:name=".presentation.ui.timeline.TimeLineActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
