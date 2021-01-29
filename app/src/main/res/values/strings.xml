@@ -2,6 +2,10 @@
     <string name="app_name">Noogabab</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description_timeline_dot">This is an image!</string>
+    <string name="today">오늘</string>
+    <string name="yesterday">어제</string>
+    <string name="n_days_before">%d일 전</string>
 
     <array name="dogs">
         <item>말티스</item>

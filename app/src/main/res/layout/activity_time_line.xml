@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="33dp"
     android:layout_marginRight="33dp"
-    tools:context=".presentation.ui.timeline.TimeLineActivity">
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="72dp"
-        android:background="?android:attr/listDivider" />
+    tools:context=".presentation.ui.timeline.TimelineActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +26,7 @@
             android:id="@+id/recycler_timeline"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_time_line" />
+            tools:listitem="@layout/item_time_line2" />
     </LinearLayout>
 
 </FrameLayout>
