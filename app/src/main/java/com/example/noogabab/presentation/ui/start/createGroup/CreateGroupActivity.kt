@@ -9,8 +9,10 @@ import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterBabTime
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_create_group.*
 
+@AndroidEntryPoint
 class CreateGroupActivity : AppCompatActivity() {
     private lateinit var adapter: BabTimeListAdapter
 

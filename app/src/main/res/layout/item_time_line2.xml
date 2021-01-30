@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Placeholder -->
+    <View
+        android:id="@+id/center_of_image"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintTop_toTopOf="@id/txt_timeline_time"
+        app:layout_constraintBottom_toBottomOf="@id/txt_timeline_time" />
+
+    <!-- Image -->
+    <ImageView
+        android:id="@+id/img_timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/center_of_image"
+        app:layout_constraintBottom_toBottomOf="@id/center_of_image"
+        app:layout_constraintStart_toStartOf="@id/center_of_image"
+        app:layout_constraintEnd_toEndOf="@id/center_of_image"
+        tools:srcCompat="@drawable/ic_bab_timeline"
+        android:contentDescription="@string/description_timeline_dot" />
+
+    <!-- Divider upper -->
+    <View
+        android:id="@+id/div_timeline_upper"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/img_timeline"
+        app:layout_constraintEnd_toEndOf="@id/img_timeline"
+        app:layout_constraintBottom_toTopOf="@id/img_timeline"
+        android:background="?android:attr/listDivider" />
+
+    <!-- Divider lower -->
+    <View
+        android:id="@+id/div_timeline_lower"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/img_timeline"
+        app:layout_constraintStart_toStartOf="@id/img_timeline"
+        app:layout_constraintEnd_toEndOf="@id/img_timeline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="?android:attr/listDivider" />
+
+    <!-- Time -->
+    <TextView
+        android:id="@+id/txt_timeline_time"
+        app:layout_constraintTop_toBottomOf="@id/txt_timeline_day"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#3d3d3d"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        android:fontFamily="@font/noto_sans_cjkkr_medium"
+        android:lineSpacingExtra="9sp"
+        tools:text="17:30" />
+
+    <!-- Day -->
+    <TextView
+        android:id="@+id/txt_timeline_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/txt_timeline_time"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#3d3d3d"
+        android:fontFamily="@font/noto_sans_cjkkr_medium"
+        tools:text="100일 전" />
+
+    <!-- Content wrapper -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/crd_timeline_content_wrapper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/txt_timeline_time"
+        app:layout_constraintBottom_toBottomOf="@id/txt_timeline_time"
+        app:layout_constraintStart_toEndOf="@id/center_of_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginVertical="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp">
+
+        <!-- Content -->
+        <TextView
+            android:id="@+id/txt_timeline_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:lineSpacingExtra="8sp"
+            android:textColor="#4a3319"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/noto_sans_cjkkr_medium"
+            tools:text="밥" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Sub content -->
+    <TextView
+        android:id="@+id/txt_timeline_sub_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/crd_timeline_content_wrapper"
+        app:layout_constraintTop_toBottomOf="@id/crd_timeline_content_wrapper"
+        app:layout_constraintEnd_toEndOf="@id/crd_timeline_content_wrapper"
+        android:layout_marginStart="10dp"
+        android:lineSpacingExtra="6sp"
+        android:textColor="#707070"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        android:fontFamily="@font/noto_sans_cjkkr_medium"
+        tools:text="나 홍길동" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
