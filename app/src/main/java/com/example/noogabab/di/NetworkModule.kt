@@ -49,6 +49,5 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideTimelineService(retrofit: Retrofit) = retrofit.create(TimelineService::class.java)
-
+    fun provideTimelineService(retrofit: Retrofit): TimelineService = retrofit.create(TimelineService::class.java)
 }
