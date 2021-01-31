@@ -14,6 +14,6 @@ class TimelineViewModel @ViewModelInject constructor(private val useCase: Timeli
     private fun getTimelineList() =
         liveData {
             emit(ResultData.Loading())
-            emit(useCase.getTimelineList())
+            emit(useCase.getTimelineList(1))
         }
 }

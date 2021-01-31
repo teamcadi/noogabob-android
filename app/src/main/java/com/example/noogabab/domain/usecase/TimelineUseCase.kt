@@ -6,8 +6,8 @@ import com.example.noogabab.domain.repository.TimelineRepository
 import javax.inject.Inject
 
 class TimelineUseCase @Inject constructor(private val timelineRepository: TimelineRepository) {
-    suspend fun getTimelineList(): ResultData<TimelineModel> {
-        val timeline = timelineRepository.getTimeline()
+    suspend fun getTimelineList(groupId: Int): ResultData<TimelineModel> {
+        val timeline = timelineRepository.getTimeline(groupId)
 
         return if (timeline.success) ResultData.Success(timeline)
         else ResultData.Failed("문제가 있대")

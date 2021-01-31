@@ -1,6 +1,6 @@
 package com.example.noogabab.di
 
-import com.example.noogabab.data.api.TimelineService
+import com.example.noogabab.data.api.ApiService
 import com.example.noogabab.domain.repository.TimelineRepository
 import dagger.Module
 import dagger.Provides
@@ -11,5 +11,5 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 @Module
 object RepositoryModule {
     @Provides
-    fun provideTimelineRepo(timelineService: TimelineService) = TimelineRepository(timelineService)
+    fun provideTimelineRepo(apiService: ApiService) = TimelineRepository(apiService)
 }

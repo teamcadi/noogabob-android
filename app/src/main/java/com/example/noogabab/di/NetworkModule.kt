@@ -1,6 +1,6 @@
 package com.example.noogabab.di
 
-import com.example.noogabab.data.api.TimelineService
+import com.example.noogabab.data.api.ApiService
 import com.example.noogabab.util.NetworkConstants
 import dagger.Module
 import dagger.Provides
@@ -49,5 +49,5 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideTimelineService(retrofit: Retrofit): TimelineService = retrofit.create(TimelineService::class.java)
+    fun provideTimelineService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 }
