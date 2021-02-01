@@ -6,22 +6,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.tempmain.chart.ChartFragment">
 
-        <!-- LineChart -->
-<!--    <com.github.mikephil.charting.charts.LineChart-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:id="@+id/chart_line"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="400dp" />-->
 
-        <!-- BarChart -->
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/chart_bar"
+        <com.google.android.material.tabs.TabLayout
+                app:tabIndicatorColor="@color/color_4a3319"
+            android:id="@+id/tab_chart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/color_fff0dc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabTextColor="@color/color_4a3319">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_cjkkr_regular"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="8sp"
+                    android:text="주간"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_cjkkr_regular"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="8sp"
+                    android:text="월간"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_chart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tab_chart" />
 </androidx.constraintlayout.widget.ConstraintLayout>
