@@ -10,6 +10,6 @@ class TimelineUseCase @Inject constructor(private val timelineRepository: Timeli
         val timeline = timelineRepository.getTimeline(groupId)
 
         return if (timeline.success) ResultData.Success(timeline)
-        else ResultData.Failed("문제가 있대")
+        else ResultData.Failed(timeline.message)
     }
 }

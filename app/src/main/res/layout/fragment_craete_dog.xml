@@ -29,7 +29,7 @@
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
                 android:lineSpacingExtra="9sp"
                 android:text="이름"
-                android:textColor="@color/colorFocusText"
+                android:textColor="@color/color_4a3319"
                 android:textSize="18sp"
                 android:textStyle="normal" />
 
@@ -42,7 +42,7 @@
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
                 android:lineSpacingExtra="9sp"
                 android:text="나이"
-                android:textColor="@color/colorFocusText"
+                android:textColor="@color/color_4a3319"
                 android:textSize="18sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -92,7 +92,7 @@
             android:fontFamily="@font/noto_sans_cjkkr_medium"
             android:textStyle="normal"
             android:textSize="18sp"
-            android:textColor="@color/colorFocusText"
+            android:textColor="@color/color_4a3319"
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
                 android:lineSpacingExtra="9sp"
                 android:text="식사 시간"
-                android:textColor="@color/colorFocusText"
+                android:textColor="@color/color_4a3319"
                 android:textSize="18sp"
                 android:textStyle="normal" />
 
@@ -147,7 +147,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="54dp"
-            android:backgroundTint="@color/colorStartActive"
+            android:backgroundTint="@color/color_aa5900"
             android:fontFamily="@font/noto_sans_cjkkr_regular"
             android:text="그룹 입장하기"
             android:textColor="#ffffff"

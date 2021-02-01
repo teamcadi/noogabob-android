@@ -3,6 +3,7 @@ package com.example.noogabab.presentation.ui.timeline
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
@@ -29,22 +30,26 @@ class TimelineActivity : AppCompatActivity() {
 
     private fun setApiTimeline() {
         val timeline = timelineViewModel.getTimeline()
-        timeline.observe(this, Observer { resultData ->
+        timeline.observe(this, { resultData ->
             when (resultData) {
                 is ResultData.Loading -> {
-                    Toast.makeText(this, "로딩중", Toast.LENGTH_SHORT).show()
+                    prograss_loading.visibility = View.VISIBLE
                 }
                 is ResultData.Success -> {
-                    Toast.makeText(this, "성공", Toast.LENGTH_SHORT).show()
+                    prograss_loading.visibility = View.GONE
+
                     val timelineData = resultData.data
                     if (timelineData != null) {
                         setRecyclerView(setPresenterTimeline(timelineData.data as ArrayList<Timeline>))
                     }
                 }
                 is ResultData.Failed -> {
-                    Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
+                    prograss_loading.visibility = View.GONE
+
                 }
                 is ResultData.Exception -> {
+                    prograss_loading.visibility = View.GONE
+
                 }
             }
         })
