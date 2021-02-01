@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 <!--        <activity android:name=".presentation.ui.tempmain.TempMainActivity"></activity>-->
-        <!-- <activity android:name=".presentation.ui.timeline.TimelineActivity" /> -->
+         <activity android:name=".presentation.ui.timeline.TimelineActivity" />
         <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity" />
         <activity
             android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"

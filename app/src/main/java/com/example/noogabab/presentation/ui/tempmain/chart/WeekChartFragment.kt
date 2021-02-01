@@ -51,6 +51,7 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
 
         // make a bar data
         val barData = BarData(xValues, finalBarDataSet as List<IBarDataSet>)
+//        barData.groupSpace = 30f
         chart_week_bar.apply {
             data = barData
             setBackgroundColor(Color.WHITE)
