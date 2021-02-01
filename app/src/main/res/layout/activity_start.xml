@@ -33,7 +33,7 @@
             android:gravity="center"
             android:text="키 값을 입력해주세요."
             android:layout_marginTop="22dp"
-            android:textColor="@color/colorFocusText"
+            android:textColor="@color/color_4a3319"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -46,14 +46,14 @@
             android:lineSpacingExtra="8sp"
             android:fontFamily="@font/noto_sans_cjkkr_light"
             android:ems="10"
-            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTint="@color/color_ffc176"
             android:hint="key"
             android:layout_marginTop="50dp"
             android:inputType="textPersonName" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_start"
-            android:backgroundTint="@color/colorStartActive"
+            android:backgroundTint="@color/color_aa5900"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="50dp"
@@ -65,7 +65,7 @@
 
         <com.google.android.material.button.MaterialButton
             style="?attr/materialButtonOutlinedStyle"
-            app:strokeColor="@color/colorStartActive"
+            app:strokeColor="@color/color_aa5900"
             app:strokeWidth="1dp"
             android:id="@+id/btn_create_group"
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:layout_marginTop="10dp"
             android:lineSpacingExtra="11sp"
             android:text="그룹 만들기"
-            android:textColor="@color/colorStartActive"
+            android:textColor="@color/color_aa5900"
             android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
