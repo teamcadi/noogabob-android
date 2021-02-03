@@ -4,6 +4,9 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.core.view.get
 import com.example.noogabab.R
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
@@ -11,28 +14,84 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import kotlinx.android.synthetic.main.fragment_month_chart.*
 import kotlinx.android.synthetic.main.fragment_week_chart.*
 
 class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
+    private var groupSize = 0
+    private var xGroup: ArrayList<String> = ArrayList<String>()
+    private lateinit var yBob: FloatArray
+    private lateinit var ySnack: FloatArray
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setBarChartValues()
+        setValues()
+        bobRankClick()
+        snackRankClick()
     }
-    private fun setBarChartValues() {
-        // x axis values
-        val xValues = ArrayList<String>()
-        xValues.add("나")
-        xValues.add("엄마")
-        xValues.add("아빠")
-        xValues.add("누나")
 
-        // y axis values or bar data
-        val yAxis1 = arrayOf<Float>(2.0f, 6f, 7.8f, 3.4f)
-        val yAxis2 = arrayOf<Float>(1.0f, 7f, 3.8f, 8.4f)
+    private fun bobRankClick() {
+        var position = 0
+        var max = -1f
+        for (i in yBob.indices) if (max < yBob[i]) {
+            max = yBob[i]; position = i
+        }
+        btn_week_rank_bob.setOnClickListener {
+            getFirst(groupSize, position)
+        }
+    }
+
+    private fun snackRankClick() {
+        var position = 0
+        var max = -1f
+        for (i in ySnack.indices) if (max < ySnack[i]) {
+            max = ySnack[i]; position = i
+        }
+        btn_week_rank_snack.setOnClickListener {
+            getFirst(groupSize, position)
+        }
+    }
+
+    private fun getFirst(size: Int, position: Int) {
+        for (i in 0 until size) linear_week_rank[i].visibility = View.INVISIBLE
+        linear_week_rank[position].visibility = View.VISIBLE
+    }
+
+    // 서버에서 가져온 데이터를 셋팅
+    private fun setValues() {
+        xGroup.add("나")
+        xGroup.add("엄마")
+        xGroup.add("아빠")
+        xGroup.add("누나")
+        groupSize = xGroup.size
+        yBob = floatArrayOf(5.0f, 6f, 7.8f, 1.4f)
+        ySnack = floatArrayOf(5.0f, 2f, 9.6f, 2.4f)
+
+        setBarChartValues(xGroup, yBob, ySnack)
+
+        // 가족 구성원에 맞춰서 INVISIBLE 뷰 셋팅
+        for (i in 0 until groupSize) linear_week_rank.addView(createRankImage())
+    }
+
+    private fun createRankImage(): ImageView {
+        val rankImage = ImageView(context)
+        rankImage.visibility = View.INVISIBLE
+        rankImage.setImageResource(R.drawable.ic_first_xxxhd)
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        params.weight = 1f
+        rankImage.layoutParams = params
+        return rankImage
+    }
 
 
+    private fun setBarChartValues(
+        xValues: ArrayList<String>,
+        yAxis1: FloatArray,
+        yAxis2: FloatArray
+    ) {
         // bar entries
         val barEntries1 = ArrayList<BarEntry>()
         val barEntries2 = ArrayList<BarEntry>()

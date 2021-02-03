@@ -30,10 +30,13 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
         bobRankClick()
         snackRankClick()
     }
+
     private fun bobRankClick() {
         var position = 0
         var max = -1f
-        for (i in yBob.indices) if (max < yBob[i]) {max = yBob[i]; position = i}
+        for (i in yBob.indices) if (max < yBob[i]) {
+            max = yBob[i]; position = i
+        }
         btn_month_rank_bob.setOnClickListener {
             getFirst(groupSize, position)
         }
@@ -42,7 +45,9 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
     private fun snackRankClick() {
         var position = 0
         var max = -1f
-        for (i in ySnack.indices) if (max < ySnack[i]) {max = ySnack[i]; position = i}
+        for (i in ySnack.indices) if (max < ySnack[i]) {
+            max = ySnack[i]; position = i
+        }
         btn_month_rank_snack.setOnClickListener {
             getFirst(groupSize, position)
         }
@@ -69,19 +74,24 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
         for (i in 0 until groupSize) linear_month_rank.addView(createRankImage())
     }
 
-
-
     private fun createRankImage(): ImageView {
         val rankImage = ImageView(context)
         rankImage.visibility = View.INVISIBLE
         rankImage.setImageResource(R.drawable.ic_first_xxxhd)
-        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
         params.weight = 1f
         rankImage.layoutParams = params
         return rankImage
     }
 
-    private fun setBarChartValues(xValues: ArrayList<String>, yAxis1: FloatArray, yAxis2: FloatArray) {
+    private fun setBarChartValues(
+        xValues: ArrayList<String>,
+        yAxis1: FloatArray,
+        yAxis2: FloatArray
+    ) {
         // bar entries
         val barEntries1 = ArrayList<BarEntry>()
         val barEntries2 = ArrayList<BarEntry>()
