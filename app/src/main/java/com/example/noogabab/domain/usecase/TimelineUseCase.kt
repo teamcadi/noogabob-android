@@ -1,7 +1,7 @@
 package com.example.noogabab.domain.usecase
 
-import com.example.noogabab.data.model.ResultData
-import com.example.noogabab.data.model.TimelineModel
+import com.example.noogabab.data.api.model.ResultData
+import com.example.noogabab.data.api.model.TimelineModel
 import com.example.noogabab.domain.repository.TimelineRepository
 import javax.inject.Inject
 

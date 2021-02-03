@@ -5,5 +5,4 @@ import javax.inject.Inject
 
 class TimelineRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getTimeline(groupId: Int) = apiService.getTimeline(groupId)
-
 }
