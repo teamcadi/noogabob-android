@@ -103,4 +103,7 @@ dependencies {
 
     // MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+
+    // AwesomeDialog
+    implementation 'com.github.chnouman:AwesomeDialog:1.0.5'
 }
