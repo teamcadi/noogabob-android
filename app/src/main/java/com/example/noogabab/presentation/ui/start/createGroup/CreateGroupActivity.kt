@@ -2,14 +2,23 @@ package com.example.noogabab.presentation.ui.start.createGroup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.noogabab.R
+import com.example.noogabab.presentation.dialog.CreateGroupDialog
+
 import com.example.noogabab.presentation.entity.PresenterBabTime
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_create_group.*
+import kotlinx.android.synthetic.main.activity_time_line.*
+import kotlinx.android.synthetic.main.fragment_dialog.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CreateGroupActivity : AppCompatActivity() {
@@ -28,6 +37,16 @@ class CreateGroupActivity : AppCompatActivity() {
 
     private fun getKeyClick() {
         btn_get_key.setOnClickListener {
+            val dialog = CreateGroupDialog(this@CreateGroupActivity)
+            CoroutineScope(Main).launch {
+                dialog.show()
+                delay(2000)
+                dialog.progress_dialog.visibility = View.INVISIBLE
+                dialog.btn_dialog_close.visibility = View.VISIBLE
+                dialog.txt_dialog_content.text = "발급 완료!"
+                dialog.txt_dialog_key.visibility = View.VISIBLE
+                dialog.btn_dialog_clone.visibility = View.VISIBLE
+            }
 //            AwesomeDialog.build(this)
 //                .title("Congratulations")
 //                .body("Your New Account has been created")
