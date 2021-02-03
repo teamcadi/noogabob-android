@@ -6,17 +6,102 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.tempmain.chart.WeekChartFragment">
 
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:id="@+id/linear_week_legend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/chart_week_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/btn_week_rank_bob"
+            android:textStyle="normal"
+            android:textSize="14sp"
+            android:fontFamily="@font/noto_sans_cjkkr_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="10sp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:textColor="@color/color_aa5900"
+            android:text="⬤  밥" />
+
+        <TextView
+            android:gravity="center"
+            android:textColor="@color/color_ffb254"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/btn_week_rank_snack"
+            android:textStyle="normal"
+            android:textSize="14sp"
+            android:fontFamily="@font/noto_sans_cjkkr_regular"
+            android:layout_width="wrap_content"
+            android:lineSpacingExtra="10sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⬤  간식" />
+    </LinearLayout>
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart_week_bar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@id/linear_week_rank"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/linear_week_legend" />
+
+    <LinearLayout
+        android:id="@+id/linear_week_rank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="50dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/chart_week_bar">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_first_xxxhd" />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_first_xxxhd" />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:visibility="invisible"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_first_xxxhd" />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_first_xxxhd" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
