@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noogabab.R
-import com.example.noogabab.data.model.ResultData
-import com.example.noogabab.data.model.Timeline
+import com.example.noogabab.data.api.model.ResultData
+import com.example.noogabab.data.api.model.Timeline
 import com.example.noogabab.presentation.entity.PresenterTimeLine
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_time_line.*

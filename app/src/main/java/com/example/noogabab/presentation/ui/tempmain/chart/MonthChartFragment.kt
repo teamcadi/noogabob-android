@@ -1,9 +1,14 @@
 package com.example.noogabab.presentation.ui.tempmain.chart
 
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.view.marginTop
 import com.example.noogabab.R
 import com.github.mikephil.charting.components.Legend
@@ -20,7 +25,14 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        val rankImage = ImageView(context)
+//        rankImage.setImageResource(R.drawable.ic_first_statistics)
+//        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+//        params.weight = 1f
+//        rankImage.layoutParams = params
+//        linear_rank.addView(rankImage)
         setBarChartValues()
+
     }
     private fun setBarChartValues() {
         // x axis values
@@ -77,6 +89,7 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
                 setDrawLabels(false)
             }
             legend.apply {
+                isEnabled = false
                 formSize = 15f
                 form = Legend.LegendForm.CIRCLE
                 xEntrySpace = 30f

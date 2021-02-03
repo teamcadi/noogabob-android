@@ -6,8 +6,8 @@
   <path
       android:pathData="M84,84m-84,0a84,84 0,1 1,168 0a84,84 0,1 1,-168 0"
       android:strokeAlpha="0.25"
-      android:fillColor="#ffc176"
-      android:fillAlpha="0.25"/>
+      android:fillColor="#FBD5A6"
+      android:fillAlpha="1"/>
   <group>
     <clip-path
         android:pathData="M84,84m-84,0a84,84 0,1 1,168 0a84,84 0,1 1,-168 0"/>

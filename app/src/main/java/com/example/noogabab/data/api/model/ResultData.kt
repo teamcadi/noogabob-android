@@ -1,4 +1,4 @@
-package com.example.noogabab.data.model
+package com.example.noogabab.data.api.model
 
 sealed class ResultData<out T> {
     data class Success<out T>(val data: T? = null): ResultData<T>()

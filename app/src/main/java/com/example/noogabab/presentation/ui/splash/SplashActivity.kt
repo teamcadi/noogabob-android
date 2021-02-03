@@ -8,7 +8,13 @@ import android.os.Looper
 import android.view.WindowManager
 import com.example.noogabab.R
 import com.example.noogabab.presentation.ui.start.StartActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,10 +24,13 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startSplash() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, StartActivity::class.java))
+        this.supportActionBar?.hide()
+        CoroutineScope(Dispatchers.IO).launch {
+            delay(2000)
+            val intent = Intent(applicationContext, StartActivity::class.java)
+            startActivity(intent)
             finish()
-        }, 2000)
+        }
     }
 
     private fun hideStatusBar() {

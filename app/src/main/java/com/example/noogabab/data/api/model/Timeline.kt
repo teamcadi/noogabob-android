@@ -1,6 +1,4 @@
-package com.example.noogabab.data.model
-
-
+package com.example.noogabab.data.api.model
 import com.google.gson.annotations.SerializedName
 
 data class Timeline(
