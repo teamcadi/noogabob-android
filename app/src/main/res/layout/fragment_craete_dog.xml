@@ -137,7 +137,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:scrollbars="none"
-            tools:listitem="@layout/item_bab_time" />
+            tools:listitem="@layout/item_bob_time" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_enter_group"

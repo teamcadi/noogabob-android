@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/txt_count_bab"
+            android:id="@+id/txt_count_bob"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.8"
@@ -19,6 +20,7 @@
             android:textColor="#707070"
             android:textSize="16sp"
             android:textStyle="normal"
+            android:text="첫 끼"
             tools:text="첫끼" />
 
         <TextView
@@ -27,11 +29,11 @@
             android:textSize="16sp"
             android:textColor="#707070"
             android:lineSpacingExtra="8sp"
-            android:id="@+id/txt_bab_meridiem"
+            android:id="@+id/txt_meridiem_bob"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="-" />
+            android:text="-" />
 
         <TextView
             android:fontFamily="@font/noto_sans_cjkkr_regular"
@@ -39,11 +41,19 @@
             android:textSize="16sp"
             android:textColor="#707070"
             android:lineSpacingExtra="8sp"
-            android:id="@+id/txt_bab_time"
             android:layout_width="wrap_content"
+            android:id="@+id/txt_time_bob"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="-" />
+            android:text="-" />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/btn_time_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_time_close"
+            />
 
     </LinearLayout>
 
