@@ -46,6 +46,9 @@ class CreateGroupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_group)
 
+        // 기본 하나
+        linear_bob_time.addView(BobTimeView(applicationContext))
+
         edit_dog_age.addTextChangedListener(textWatcher)
         edit_dog_name.addTextChangedListener(textWatcher)
         edit_dog_kind.addTextChangedListener(textWatcher)
@@ -85,17 +88,15 @@ class CreateGroupActivity : AppCompatActivity() {
     }
 
     private fun addBobTime() {
+        val countTime = arrayOf("첫 끼", "두 끼", "세 끼")
         btn_add_bob_time.setOnClickListener {
-            if (linear_bob_time.size < 3) linear_bob_time.addView(BobTimeView(applicationContext))
-            else Toast.makeText(this, "세끼가 최대야 세꺄", Toast.LENGTH_SHORT).show()
-//            val size = adapter.count
-//            var bab = "두 끼"
-//            if (size == 2) bab = "세 끼"
-//            if (size == 3) Toast.makeText(this, "세끼가 최대야", Toast.LENGTH_SHORT).show()
-//            else {
-//                adapter.addItem(PresenterBabTime(bab, "-", "-"))
-//                adapter.notifyDataSetChanged()
-//            }
+            if (linear_bob_time.size < 3) {
+                val index = linear_bob_time.size
+                val bobTimeView = BobTimeView(applicationContext, isClose = true)
+                bobTimeView.setCountBob(countTime[index])
+                linear_bob_time.addView(bobTimeView)
+            }
+            else Toast.makeText(this, "그만줘요", Toast.LENGTH_SHORT).show()
         }
     }
 
