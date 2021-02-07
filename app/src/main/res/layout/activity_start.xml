@@ -54,7 +54,7 @@
         <com.google.android.material.button.MaterialButton
             android:enabled="false"
             android:id="@+id/btn_start"
-            android:backgroundTint="#cccccc"
+            android:backgroundTint="@color/color_e7d0b7"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="50dp"

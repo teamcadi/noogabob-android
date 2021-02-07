@@ -1,16 +1,11 @@
 package com.example.noogabab.presentation.ui.start.createGroup
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import android.widget.Toast
+import androidx.core.view.size
 import com.example.noogabab.R
 import com.example.noogabab.presentation.dialog.CreateGroupDialog
 
@@ -31,7 +26,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CreateGroupActivity : AppCompatActivity() {
-    private lateinit var adapter: BabTimeListAdapter
+    private lateinit var adapter: BobTimeListAdapter
     private val textWatcher = DynamicTextWatcher(
         onChanged = { _, _, _, _ ->
             if (edit_dog_age.text.toString() == "" ||
@@ -39,7 +34,7 @@ class CreateGroupActivity : AppCompatActivity() {
                 edit_dog_kind.text.toString() == ""
             ) {
                 btn_get_key.isEnabled = false
-                btn_get_key.setBackgroundColor(Color.LTGRAY)
+                btn_get_key.setBackgroundColor(applicationContext.resources.getColor(R.color.color_e7d0b7))
             } else {
                 btn_get_key.isEnabled = true
                 btn_get_key.setBackgroundColor(applicationContext.resources.getColor(R.color.color_aa5900))
@@ -55,9 +50,9 @@ class CreateGroupActivity : AppCompatActivity() {
         edit_dog_name.addTextChangedListener(textWatcher)
         edit_dog_kind.addTextChangedListener(textWatcher)
         loadDogKind()
-        loadBabTime()
-        addBabTime()
-        clickBabTime()
+        loadBobTime()
+        addBobTime()
+        clickBobTime()
         getKeyClick()
     }
 
@@ -83,27 +78,29 @@ class CreateGroupActivity : AppCompatActivity() {
         edit_dog_kind.setAdapter(arrayAdapter)
     }
 
-    private fun loadBabTime() {
-        adapter = BabTimeListAdapter()
-        adapter.addItem(PresenterBabTime("첫 끼", "-", "-"))
-        list_view_bab_time.adapter = adapter
+    private fun loadBobTime() {
+//        adapter = BobTimeListAdapter()
+//        adapter.addItem(PresenterBabTime("첫 끼", "-", "-"))
+//        list_view_bob_time.adapter = adapter
     }
 
-    private fun addBabTime() {
-        btn_add_bab_time.setOnClickListener {
-            val size = adapter.count
-            var bab = "두 끼"
-            if (size == 2) bab = "세 끼"
-            if (size == 3) Toast.makeText(this, "세끼가 최대야", Toast.LENGTH_SHORT).show()
-            else {
-                adapter.addItem(PresenterBabTime(bab, "-", "-"))
-                adapter.notifyDataSetChanged()
-            }
+    private fun addBobTime() {
+        btn_add_bob_time.setOnClickListener {
+            if (linear_bob_time.size < 3) linear_bob_time.addView(BobTimeView(applicationContext))
+            else Toast.makeText(this, "세끼가 최대야 세꺄", Toast.LENGTH_SHORT).show()
+//            val size = adapter.count
+//            var bab = "두 끼"
+//            if (size == 2) bab = "세 끼"
+//            if (size == 3) Toast.makeText(this, "세끼가 최대야", Toast.LENGTH_SHORT).show()
+//            else {
+//                adapter.addItem(PresenterBabTime(bab, "-", "-"))
+//                adapter.notifyDataSetChanged()
+//            }
         }
     }
 
-    private fun clickBabTime() {
-        list_view_bab_time.setOnItemClickListener { parent, view, p, id ->
+    private fun clickBobTime() {
+        /*linear_bob_time.setOnItemClickListener { parent, view, p, id ->
             val item = parent.getItemAtPosition(p) as PresenterBabTime
             val timePicker = MaterialTimePicker.Builder()
                 .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
@@ -121,9 +118,9 @@ class CreateGroupActivity : AppCompatActivity() {
                 }
                 val strHour = if (hour.toString().length == 1) "0$hour" else hour.toString()
                 val strMinute = if (minute.toString().length == 1) "0$minute" else minute.toString()
-                adapter.setItem(p, item.bab, meridiem, "${strHour}:${strMinute}")
+                adapter.setItem(p, item.bob, meridiem, "${strHour}:${strMinute}")
                 adapter.notifyDataSetChanged()
             }
-        }
+        }*/
     }
 }

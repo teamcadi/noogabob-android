@@ -122,7 +122,7 @@
                 android:textStyle="normal" />
 
             <ImageButton
-                android:id="@+id/btn_add_bab_time"
+                android:id="@+id/btn_add_bob_time"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
@@ -132,17 +132,14 @@
                 android:src="@drawable/ic_time_add" />
         </LinearLayout>
 
-        <ListView
-            android:id="@+id/list_view_bab_time"
+        <LinearLayout
+            android:id="@+id/linear_bob_time"
             android:layout_width="match_parent"
-            android:layout_height="149dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:nestedScrollingEnabled="false"
-            android:scrollbars="none"
-            tools:listitem="@layout/item_bab_time" />
+            android:orientation="vertical" />
 
         <com.google.android.material.button.MaterialButton
-            android:enabled="false"
             android:id="@+id/btn_get_key"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -150,7 +147,8 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="54dp"
-            android:backgroundTint="#cccccc"
+            android:backgroundTint="@color/color_e7d0b7"
+            android:enabled="false"
             android:fontFamily="@font/noto_sans_cjkkr_regular"
             android:text="키 발급받기"
             android:textColor="#ffffff"

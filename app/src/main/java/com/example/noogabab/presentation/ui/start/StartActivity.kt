@@ -19,7 +19,7 @@ class StartActivity : AppCompatActivity() {
         onChanged = { _, _, _, _ ->
             if (edit_key.text.toString() == "") {
                 btn_start.isEnabled = false
-                btn_start.setBackgroundColor(Color.LTGRAY)
+                btn_start.setBackgroundColor(applicationContext.resources.getColor(R.color.color_e7d0b7))
             } else {
                 btn_start.isEnabled = true
                 btn_start.setBackgroundColor(applicationContext.resources.getColor(R.color.color_aa5900))
