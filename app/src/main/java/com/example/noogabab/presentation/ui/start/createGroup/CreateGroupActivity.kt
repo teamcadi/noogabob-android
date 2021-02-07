@@ -1,18 +1,26 @@
 package com.example.noogabab.presentation.ui.start.createGroup
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import com.example.noogabab.R
 import com.example.noogabab.presentation.dialog.CreateGroupDialog
 
 import com.example.noogabab.presentation.entity.PresenterBabTime
+import com.example.noogabab.util.DynamicTextWatcher
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_create_group.*
+import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.activity_time_line.*
 import kotlinx.android.synthetic.main.fragment_dialog.*
 import kotlinx.coroutines.CoroutineScope
@@ -20,14 +28,32 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class CreateGroupActivity : AppCompatActivity() {
     private lateinit var adapter: BabTimeListAdapter
+    private val textWatcher = DynamicTextWatcher(
+        onChanged = { _, _, _, _ ->
+            if (edit_dog_age.text.toString() == "" ||
+                edit_dog_name.text.toString() == "" ||
+                edit_dog_kind.text.toString() == ""
+            ) {
+                btn_get_key.isEnabled = false
+                btn_get_key.setBackgroundColor(Color.LTGRAY)
+            } else {
+                btn_get_key.isEnabled = true
+                btn_get_key.setBackgroundColor(applicationContext.resources.getColor(R.color.color_aa5900))
+            }
+        }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_group)
 
+        edit_dog_age.addTextChangedListener(textWatcher)
+        edit_dog_name.addTextChangedListener(textWatcher)
+        edit_dog_kind.addTextChangedListener(textWatcher)
         loadDogKind()
         loadBabTime()
         addBabTime()
@@ -41,18 +67,13 @@ class CreateGroupActivity : AppCompatActivity() {
             CoroutineScope(Main).launch {
                 dialog.show()
                 delay(2000)
+                // 서버 호출
                 dialog.progress_dialog.visibility = View.INVISIBLE
                 dialog.btn_dialog_close.visibility = View.VISIBLE
                 dialog.txt_dialog_content.text = "발급 완료!"
                 dialog.txt_dialog_key.visibility = View.VISIBLE
                 dialog.btn_dialog_clone.visibility = View.VISIBLE
             }
-//            AwesomeDialog.build(this)
-//                .title("Congratulations")
-//                .body("Your New Account has been created")
-//                .onPositive("Go To My Account") {
-//                    Log.d("TAG", "positive ")
-//                }
         }
     }
 
