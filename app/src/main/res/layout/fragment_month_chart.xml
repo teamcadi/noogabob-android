@@ -73,6 +73,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chart_month_bar">
 
-    </LinearLayout>
+ </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
