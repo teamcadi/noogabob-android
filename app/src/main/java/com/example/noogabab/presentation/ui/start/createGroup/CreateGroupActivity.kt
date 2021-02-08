@@ -97,16 +97,12 @@ class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getKey() {
-        val dialog = CreateGroupDialog(this)
+        val dialog = CreateGroupDialog(this) { finish() }
         CoroutineScope(Main).launch {
             dialog.show()
             delay(2000)
-            // 서버 호출
-            dialog.progress_dialog.visibility = View.INVISIBLE
-            dialog.btn_dialog_close.visibility = View.VISIBLE
-            dialog.txt_dialog_content.text = "발급 완료!"
-            dialog.txt_dialog_key.visibility = View.VISIBLE
-            dialog.btn_dialog_clone.visibility = View.VISIBLE
+            // todo: 서버 호출
+            dialog.setDialog(progress = false, btnClose = true, description = "발급 완료!", key = "키값이지롱")
         }
     }
 

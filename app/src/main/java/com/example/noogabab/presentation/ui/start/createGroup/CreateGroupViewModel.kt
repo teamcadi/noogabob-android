@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.noogabab.presentation.entity.PresenterBobTime
 
-class CreateGroupViewModel : ViewModel() {
+class CreateGroupViewModel constructor(): ViewModel() {
     // value
     private val _currentDogName = MutableLiveData<String>()
     private val _currentDogAge = MutableLiveData<Int>()
