@@ -2,7 +2,6 @@ package com.example.noogabab.presentation.ui.start.createGroup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.noogabab.R
@@ -24,6 +23,18 @@ class CreateGroupActivity : AppCompatActivity() {
         loadBabTime()
         addBabTime()
         clickBabTime()
+        getKeyClick()
+    }
+
+    private fun getKeyClick() {
+        btn_get_key.setOnClickListener {
+//            AwesomeDialog.build(this)
+//                .title("Congratulations")
+//                .body("Your New Account has been created")
+//                .onPositive("Go To My Account") {
+//                    Log.d("TAG", "positive ")
+//                }
+        }
     }
 
     private fun loadDogKind() {

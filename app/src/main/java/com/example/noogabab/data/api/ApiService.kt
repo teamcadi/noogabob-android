@@ -1,6 +1,6 @@
 package com.example.noogabab.data.api
 
-import com.example.noogabab.data.model.TimelineModel
+import com.example.noogabab.data.api.model.TimelineModel
 import com.example.noogabab.util.NetworkConstants
 import retrofit2.http.*
 
@@ -9,8 +9,6 @@ interface ApiService {
     @FormUrlEncoded
     @POST(NetworkConstants.URL_GROUPS)
     suspend fun createGroup(
-        @Field("name") name: String,
-
     )
 
     @GET(NetworkConstants.URL_GROUPS_MEMBERS)

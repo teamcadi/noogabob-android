@@ -76,6 +76,7 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
                 setDrawLabels(false)
             }
             legend.apply {
+                isEnabled = false
                 formSize = 15f
                 form = Legend.LegendForm.CIRCLE
                 xEntrySpace = 30f
