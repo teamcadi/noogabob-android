@@ -3,35 +3,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.dialog.DialogFragment">
-
-    <ImageView
-        android:id="@+id/btn_dialog_close"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_close_timeline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    app:layout_constraintHeight_percent="0.6"
+    app:layout_constraintWidth_percent="0.6"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:fontFamily="@font/noto_sans_cjkkr_bold"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#707070"
+        android:lineSpacingExtra="8sp"
         android:id="@+id/txt_dialog_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_dialog_close"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="키를 발급하고 있네여~"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="키 값을 불러오는 중입니다.."
+        app:layout_constraintBottom_toTopOf="@id/progress_dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/progress_dialog"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_dialog_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_dialog_content" />
 
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/btn_dialog_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_close_timeline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/txt_dialog_key"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="35dp"
+        android:clickable="false"
+        android:enabled="false"
+        android:fontFamily="@font/noto_sans_cjkkr_medium"
+        android:lineSpacingExtra="8sp"
+        android:text="dfajipfdjso"
+        android:textColor="#6c6c6c"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_dialog_content"
+        tools:visibility="visible" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_dialog_clone"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:backgroundTint="@color/color_aa5900"
+        android:fontFamily="@font/noto_sans_cjkkr_medium"
+        android:text="복사하기"
+        android:textColor="#ffffff"
+        android:textStyle="normal"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_dialog_key"
+        app:layout_constraintVertical_bias="0.06"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
