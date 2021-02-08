@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/tv_statusMessage"
+            android:id="@+id/tv_status_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="177dp"
@@ -76,10 +76,10 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/txt_dogName"
+            android:id="@+id/txt_dog_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="26dp"
             android:fontFamily="@font/noto_sans_cjkkr_black"
             android:text="꼬미"
             android:textColor="#4a3319"
@@ -93,7 +93,7 @@
             android:id="@+id/btn_eat"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="54dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="54dp"
@@ -102,10 +102,11 @@
             android:text="밥 먹자"
             android:textColor="#aa5900"
             android:textStyle="bold"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_dogName"
+            app:layout_constraintTop_toBottomOf="@+id/txt_dog_name"
             app:strokeColor="@color/color_aa5900"
             app:strokeWidth="1dp" />
 
@@ -113,16 +114,16 @@
             android:id="@+id/btn_snack"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="54dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="54dp"
-            android:backgroundTint="@color/color_fff0dc"
             android:fontFamily="@font/noto_sans_cjkkr_black"
             android:lineSpacingExtra="9sp"
             android:text="간식 먹자"
             android:textColor="#aa5900"
             android:textStyle="bold"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_eat"
@@ -132,14 +133,14 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="39dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_snack">
 
             <TextView
-                android:id="@+id/txt_statusTime"
+                android:id="@+id/txt_status_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -151,7 +152,6 @@
                 android:textStyle="normal" />
 
             <TextView
-                android:id="@+id/txt_line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_sans_cjkkr_light"
@@ -162,7 +162,7 @@
                 android:textStyle="normal" />
 
             <TextView
-                android:id="@+id/txt_timeLine"
+                android:id="@+id/txt_time_line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

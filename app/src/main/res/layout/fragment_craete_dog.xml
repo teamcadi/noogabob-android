@@ -93,7 +93,6 @@
             android:textStyle="normal"
             android:textSize="18sp"
             android:textColor="@color/color_4a3319"
-            android:id="@+id/txt_dogName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="품종" />
