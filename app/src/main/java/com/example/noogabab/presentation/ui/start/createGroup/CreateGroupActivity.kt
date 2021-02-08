@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.view.size
+import androidx.lifecycle.Observer
 import com.example.noogabab.R
 import com.example.noogabab.presentation.dialog.CreateGroupDialog
+import com.example.noogabab.presentation.entity.PresenterBobTime
 
-import com.example.noogabab.presentation.entity.PresenterBabTime
 import com.example.noogabab.util.DynamicTextWatcher
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -25,103 +27,111 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class CreateGroupActivity : AppCompatActivity() {
-    private lateinit var adapter: BobTimeListAdapter
+class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
+    private val countTime = arrayOf("첫 끼", "두 끼", "세 끼")
+    private val viewModel: CreateGroupViewModel by viewModels()
     private val textWatcher = DynamicTextWatcher(
         onChanged = { _, _, _, _ ->
-            if (edit_dog_age.text.toString() == "" ||
-                edit_dog_name.text.toString() == "" ||
-                edit_dog_kind.text.toString() == ""
-            ) {
-                btn_get_key.isEnabled = false
-                btn_get_key.setBackgroundColor(applicationContext.resources.getColor(R.color.color_e7d0b7))
-            } else {
-                btn_get_key.isEnabled = true
-                btn_get_key.setBackgroundColor(applicationContext.resources.getColor(R.color.color_aa5900))
-            }
+            viewModel.updateDogName(edit_dog_name.text.toString())
+            viewModel.updateDogAge(edit_dog_age.text.toString())
+            viewModel.updateDogKind(edit_dog_kind.text.toString())
         }
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_group)
-
-        // 기본 하나
-        linear_bob_time.addView(BobTimeView(applicationContext))
-
-        edit_dog_age.addTextChangedListener(textWatcher)
-        edit_dog_name.addTextChangedListener(textWatcher)
-        edit_dog_kind.addTextChangedListener(textWatcher)
-        loadDogKind()
-        loadBobTime()
-        addBobTime()
-        clickBobTime()
-        getKeyClick()
+        loader()
+        observe()
     }
 
-    private fun getKeyClick() {
-        btn_get_key.setOnClickListener {
-            val dialog = CreateGroupDialog(this@CreateGroupActivity)
-            CoroutineScope(Main).launch {
-                dialog.show()
-                delay(2000)
-                // 서버 호출
-                dialog.progress_dialog.visibility = View.INVISIBLE
-                dialog.btn_dialog_close.visibility = View.VISIBLE
-                dialog.txt_dialog_content.text = "발급 완료!"
-                dialog.txt_dialog_key.visibility = View.VISIBLE
-                dialog.btn_dialog_clone.visibility = View.VISIBLE
-            }
-        }
-    }
-
-    private fun loadDogKind() {
+    private fun loader() {
+        // AutoComplete loader
         val dogs = resources.getStringArray(R.array.dogs)
         val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dogs)
         edit_dog_kind.setAdapter(arrayAdapter)
+
+        // linear loader
+        linear_bob_time.addView(BobTimeView(applicationContext))
+
+        // listener
+        edit_dog_name.addTextChangedListener(textWatcher)
+        edit_dog_age.addTextChangedListener(textWatcher)
+        edit_dog_kind.addTextChangedListener(textWatcher)
+        btn_get_key.setOnClickListener(this)
+        btn_add_bob_time.setOnClickListener(this)
+        btn_close_bob_time.setOnClickListener(this)
+        linear_bob_time.setOnClickListener(this)
     }
 
-    private fun loadBobTime() {
-//        adapter = BobTimeListAdapter()
-//        adapter.addItem(PresenterBabTime("첫 끼", "-", "-"))
-//        list_view_bob_time.adapter = adapter
+    private fun observe() {
+        viewModel.currentBtnState.observe(this, Observer {
+            btn_get_key.isEnabled = it
+            if (it) btn_get_key.setBackgroundColor(applicationContext.getColor(R.color.color_aa5900))
+            else btn_get_key.setBackgroundColor(applicationContext.getColor(R.color.color_e7d0b7))
+        })
     }
 
-    private fun addBobTime() {
-        val countTime = arrayOf("첫 끼", "두 끼", "세 끼")
-        btn_add_bob_time.setOnClickListener {
-            if (linear_bob_time.size < 3) {
-                val index = linear_bob_time.size
-                val bobTimeView = BobTimeView(applicationContext, isClose = true)
-                bobTimeView.setCountBob(countTime[index])
-                linear_bob_time.addView(bobTimeView)
-            }
-            else Toast.makeText(this, "그만줘요", Toast.LENGTH_SHORT).show()
+    override fun onClick(view: View?) {
+        when (view) {
+            btn_add_bob_time -> addBobTime()
+            btn_close_bob_time -> removeBobTime()
+            btn_get_key -> getKey()
+            linear_bob_time -> setBobTimes()
         }
     }
 
-    private fun clickBobTime() {
-        /*linear_bob_time.setOnItemClickListener { parent, view, p, id ->
-            val item = parent.getItemAtPosition(p) as PresenterBabTime
-            val timePicker = MaterialTimePicker.Builder()
-                .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
-                .setTimeFormat(TimeFormat.CLOCK_12H)
-                .setHour(12)
-                .build()
-            timePicker.show(supportFragmentManager, "createGroup")
-            timePicker.addOnPositiveButtonClickListener {
-                var meridiem = "오전"
-                var hour: Int = timePicker.hour
-                val minute = timePicker.minute
-                if (hour > 12) {
-                    hour -= 12
-                    meridiem = "오후"
+    private fun addBobTime() {
+        if (linear_bob_time.size < 3) {
+            val index = linear_bob_time.size
+            val bobTimeView = BobTimeView(applicationContext)
+            bobTimeView.setCountBob(countTime[index])
+            linear_bob_time.addView(bobTimeView)
+        } else Toast.makeText(this, "그만줘요", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun removeBobTime() {
+        if (linear_bob_time.size > 1) {
+            linear_bob_time.removeViewAt(linear_bob_time.size-1)
+        } else Toast.makeText(this, "밥은 줘야죠", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun getKey() {
+        val dialog = CreateGroupDialog(this) { finish() }
+        CoroutineScope(Main).launch {
+            dialog.show()
+            delay(2000)
+            // todo: 서버 호출
+            dialog.setDialog(progress = false, btnClose = true, description = "발급 완료!", key = "키값이지롱")
+        }
+    }
+
+    private fun setBobTimes() {
+        for (i in 0 until linear_bob_time.childCount) {
+            val view = linear_bob_time.getChildAt(i) as BobTimeView
+            view.tag = i
+            view.setOnClickListener {
+                val timePicker = MaterialTimePicker.Builder()
+                    .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
+                    .setTimeFormat(TimeFormat.CLOCK_12H)
+                    .setHour(12)
+                    .build()
+                timePicker.show(supportFragmentManager, "createGroup")
+                timePicker.addOnPositiveButtonClickListener {
+                    var meridiem = "오전"
+                    var hour: Int = timePicker.hour
+                    val minute = timePicker.minute
+                    if (hour > 12) {
+                        hour -= 12
+                        meridiem = "오후"
+                    }
+                    val strHour = if (hour.toString().length == 1) "0$hour" else hour.toString()
+                    val strMinute = if (minute.toString().length == 1) "0$minute" else minute.toString()
+                    viewModel.updateBobTimes(PresenterBobTime(view.getCountBob(), meridiem, "${strHour}:${strMinute}"))
+                    view.setMeridiemBob(meridiem)
+                    view.setTimeBob("${strHour}:${strMinute}")
                 }
-                val strHour = if (hour.toString().length == 1) "0$hour" else hour.toString()
-                val strMinute = if (minute.toString().length == 1) "0$minute" else minute.toString()
-                adapter.setItem(p, item.bob, meridiem, "${strHour}:${strMinute}")
-                adapter.notifyDataSetChanged()
             }
-        }*/
+        }
     }
 }

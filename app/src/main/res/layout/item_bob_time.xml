@@ -46,15 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="-" />
-
-        <ImageView
-            android:layout_gravity="center"
-            android:id="@+id/btn_time_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_time_close"
-            />
-
     </LinearLayout>
 
     <View

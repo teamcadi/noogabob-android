@@ -17,24 +17,23 @@ import kotlinx.android.synthetic.main.activity_time_line.*
 class TimelineActivity : AppCompatActivity() {
     private val timelineViewModel by viewModels<TimelineViewModel>()
 
-
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_line)
 
-        setApiTimeline()
+        observe()
     }
 
-    private fun setApiTimeline() {
+    private fun observe() {
         val timeline = timelineViewModel.getTimeline()
         timeline.observe(this, { resultData ->
             when (resultData) {
                 is ResultData.Loading -> {
-                    prograss_loading.visibility = View.VISIBLE
+                    progress_timeline_loading.visibility = View.VISIBLE
                 }
                 is ResultData.Success -> {
-                    prograss_loading.visibility = View.GONE
+                    progress_timeline_loading.visibility = View.GONE
 
                     val timelineData = resultData.data
                     if (timelineData != null) {
@@ -42,11 +41,22 @@ class TimelineActivity : AppCompatActivity() {
                     }
                 }
                 is ResultData.Failed -> {
-                    prograss_loading.visibility = View.GONE
-
+                    progress_timeline_loading.visibility = View.GONE
+                    // todo: 더미 지우고 실패 처리
+                    val dummy = ArrayList<Timeline>()
+                    dummy.add(Timeline("밥", "나 홍길동", 1612776760668, 0))
+                    dummy.add(Timeline("밥", "나 홍길동", 1612776760668, 0))
+                    dummy.add(Timeline("밥", "나 홍길동", 1612776760668, 1))
+                    dummy.add(Timeline("밥", "나 홍길동", 1612776760668, 1))
+                    dummy.add(Timeline("밥", "나 홍길동", 1612776760668, 1))
+                    dummy.add(Timeline("밥", "나 홍길동", 1612775760668, 1))
+                    dummy.add(Timeline("밥", "나 홍길동", 1612775760668, 0))
+                    dummy.add(Timeline("밥", "나 홍길동", 1612775760668, 0))
+                    dummy.add(Timeline("밥", "나 홍길동", 1612772760668, 0))
+                    setRecyclerView(setPresenterTimeline(dummy))
                 }
                 is ResultData.Exception -> {
-                    prograss_loading.visibility = View.GONE
+                    progress_timeline_loading.visibility = View.GONE
 
                 }
             }
