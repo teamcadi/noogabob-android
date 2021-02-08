@@ -31,10 +31,10 @@ class TimelineActivity : AppCompatActivity() {
         timeline.observe(this, { resultData ->
             when (resultData) {
                 is ResultData.Loading -> {
-                    prograss_loading.visibility = View.VISIBLE
+                    progress_timeline_loading.visibility = View.VISIBLE
                 }
                 is ResultData.Success -> {
-                    prograss_loading.visibility = View.GONE
+                    progress_timeline_loading.visibility = View.GONE
 
                     val timelineData = resultData.data
                     if (timelineData != null) {
@@ -42,11 +42,11 @@ class TimelineActivity : AppCompatActivity() {
                     }
                 }
                 is ResultData.Failed -> {
-                    prograss_loading.visibility = View.GONE
+                    progress_timeline_loading.visibility = View.GONE
 
                 }
                 is ResultData.Exception -> {
-                    prograss_loading.visibility = View.GONE
+                    progress_timeline_loading.visibility = View.GONE
 
                 }
             }

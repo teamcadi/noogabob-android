@@ -55,9 +55,10 @@
             android:id="@+id/btn_start"
             android:backgroundTint="@color/color_e7d0b7"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:lineSpacingExtra="11sp"
+            android:fontFamily="@font/noto_sans_cjkkr_bold"
             android:text="START"
             android:textColor="#ffffff"
             android:textSize="16sp"
@@ -69,12 +70,13 @@
             app:strokeWidth="1dp"
             android:id="@+id/btn_create_group"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:lineSpacingExtra="11sp"
             android:text="그룹 만들기"
             android:textColor="@color/color_aa5900"
             android:textSize="16sp"
+            android:fontFamily="@font/noto_sans_cjkkr_bold"
             android:textStyle="bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
