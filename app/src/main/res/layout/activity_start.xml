@@ -40,15 +40,15 @@
             android:id="@+id/edit_key"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="#b7b7b7"
-            android:lineSpacingExtra="8sp"
-            android:fontFamily="@font/noto_sans_cjkkr_light"
-            android:ems="10"
-            android:backgroundTint="@color/color_ffc176"
-            android:hint="key"
             android:layout_marginTop="50dp"
-            android:inputType="textPersonName" />
+            android:backgroundTint="@color/color_ffc176"
+            android:ems="10"
+            android:fontFamily="@font/noto_sans_cjkkr_light"
+            android:hint="key"
+            android:inputType="textPersonName"
+            android:lineSpacingExtra="8sp"
+            android:textColor="#b7b7b7"
+            android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
             android:enabled="false"
