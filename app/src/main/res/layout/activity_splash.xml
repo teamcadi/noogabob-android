@@ -8,7 +8,7 @@
     tools:context=".presentation.ui.splash.SplashActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linear_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -19,15 +19,15 @@
         app:layout_constraintVertical_bias="0.444">
 
         <ImageView
-            android:id="@+id/splash_ic_bab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="119dp"
-            android:layout_marginBottom="36dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/ic_logo"
             app:srcCompat="@drawable/ic_logo" />
 
         <ImageView
-            android:id="@+id/splash_ic_dog"
+            android:src="@drawable/ic_dog_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -36,7 +36,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/txt_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
@@ -50,7 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linear_splash"
         app:layout_constraintVertical_bias="0.989" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

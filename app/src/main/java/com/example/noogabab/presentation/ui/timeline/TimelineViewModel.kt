@@ -14,6 +14,7 @@ class TimelineViewModel @ViewModelInject constructor(private val useCase: Timeli
     private fun getTimelineList() =
         liveData {
             emit(ResultData.Loading())
+            // todo: 그룹 아이디
             emit(useCase.getTimelineList(1))
         }
 }

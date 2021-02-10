@@ -11,6 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
 @Module
@@ -40,7 +41,11 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideRetrofitClient(okHttpClient: OkHttpClient, baseUrl: String, converterFactory: Converter.Factory): Retrofit {
+    fun provideRetrofitClient(
+        okHttpClient: OkHttpClient,
+        baseUrl: String,
+        converterFactory: Converter.Factory
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(okHttpClient)
@@ -49,5 +54,6 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideTimelineService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+    fun provideTimelineService(retrofit: Retrofit): ApiService =
+        retrofit!!.create(ApiService::class.java)
 }
