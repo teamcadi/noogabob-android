@@ -7,41 +7,34 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_first"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/color_ffc176"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="H,2:1"
+        app:layout_constraintDimensionRatio="4:2.5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_status_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="177dp"
-            android:layout_marginLeft="177dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="177dp"
-            android:layout_marginRight="177dp"
             android:text='"잘 먹었습니다~"'
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@id/layout_first"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/layout_first" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_main"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="130dp"
         android:clickable="true"
         android:padding="5dp"
@@ -49,25 +42,30 @@
         android:src="@drawable/ic_default_profile"
         app:civ_border_color="#FFFFFFFF"
         app:civ_border_width="9dp"
+        app:layout_constraintBottom_toBottomOf="@id/layout_first"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/layout_first" />
+        app:layout_constraintTop_toBottomOf="@id/layout_first"
+        app:layout_constraintVertical_bias="0.707" />
 
     <ImageView
         android:id="@+id/iv_select"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/iv_main"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.702"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_edit_profile" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="35dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="54dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -84,49 +82,35 @@
             android:text="꼬미"
             android:textColor="#4a3319"
             android:textSize="26sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_eat"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="54dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="54dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/noto_sans_cjkkr_black"
             android:lineSpacingExtra="9sp"
             android:text="밥 먹자"
             android:textColor="#aa5900"
-            android:textStyle="bold"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_dog_name"
+            android:textStyle="bold"
             app:strokeColor="@color/color_aa5900"
             app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_snack"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="54dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="54dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/noto_sans_cjkkr_black"
             android:lineSpacingExtra="9sp"
             android:text="간식 먹자"
             android:textColor="#aa5900"
-            android:textStyle="bold"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_eat"
+            android:textStyle="bold"
             app:strokeColor="@color/color_aa5900"
             app:strokeWidth="1dp" />
 
@@ -174,6 +158,6 @@
                 android:textStyle="normal" />
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
