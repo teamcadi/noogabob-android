@@ -1,11 +1,13 @@
 package com.example.noogabab.presentation.ui.start.enterGroup
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
@@ -14,7 +16,8 @@ import com.example.noogabab.presentation.ui.start.StartViewModel
 import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.fragment_craete_dog.*
 
-class ReadOnlyDogFragment : Fragment(R.layout.fragment_craete_dog), View.OnClickListener {
+class ReadOnlyDogFragment :
+    Fragment(R.layout.fragment_craete_dog), View.OnClickListener {
     private val viewModel: EnterGroupViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,7 +37,7 @@ class ReadOnlyDogFragment : Fragment(R.layout.fragment_craete_dog), View.OnClick
 
     override fun onClick(p0: View?) {
         val i = Intent(requireContext(), MainActivity::class.java)
+        ActivityCompat.finishAffinity(requireActivity())
         startActivity(i)
-        activity?.finish()
     }
 }
