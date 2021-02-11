@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navi_home"
+        android:icon="@drawable/ic_disabled_home_bottom"
+        android:title="" />
+    <item
+        android:id="@+id/navi_statistics"
+        android:icon="@drawable/ic_disabled_statistics_bottom"
+        android:title="" />
+    <item
+        android:id="@+id/navi_album"
+        android:icon="@drawable/ic_disabled_album_bottom"
+        android:title="" />
+    <item
+        android:id="@+id/navi_setting"
+        android:icon="@drawable/ic_disabled_setting_bottom"
+        android:title="" />
+</menu>
