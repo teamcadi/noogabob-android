@@ -29,7 +29,7 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
         grid_album.adapter = adapter
 
         grid_album.setOnItemClickListener { adapterView, view, i, l ->
-            var intent = Intent(requireContext(), AlbumDetailActivity::class.java)
+            var intent = Intent(activity, AlbumDetailActivity::class.java)
             intent.putExtra("data", items[i])
             startActivity(intent)
         }

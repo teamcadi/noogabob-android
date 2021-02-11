@@ -36,8 +36,7 @@ class ReadOnlyDogFragment :
     }
 
     override fun onClick(p0: View?) {
-        val i = Intent(requireContext(), MainActivity::class.java)
-        ActivityCompat.finishAffinity(requireActivity())
+        val i = Intent(activity, MainActivity::class.java)
         startActivity(i)
     }
 }
