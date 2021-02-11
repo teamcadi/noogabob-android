@@ -24,7 +24,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
     }
 
     private fun clickTimeline() {
-        val i = Intent(activity, TimelineActivity::class.java)
+        val i = Intent(requireContext(), TimelineActivity::class.java)
         startActivity(i)
         activity?.overridePendingTransition(R.anim.animation_slide_down, R.anim.animation_slide_up)
     }
