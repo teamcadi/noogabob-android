@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.noogabab.presentation.ui.tempmain.album.AlbumFragment"
+        android:name="com.example.noogabab.presentation.ui.main.album.AlbumFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

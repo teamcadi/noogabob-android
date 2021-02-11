@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.tempmain.chart.ChartFragment">
+    tools:context=".presentation.ui.main.chart.ChartFragment">
 
 
     <com.google.android.material.tabs.TabLayout

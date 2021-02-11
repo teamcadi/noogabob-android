@@ -5,7 +5,7 @@
     android:viewportHeight="32">
   <path
       android:pathData="M2,15L7,15A2,2 0,0 1,9 17L9,30A2,2 0,0 1,7 32L2,32A2,2 0,0 1,0 30L0,17A2,2 0,0 1,2 15z"
-      android:fillColor="#fff"
+      android:fillColor="@android:color/transparent"
       android:strokeColor="#00000000"/>
   <path
       android:strokeWidth="1"
@@ -14,7 +14,7 @@
       android:strokeColor="#ccc"/>
   <path
       android:pathData="M13,0L18,0A2,2 0,0 1,20 2L20,30A2,2 0,0 1,18 32L13,32A2,2 0,0 1,11 30L11,2A2,2 0,0 1,13 0z"
-      android:fillColor="#fff"
+      android:fillColor="@android:color/transparent"
       android:strokeColor="#00000000"/>
   <path
       android:strokeWidth="1"
@@ -23,7 +23,7 @@
       android:strokeColor="#ccc"/>
   <path
       android:pathData="M24,7L29,7A2,2 0,0 1,31 9L31,30A2,2 0,0 1,29 32L24,32A2,2 0,0 1,22 30L22,9A2,2 0,0 1,24 7z"
-      android:fillColor="#fff"
+      android:fillColor="@android:color/transparent"
       android:strokeColor="#00000000"/>
   <path
       android:strokeWidth="1"

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.ui.tempmain.chart.MonthChartFragment">
+    tools:context=".presentation.ui.main.chart.MonthChartFragment">
 
     <LinearLayout
         android:layout_marginLeft="50dp"

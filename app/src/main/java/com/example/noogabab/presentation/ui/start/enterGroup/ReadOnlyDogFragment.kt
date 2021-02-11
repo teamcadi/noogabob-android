@@ -1,5 +1,6 @@
 package com.example.noogabab.presentation.ui.start.enterGroup
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
+import com.example.noogabab.presentation.ui.main.MainActivity
 import com.example.noogabab.presentation.ui.start.StartViewModel
 import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.fragment_craete_dog.*
@@ -31,6 +33,8 @@ class ReadOnlyDogFragment : Fragment(R.layout.fragment_craete_dog), View.OnClick
     }
 
     override fun onClick(p0: View?) {
-        Toast.makeText(requireContext(), "기다려", Toast.LENGTH_SHORT).show()
+        val i = Intent(requireContext(), MainActivity::class.java)
+        startActivity(i)
+        activity?.finish()
     }
 }

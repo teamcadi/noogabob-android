@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.tempmain.album
+package com.example.noogabab.presentation.ui.main.album
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

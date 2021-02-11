@@ -1,7 +1,6 @@
-package com.example.noogabab.presentation.ui.tempmain.album
+package com.example.noogabab.presentation.ui.main.album
 
 import android.content.Context
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

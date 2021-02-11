@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="4dp"
@@ -9,14 +10,14 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
-        
+
         <ImageView
-            android:padding="5dp"
             android:id="@+id/image_album"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:src="@mipmap/ic_launcher"
-            android:scaleType="fitXY" />
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            tools:srcCompat="@drawable/ic_background_album" />
 
         
     </RelativeLayout>

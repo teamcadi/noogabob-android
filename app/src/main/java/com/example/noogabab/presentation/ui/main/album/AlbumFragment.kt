@@ -1,11 +1,10 @@
-package com.example.noogabab.presentation.ui.tempmain.album
+package com.example.noogabab.presentation.ui.main.album
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterAlbumImage
 import kotlinx.android.synthetic.main.fragment_album.*
@@ -23,6 +22,7 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().window.statusBarColor = Color.WHITE;
 
         for (i in ids.indices) items.add(PresenterAlbumImage(ids[i], images[i]))
         var adapter = AlbumAdapter(items, requireContext())

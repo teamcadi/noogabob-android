@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.tempmain.chart
+package com.example.noogabab.presentation.ui.main.chart
 
 import android.graphics.Color
 import android.os.Bundle
@@ -14,9 +14,10 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import kotlinx.android.synthetic.main.fragment_week_chart.*
+import kotlinx.android.synthetic.main.fragment_month_chart.*
 
-class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
+
+class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
     private var groupSize = 0
     private var xGroup: ArrayList<String> = ArrayList<String>()
     private lateinit var yBob: FloatArray
@@ -36,7 +37,7 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
         for (i in yBob.indices) if (max < yBob[i]) {
             max = yBob[i]; position = i
         }
-        btn_week_rank_bob.setOnClickListener {
+        btn_month_rank_bob.setOnClickListener {
             getFirst(groupSize, position)
         }
     }
@@ -47,14 +48,14 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
         for (i in ySnack.indices) if (max < ySnack[i]) {
             max = ySnack[i]; position = i
         }
-        btn_week_rank_snack.setOnClickListener {
+        btn_month_rank_snack.setOnClickListener {
             getFirst(groupSize, position)
         }
     }
 
     private fun getFirst(size: Int, position: Int) {
-        for (i in 0 until size) linear_week_rank[i].visibility = View.INVISIBLE
-        linear_week_rank[position].visibility = View.VISIBLE
+        for (i in 0 until size) linear_month_rank[i].visibility = View.INVISIBLE
+        linear_month_rank[position].visibility = View.VISIBLE
     }
 
     // 서버에서 가져온 데이터를 셋팅
@@ -64,13 +65,13 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
         xGroup.add("아빠")
         xGroup.add("누나")
         groupSize = xGroup.size
-        yBob = floatArrayOf(5.0f, 6f, 7.8f, 1.4f)
-        ySnack = floatArrayOf(5.0f, 2f, 9.6f, 2.4f)
+        yBob = floatArrayOf(2.0f, 6f, 7.8f, 3.4f)
+        ySnack = floatArrayOf(1.0f, 7f, 3.8f, 8.4f)
 
         setBarChartValues(xGroup, yBob, ySnack)
 
         // 가족 구성원에 맞춰서 INVISIBLE 뷰 셋팅
-        for (i in 0 until groupSize) linear_week_rank.addView(createRankImage())
+        for (i in 0 until groupSize) linear_month_rank.addView(createRankImage())
     }
 
     private fun createRankImage(): ImageView {
@@ -85,7 +86,6 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
         rankImage.layoutParams = params
         return rankImage
     }
-
 
     private fun setBarChartValues(
         xValues: ArrayList<String>,
@@ -110,8 +110,7 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
 
         // make a bar data
         val barData = BarData(xValues, finalBarDataSet as List<IBarDataSet>)
-//        barData.groupSpace = 30f
-        chart_week_bar.apply {
+        chart_month_bar.apply {
             data = barData
             setBackgroundColor(Color.WHITE)
             animateXY(3000, 3000)
@@ -144,4 +143,5 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
             }
         }
     }
+
 }
