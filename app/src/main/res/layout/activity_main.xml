@@ -132,7 +132,7 @@
             <TextView
                 android:id="@+id/txt_status_time"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/noto_sans_cjkkr_light"
                 android:lineSpacingExtra="3sp"
