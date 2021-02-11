@@ -18,13 +18,13 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navi_main"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/nav_main"
         app:itemHorizontalTranslationEnabled="true"
-        app:itemIconSize="36dp"
+        app:itemIconSize="30dp"
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

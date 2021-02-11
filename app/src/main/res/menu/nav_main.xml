@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navi_home"
-        android:icon="@drawable/ic_disabled_main_bottom"
+        android:icon="@drawable/ic_disabled_home_bottom"
         android:title="" />
     <item
         android:id="@+id/navi_statistics"

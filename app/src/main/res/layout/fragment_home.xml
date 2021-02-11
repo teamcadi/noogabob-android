@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:background="@color/color_ffc176"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.36"
+        app:layout_constraintHeight_percent="0.32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/layout_first"
-            app:layout_constraintVertical_bias="0.331" />
+            app:layout_constraintVertical_bias="0.303" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -41,7 +41,7 @@
         android:layout_height="0dp"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintDimensionRatio="5.8:3.2"
+        app:layout_constraintDimensionRatio="2:1"
         android:clickable="true"
         android:padding="5dp"
         android:scaleType="centerCrop"
@@ -107,7 +107,7 @@
             app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:id="@+id/btn_snack"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
@@ -127,11 +127,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="30dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_btn_wrapper">
 
         <TextView
             android:id="@+id/txt_status_time"
