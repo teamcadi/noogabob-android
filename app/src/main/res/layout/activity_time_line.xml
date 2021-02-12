@@ -26,7 +26,7 @@
             android:id="@+id/recycler_timeline"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_time_line2" />
+            tools:listitem="@layout/item_time_line" />
     </LinearLayout>
 
     <ProgressBar
