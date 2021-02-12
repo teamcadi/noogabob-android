@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.noogabab.R
 import com.example.noogabab.presentation.ui.main.timeline.TimelineActivity
+import com.example.noogabab.presentation.ui.tempmain.TempMainActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {

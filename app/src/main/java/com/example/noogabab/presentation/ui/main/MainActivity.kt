@@ -10,9 +10,11 @@ import com.example.noogabab.R
 import com.example.noogabab.presentation.ui.main.album.AlbumFragment
 import com.example.noogabab.presentation.ui.main.chart.ChartFragment
 import com.example.noogabab.presentation.ui.main.home.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.system.exitProcess
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var backPressedTime: Long = 0
 
