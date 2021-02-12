@@ -40,9 +40,9 @@
                 android:hint="홍길동"
                 android:inputType="textPersonName"
                 android:lineSpacingExtra="8sp"
-                android:textColor="#707070"
+                android:textColor="@color/colorEditText"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,9 +65,9 @@
                 android:hint="아들"
                 android:inputType="textPersonName"
                 android:lineSpacingExtra="8sp"
-                android:textColor="#707070"
+                android:textColor="@color/colorEditText"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 

@@ -51,6 +51,8 @@
             android:orientation="horizontal">
 
             <EditText
+                android:textStyle="bold"
+                android:textColor="@color/colorEditText"
                 android:id="@+id/edit_dog_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,11 +63,12 @@
                 android:hint="꼬미"
                 android:inputType="textPersonName"
                 android:lineSpacingExtra="8sp"
-                android:textColor="#707070"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                 />
 
             <EditText
+                android:textStyle="bold"
+                android:textColor="@color/colorEditText"
                 android:id="@+id/edit_dog_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,9 +79,8 @@
                 android:hint="5"
                 android:inputType="numberDecimal"
                 android:lineSpacingExtra="8sp"
-                android:textColor="#707070"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                 />
         </LinearLayout>
 
         <TextView
@@ -93,6 +95,7 @@
             android:textStyle="normal" />
 
         <AutoCompleteTextView
+            android:textColor="@color/colorEditText"
             android:id="@+id/edit_dog_kind"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,9 +104,8 @@
             android:fontFamily="@font/noto_sans_cjkkr_regular"
             android:hint="한글 입력 ex)포메라니안"
             android:lineSpacingExtra="8sp"
-            android:textColor="#707070"
             android:textSize="16sp"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"

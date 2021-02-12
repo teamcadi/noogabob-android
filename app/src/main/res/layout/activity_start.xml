@@ -47,7 +47,8 @@
             android:hint="key"
             android:inputType="textPersonName"
             android:lineSpacingExtra="8sp"
-            android:textColor="#b7b7b7"
+            android:textStyle="bold"
+            android:textColor="@color/colorEditText"
             android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
