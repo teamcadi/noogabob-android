@@ -31,4 +31,8 @@ class EnterGroupActivity : AppCompatActivity() {
     fun nextPage() {
         vp_create.setCurrentItem(1, true)
     }
+
+    fun prevPage() {
+        vp_create.setCurrentItem(1, true)
+    }
 }
