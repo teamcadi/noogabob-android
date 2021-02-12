@@ -1,7 +1,6 @@
 package com.example.noogabab.presentation.ui.main.timeline
 
 import android.icu.text.SimpleDateFormat
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterTimeLine
-import kotlinx.android.synthetic.main.item_time_line2.view.*
+import kotlinx.android.synthetic.main.item_time_line.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -17,7 +16,7 @@ class TimelineAdapter(private val itemList: ArrayList<PresenterTimeLine>): Recyc
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineViewHolder {
         val inflate = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.item_time_line2, parent, false)
+            .inflate(R.layout.item_time_line, parent, false)
 
         return TimelineViewHolder(inflate)
     }

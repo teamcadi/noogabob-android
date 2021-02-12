@@ -13,7 +13,6 @@ class AlbumDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_album_detail)
 
         val item: PresenterAlbumImage = intent.getSerializableExtra("data") as PresenterAlbumImage
-        Log.d("zzz", "${item.id}")
 
         image_album_detal.setImageResource(item.image!!)
     }
