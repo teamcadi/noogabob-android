@@ -9,9 +9,6 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterTimeLine
-import kotlinx.android.synthetic.main.item_time_line2.view.img_timeline
-import kotlinx.android.synthetic.main.item_time_line2.view.txt_timeline_content
-import kotlinx.android.synthetic.main.item_time_line2.view.txt_timeline_time
 import kotlinx.android.synthetic.main.item_time_line2.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -39,11 +36,11 @@ class TimelineAdapter(private val itemList: ArrayList<PresenterTimeLine>): Recyc
 class TimelineViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
     fun bind(prev: PresenterTimeLine?, item: PresenterTimeLine, next: PresenterTimeLine?) {
         with(view) {
-            val subContentArr = item.subContent.split(" ")
+//            val subContentArr = item.subContent.split(" ")
             txt_timeline_time.text = formatDate(item.time, "hh:mm")
             img_timeline.setImageDrawable(item.icon)
             txt_timeline_content.text = item.content
-            txt_timeline_sub_content.text = Html.fromHtml("<b>" + subContentArr[0] + "</b> " + subContentArr[1])
+            txt_timeline_sub_content.text = item.subContent
             txt_timeline_day.text = getDateString(item.time)
 
             // Show divider or not
