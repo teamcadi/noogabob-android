@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterAlbumImage
 
@@ -20,9 +21,13 @@ class AlbumAdapter(private val items: ArrayList<PresenterAlbumImage>, private va
         if (current == null) {
             current = layoutInflater.inflate(R.layout.item_album, parent, false)
         }
-        var image = view?.findViewById<ImageView>(R.id.image_album)
-        image?.setImageResource(items[p].image!!)
-
+        var imageView = view?.findViewById<ImageView>(R.id.image_album)
+        if (imageView != null) {
+            Glide.with(context).load(items[p].image)
+                .centerCrop()
+                .placeholder(R.drawable.ic_background_album)
+                .into(imageView)
+        }
         return current!!
     }
 
