@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="33dp"
     android:layout_marginRight="33dp"
-    tools:context=".presentation.ui.timeline.TimelineActivity">
+    tools:context=".presentation.ui.main.timeline.TimelineActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

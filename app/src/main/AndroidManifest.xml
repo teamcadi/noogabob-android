@@ -7,16 +7,16 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_main"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_main_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name="com.example.noogabab.presentation.ui.main.album.AlbumDetailActivity"></activity>
         <!-- <activity android:name=".presentation.ui.tempmain.TempMainActivity"></activity> -->
         <!-- <activity android:name=".presentation.ui.splash.SplashActivity"></activity> -->
-        <!-- <activity android:name=".presentation.ui.timeline.TimelineActivity" /> -->
+         <activity android:name="com.example.noogabab.presentation.ui.main.timeline.TimelineActivity" />
         <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity" />
         <activity
             android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"
