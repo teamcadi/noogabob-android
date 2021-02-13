@@ -13,10 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-<!--        <activity android:name=".presentation.ui.tempmain.TempMainActivity"></activity>-->
-        <!--        <activity android:name=".presentation.ui.splash.SplashActivity"></activity>-->
+        <activity android:name=".presentation.ui.setting.group.GroupProfile">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--        <activity android:name=".presentation.ui.timeline.TimelineActivity" />-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- <activity android:name=".presentation.ui.tempmain.TempMainActivity"></activity> -->
+        <!-- <activity android:name=".presentation.ui.splash.SplashActivity"></activity> -->
+        <!-- <activity android:name=".presentation.ui.timeline.TimelineActivity" /> -->
         <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity" />
         <activity
             android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"
@@ -24,11 +30,7 @@
         <activity android:name=".presentation.ui.start.StartActivity" />
         <activity android:name=".presentation.ui.main.MainActivity" />
         <activity android:name=".presentation.ui.splash.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
