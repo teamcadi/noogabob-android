@@ -1,39 +1,62 @@
 package com.example.noogabab.presentation.ui.main.album
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterAlbumImage
+import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupViewModel
 import kotlinx.android.synthetic.main.fragment_album.*
 
-class AlbumFragment : Fragment(R.layout.fragment_album) {
+fun getDummy(): ArrayList<PresenterAlbumImage> {
     var items = ArrayList<PresenterAlbumImage>()
-    var ids = arrayOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
-    var images = intArrayOf(
-        R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4, R.drawable.image5,
-        R.drawable.image6, R.drawable.image7, R.drawable.image8, R.drawable.image9, R.drawable.image10,
-        R.drawable.image11, R.drawable.image12, R.drawable.image13, R.drawable.image14, R.drawable.image15,
-        R.drawable.image16, R.drawable.image17, R.drawable.image18, R.drawable.image19, R.drawable.image20,
-        R.drawable.image21, R.drawable.image22, R.drawable.image23
-    )
+    items.add(PresenterAlbumImage(1, "https://cdn.pixabay.com/photo/2019/09/06/04/25/beach-4455433_960_720.jpg"))
+    items.add(PresenterAlbumImage(2, "https://cdn.pixabay.com/photo/2020/04/24/03/35/heart-5084900_960_720.jpg"))
+    items.add(PresenterAlbumImage(3, "https://cdn.pixabay.com/photo/2017/06/27/14/20/waterfalls-2447450_960_720.jpg"))
+    items.add(PresenterAlbumImage(4, "https://cdn.pixabay.com/photo/2021/01/17/07/35/dog-5924174_960_720.jpg"))
+    items.add(PresenterAlbumImage(5, "https://cdn.pixabay.com/photo/2015/03/26/09/54/pug-690566_960_720.jpg"))
+    return items
+}
+
+
+class AlbumFragment : Fragment(R.layout.fragment_album) {
+    private val viewModel: AlbumViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        load()
+    }
+
+    private fun load() {
         requireActivity().window.statusBarColor = Color.WHITE;
+        setRecyclerView()
+    }
 
-
-        for (i in ids.indices) items.add(PresenterAlbumImage(ids[i], images[i]))
-        var adapter = AlbumAdapter(items, requireContext())
-        grid_album.adapter = adapter
-//
-//        grid_album.setOnItemClickListener { adapterView, view, i, l ->
-//            var intent = Intent(activity, AlbumDetailActivity::class.java)
-//            intent.putExtra("data", items[i])
-//            startActivity(intent)
-//        }
+    private fun setRecyclerView() {
+        val items = getDummy()
+        if (items == null || items.size == 0) {
+            txt_album_background.isVisible = true
+            image_album_background.isVisible = true
+            swipe_refresh.isVisible = false
+            recycler_grid_album.isVisible = false
+        }else {
+            txt_album_background.isVisible = false
+            image_album_background.isVisible = false
+            swipe_refresh.isVisible = true
+            recycler_grid_album.isVisible = true
+            val adapter = AlbumAdapter(items)
+            recycler_grid_album.adapter = adapter
+            recycler_grid_album.layoutManager = GridLayoutManager(context, 3)
+        }
     }
 }

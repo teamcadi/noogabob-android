@@ -10,8 +10,6 @@ import androidx.core.view.size
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
 import com.example.noogabab.presentation.dialog.CreateGroupDialog
-import com.example.noogabab.presentation.entity.PresenterBobTime
-
 import com.example.noogabab.util.DynamicTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_create_group.*
@@ -104,33 +102,4 @@ class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
-//    private fun setBobTimes() {
-//        for (i in 0 until linear_bob_time.childCount) {
-//            val view = linear_bob_time.getChildAt(i) as BobTimeView
-//            view.tag = i
-//            view.setOnClickListener {
-//                val timePicker = MaterialTimePicker.Builder()
-//                    .setInputMode(MaterialTimePicker.INPUT_MODE_KEYBOARD)
-//                    .setTimeFormat(TimeFormat.CLOCK_12H)
-//                    .setHour(12)
-//                    .build()
-//                timePicker.show(supportFragmentManager, "createGroup")
-//                timePicker.addOnPositiveButtonClickListener {
-//                    var meridiem = "오전"
-//                    var hour: Int = timePicker.hour
-//                    val minute = timePicker.minute
-//                    if (hour > 12) {
-//                        hour -= 12
-//                        meridiem = "오후"
-//                    }
-//                    val strHour = if (hour.toString().length == 1) "0$hour" else hour.toString()
-//                    val strMinute = if (minute.toString().length == 1) "0$minute" else minute.toString()
-//                    viewModel.updateBobTimes(PresenterBobTime(view.getCountBob(), meridiem, "${strHour}:${strMinute}"))
-//                    view.setMeridiemBob(meridiem)
-//                    view.setTimeBob("${strHour}:${strMinute}")
-//                }
-//            }
-//        }
-//    }
 }

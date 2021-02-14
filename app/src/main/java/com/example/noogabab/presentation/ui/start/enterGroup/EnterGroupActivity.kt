@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_create.*
 class EnterGroupActivity : AppCompatActivity() {
     private val tabTextList = listOf("사용자 정보 입력", "반려동물 정보")
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
@@ -33,6 +34,6 @@ class EnterGroupActivity : AppCompatActivity() {
     }
 
     fun prevPage() {
-        vp_create.setCurrentItem(1, true)
+        vp_create.setCurrentItem(0, true)
     }
 }
