@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Noogabob</string>
+    <string name="app_name">누가밥</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="description_timeline_dot">This is an image!</string>

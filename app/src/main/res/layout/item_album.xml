@@ -3,19 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp"
-
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:padding="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_album"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:padding="5dp"
+            android:layout_height="150dp"
             tools:srcCompat="@drawable/ic_background_album" />
 
         
