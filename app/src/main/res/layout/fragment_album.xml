@@ -22,7 +22,7 @@
         android:text="꼬미네 추억보따리" />
 
     <ImageView
-        app:layout_constraintBottom_toTopOf="@id/swipe_refresh"
+        app:layout_constraintBottom_toTopOf="@id/swipe_refresh_album"
         android:layout_margin="15dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         android:src="@drawable/ic_add_album" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh"
+        android:id="@+id/swipe_refresh_album"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

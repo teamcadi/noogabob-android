@@ -31,6 +31,11 @@ class AlbumAdapter(private val items: ArrayList<PresenterAlbumImage>) : Recycler
     }
 
     override fun getItemCount() = items.size
+
+    fun addItem(item: PresenterAlbumImage) {
+        items.add(item)
+        notifyDataSetChanged()
+    }
 }
 
 class AlbumViewHolder(val view: View): RecyclerView.ViewHolder(view) {
