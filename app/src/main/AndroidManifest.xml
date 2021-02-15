@@ -36,8 +36,8 @@
             android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".presentation.ui.start.StartActivity" />
-        <activity android:name=".presentation.ui.main.MainActivity" />
-        <activity android:name=".presentation.ui.splash.SplashActivity">
+<!--        <activity android:name=".presentation.ui.main.MainActivity" />-->
+        <activity android:name=".presentation.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

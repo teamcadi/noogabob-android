@@ -39,10 +39,10 @@
         android:id="@+id/iv_main"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintHeight_percent="0.3"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintDimensionRatio="2:1"
-        android:clickable="true"
         android:padding="5dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_default_profile"
@@ -50,10 +50,9 @@
         app:civ_border_width="9dp"
         app:layout_constraintBottom_toBottomOf="@id/layout_first"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_first"
-        app:layout_constraintVertical_bias="0.707" />
+         />
 
     <ImageView
         android:id="@+id/iv_select"
@@ -66,20 +65,22 @@
         app:srcCompat="@drawable/ic_edit_profile" />
 
     <TextView
+        android:includeFontPadding="false"
         android:id="@+id/txt_dog_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="꼬미"
         android:fontFamily="@font/noto_sans_cjkkr_bold"
-        android:textStyle="bold"
-        android:textSize="26sp"
-        android:textColor="@color/color_4a3319"
-        app:layout_constraintTop_toBottomOf="@id/iv_main"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
         android:lineSpacingExtra="12sp"
+        android:text="꼬미"
+        android:textColor="@color/color_4a3319"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/linear_btn_wrapper"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_main" />
 
     <LinearLayout
         android:id="@+id/linear_btn_wrapper"
@@ -122,6 +123,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginBottom="13dp"
         android:id="@+id/linear_timeline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -136,11 +138,11 @@
         <TextView
             android:id="@+id/txt_status_time"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/noto_sans_cjkkr_light"
             android:gravity="center"
-            android:lineSpacingExtra="3sp"
+            android:includeFontPadding="false"
             android:text="최근 식사 1분 전  "
             android:textColor="#6c6c6c"
             android:textSize="16sp"
@@ -148,22 +150,23 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:includeFontPadding="false"
+
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans_cjkkr_light"
-            android:lineSpacingExtra="3sp"
             android:text="|"
             android:textColor="#6c6c6c"
             android:textSize="16sp"
             android:textStyle="normal" />
 
         <TextView
+            android:includeFontPadding="false"
             android:id="@+id/txt_time_line"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/noto_sans_cjkkr_medium"
             android:gravity="center"
-            android:lineSpacingExtra="3sp"
             android:text="  타임라인 보기  >"
             android:textColor="#6c6c6c"
             android:textSize="16sp"

@@ -31,6 +31,7 @@
                 android:textStyle="normal" />
 
             <EditText
+                android:includeFontPadding="false"
                 android:id="@+id/edit_start_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,6 +57,7 @@
                 android:textStyle="normal" />
 
             <EditText
+                android:includeFontPadding="false"
                 android:id="@+id/edit_start_role"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
