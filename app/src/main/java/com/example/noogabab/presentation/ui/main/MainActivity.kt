@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.IdRes
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.noogabab.R
@@ -45,6 +46,10 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    fun changeFragment(@IdRes id: Int) {
+        bottom_navi_main.selectedItemId = id
     }
 
     private fun makeCurrentFragment(fragment: Fragment) =

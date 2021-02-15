@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        hideStatusBar()
         window.statusBarColor = Color.parseColor("#ffc176")
         setContentView(R.layout.activity_splash)
         startSplash()
@@ -50,7 +49,7 @@ class SplashActivity : AppCompatActivity() {
         TedPermission.with(this)
             .setPermissionListener(permission)
             .setRationaleMessage("카메라와 갤러리 접근 권한 필요합니다.")
-            .setDeniedMessage("카메라 권한 요청 거부")
+            .setDeniedMessage("권한 거부로 앱을 종료합니다.")
             .setPermissions(
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 android.Manifest.permission.CAMERA)

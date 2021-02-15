@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="사진 업로드" />
+    <item
+        android:id="@+id/select_album_camera"
+        android:title="사진 촬영" />
+    <item
+        android:id="@+id/select_album_gallery"
+        android:title="앨범에서 사진 선택" />
+</menu>
