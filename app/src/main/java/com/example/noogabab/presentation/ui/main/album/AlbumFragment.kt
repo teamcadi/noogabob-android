@@ -5,10 +5,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,8 +15,8 @@ import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterAlbumImage
 import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupViewModel
 import kotlinx.android.synthetic.main.fragment_album.*
-val items = ArrayList<PresenterAlbumImage>()
 fun getDummy(): ArrayList<PresenterAlbumImage> {
+    val items = ArrayList<PresenterAlbumImage>()
     items.add(PresenterAlbumImage(1, "https://cdn.pixabay.com/photo/2019/09/06/04/25/beach-4455433_960_720.jpg"))
     items.add(PresenterAlbumImage(2, "https://cdn.pixabay.com/photo/2020/04/24/03/35/heart-5084900_960_720.jpg"))
     items.add(PresenterAlbumImage(3, "https://cdn.pixabay.com/photo/2017/06/27/14/20/waterfalls-2447450_960_720.jpg"))
@@ -36,6 +34,20 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
         load()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        activity?.menuInflater?.inflate(R.menu.select_album, menu)
+//        inflater.inflate(R.menu.select_album, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.select_album_camera -> {}
+//            R.id.select_album_gallery -> {}
+        }
+        return true
+    }
+
     private fun load() {
         requireActivity().window.statusBarColor = Color.WHITE;
         setRecyclerView()
@@ -43,12 +55,7 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
     }
 
     private fun refreshAlbum() {
-        swipe_refresh_album.setOnRefreshListener {
-            items.add(PresenterAlbumImage(7, "https://i.pinimg.com/originals/c4/19/74/c41974ed63c11e67da5475db98d3dc95.jpg"))
-            items.add(PresenterAlbumImage(8, "https://downloadwap.com/thumbs2/wallpapers/p2ls/2019/animals/45/c658632b13468670.jpg"))
-            items.add(PresenterAlbumImage(9, "https://i.pinimg.com/originals/0d/5d/03/0d5d03c5ce0c5f61496c955c1e944db4.jpg"))
-            swipe_refresh_album.isRefreshing = false
-        }
+
     }
 
     private fun setRecyclerView() {
