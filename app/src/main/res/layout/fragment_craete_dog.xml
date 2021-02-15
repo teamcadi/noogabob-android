@@ -51,6 +51,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:includeFontPadding="false"
                 android:id="@+id/readonly_dog_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,6 +68,7 @@
                 android:textStyle="normal" />
 
             <EditText
+                android:includeFontPadding="false"
                 android:enabled="false"
 
                 android:id="@+id/readonly_dog_age"
@@ -97,6 +99,7 @@
 
         <AutoCompleteTextView
             android:enabled="false"
+            android:includeFontPadding="false"
 
             android:id="@+id/readonly_dog_kind"
             android:layout_width="match_parent"

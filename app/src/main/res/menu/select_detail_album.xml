@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="사진 옵션" />
-    <item
         android:id="@+id/select_detail_album_profile"
         android:title="프로필 사진 설정" />
     <item
