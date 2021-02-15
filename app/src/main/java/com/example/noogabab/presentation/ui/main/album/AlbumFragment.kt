@@ -25,6 +25,7 @@ fun getDummy(): ArrayList<PresenterAlbumImage> {
     items.add(PresenterAlbumImage(3, "https://cdn.pixabay.com/photo/2017/06/27/14/20/waterfalls-2447450_960_720.jpg"))
     items.add(PresenterAlbumImage(4, "https://cdn.pixabay.com/photo/2021/01/17/07/35/dog-5924174_960_720.jpg"))
     items.add(PresenterAlbumImage(5, "https://cdn.pixabay.com/photo/2015/03/26/09/54/pug-690566_960_720.jpg"))
+    items.add(PresenterAlbumImage(6, "https://t1.daumcdn.net/cfile/tistory/2705AB38583C9CB33A?download"))
     return items
 }
 

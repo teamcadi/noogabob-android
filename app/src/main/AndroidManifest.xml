@@ -20,6 +20,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+        <service
+            android:name=".NoogabobFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
         <activity android:name=".presentation.ui.main.album.AlbumDetailActivity" />
         <!-- <activity android:name=".presentation.ui.splash.SplashActivity"></activity> -->
         <activity android:name=".presentation.ui.main.timeline.TimelineActivity" />

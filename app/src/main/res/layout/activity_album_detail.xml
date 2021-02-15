@@ -4,18 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
     tools:context=".presentation.ui.main.album.AlbumDetailActivity">
 
-    <ImageView
+
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/image_album_detal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.7"
+        android:layout_width="416dp"
+        android:layout_height="671dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_menu_detail_album" />
+
+    <ImageView
+        android:id="@+id/btn_back_detail_album"
+        app:layout_constraintBottom_toBottomOf="@id/btn_menu_detail_album"
+        app:layout_constraintTop_toTopOf="@id/btn_menu_detail_album"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/ic_back_detail_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/btn_menu_detail_album"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-         />
+        android:src="@drawable/ic_menu_detal_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
