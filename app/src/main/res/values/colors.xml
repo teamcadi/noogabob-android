@@ -2,8 +2,11 @@
 <resources>
     <color name="colorPrimary">#ffb254</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#ffc176</color>
     <color name="colorStatusBar">#ffffff</color>
+
+    <color name="colorEditDefaultTint">#FBB662</color>
+    <color name="colorEditText">#454545</color>
 
     <color name="color_ffc176">#ffc176</color>
 

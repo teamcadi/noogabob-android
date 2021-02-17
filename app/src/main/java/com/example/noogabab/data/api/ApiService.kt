@@ -11,6 +11,10 @@ interface ApiService {
     suspend fun createGroup(
     )
 
+    @GET(NetworkConstants.URL_GROUPS)
+    suspend fun getGroup(
+    )
+
     @GET(NetworkConstants.URL_GROUPS_MEMBERS)
     suspend fun getMembers()
 

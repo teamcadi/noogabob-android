@@ -1,16 +1,14 @@
 package com.example.noogabab.presentation.ui.setting.group
 
-import android.content.Context
-import android.text.Layout
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noogabab.R
+import com.example.noogabab.presentation.ui.setting.GroupProfileFragment
 import kotlinx.android.synthetic.main.item_group_profile.view.*
 
-class GroupProfileAdapter(val arrayList: ArrayList<GroupProfileViewModel>, val context: Context) :
+class GroupProfileAdapter(val arrayList: ArrayList<GroupProfileViewModel>) :
     RecyclerView.Adapter<GroupProfileAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

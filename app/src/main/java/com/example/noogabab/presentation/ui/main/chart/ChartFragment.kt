@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.tempmain.chart
+package com.example.noogabab.presentation.ui.main.chart
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import com.example.noogabab.presentation.ui.start.enterGroup.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_chart.*
 
-class ChartFragment() : Fragment(R.layout.fragment_chart) {
+class ChartFragment : Fragment(R.layout.fragment_chart) {
     private val tabTextList = listOf("주간", "월간")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,6 +1,7 @@
 package com.example.noogabab.presentation.ui.splash
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -18,7 +19,8 @@ import kotlinx.coroutines.launch
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        hideStatusBar()
+//        hideStatusBar()
+        window.statusBarColor = Color.parseColor("#ffc176")
         setContentView(R.layout.activity_splash)
         startSplash()
     }
