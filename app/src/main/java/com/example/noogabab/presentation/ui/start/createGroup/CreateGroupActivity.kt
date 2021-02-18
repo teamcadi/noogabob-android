@@ -100,32 +100,18 @@ class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
             when (resultData) {
                 is ResultData.Loading -> { }
                 is ResultData.Success -> {
-                    val key = resultData.data!!.createGroupData!!.key!!
-                    val groupId = resultData.data.createGroupData!!.groupId!!
-                    val dogId = resultData.data.createGroupData.dogId!!
-                    val shared1 = getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE)
-                    val shared2 = getSharedPreferences(SharedDog.NAME, Context.MODE_PRIVATE)
-                    val editor1 = shared1.edit()
-                    val editor2 = shared2.edit()
-                    editor1.putString(SharedGroup.GROUP_UUID_KEY, key)
-                    editor1.putInt(SharedGroup.GROUP_ID_KEY, groupId)
-                    editor2.putInt(SharedDog.DOG_ID_KEY, dogId)
-                    editor1.apply()
-                    editor2.apply()
                     dialog.setDialog(
                         progress = false,
                         btnClose = true,
                         description = "발급 완료!",
-                        key = key
+                        key = resultData.data!!.createGroupData!!.key!!
                     )
                 }
                 is ResultData.Failed -> {
-                    Log.d("zzz", resultData.message!!)
                     dialog.dismiss()
                     Toast.makeText(this, "서버가 불안정해요!", Toast.LENGTH_SHORT).show()
                 }
                 is ResultData.Exception -> {
-                    Log.d("zzz", resultData.message!!)
                     dialog.dismiss()
                     Toast.makeText(this, "서버가 불안정해요!", Toast.LENGTH_SHORT).show()
                 }

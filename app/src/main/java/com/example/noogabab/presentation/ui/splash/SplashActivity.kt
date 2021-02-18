@@ -1,5 +1,6 @@
 package com.example.noogabab.presentation.ui.splash
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +8,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.noogabab.R
+import com.example.noogabab.presentation.ui.main.MainActivity
 import com.example.noogabab.presentation.ui.start.StartActivity
+import com.example.noogabab.util.SharedDog
+import com.example.noogabab.util.SharedGroup
+import com.example.noogabab.util.SharedProfile
+import com.example.noogabab.util.SharedUser
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,10 +39,20 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
+    private fun isUser(): Boolean {
+        val sharedGroup = getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE)
+        val sharedUser = getSharedPreferences(SharedUser.NAME, Context.MODE_PRIVATE)
+        val userId = sharedUser.getInt(SharedUser.USER_ID_KEY, -1)
+        val groupId = sharedGroup.getInt(SharedGroup.GROUP_ID_KEY, -1)
+        val groupKey = sharedGroup.getString(SharedGroup.GROUP_UUID_KEY, "")
+        return !(userId != -1 && groupId != -1 && groupKey != "")
+    }
+
     private fun settingPermission() {
-        var permission = object : PermissionListener {
+        val permission = object : PermissionListener {
             override fun onPermissionGranted() {
-                val intent = Intent(applicationContext, StartActivity::class.java)
+                val intent: Intent = if (!isUser()) Intent(applicationContext, StartActivity::class.java)
+                else Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -52,7 +68,8 @@ class SplashActivity : AppCompatActivity() {
             .setDeniedMessage("권한 거부로 앱을 종료합니다.")
             .setPermissions(
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.CAMERA)
+                android.Manifest.permission.CAMERA
+            )
             .check()
     }
 }

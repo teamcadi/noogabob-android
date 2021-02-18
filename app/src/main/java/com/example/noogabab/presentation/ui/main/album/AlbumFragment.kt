@@ -1,20 +1,16 @@
 package com.example.noogabab.presentation.ui.main.album
 
-import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bumptech.glide.Glide
 import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterAlbumImage
-import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupViewModel
 import kotlinx.android.synthetic.main.fragment_album.*
+
 fun getDummy(): ArrayList<PresenterAlbumImage> {
     val items = ArrayList<PresenterAlbumImage>()
     items.add(PresenterAlbumImage(1, "https://cdn.pixabay.com/photo/2019/09/06/04/25/beach-4455433_960_720.jpg"))
@@ -29,21 +25,25 @@ fun getDummy(): ArrayList<PresenterAlbumImage> {
 class AlbumFragment : Fragment(R.layout.fragment_album) {
     private val viewModel: AlbumViewModel by activityViewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         load()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.select_album, menu)
         super.onCreateOptionsMenu(menu, inflater)
-        activity?.menuInflater?.inflate(R.menu.select_album, menu)
-//        inflater.inflate(R.menu.select_album, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.select_album_camera -> {}
-//            R.id.select_album_gallery -> {}
+            R.id.select_album_gallery -> {}
         }
         return true
     }

@@ -1,5 +1,6 @@
 package com.example.noogabab.presentation.ui.start
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,8 +17,11 @@ class StartViewModel constructor() : ViewModel() {
     val currentBtnState: LiveData<Boolean>
         get() = _currentBtnState
 
+    fun getCurrentKey() = _currentKey.value
+
     fun updateKey(input: String) {
         _currentKey.value = input
+        Log.d("start", "updateKey: ${_currentKey.value}")
         isValidation()
     }
 
