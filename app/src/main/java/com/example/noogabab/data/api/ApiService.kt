@@ -1,15 +1,15 @@
 package com.example.noogabab.data.api
 
+import com.example.noogabab.data.api.model.CreateGroupModel
+import com.example.noogabab.data.api.request.CreateGroupRequest
 import com.example.noogabab.data.api.model.TimelineModel
 import com.example.noogabab.util.NetworkConstants
 import retrofit2.http.*
 
 interface ApiService {
     // groups
-    @FormUrlEncoded
     @POST(NetworkConstants.URL_GROUPS)
-    suspend fun createGroup(
-    )
+    suspend fun createGroup(@Body createGroupRequest: CreateGroupRequest): CreateGroupModel
 
     @GET(NetworkConstants.URL_GROUPS)
     suspend fun getGroup(

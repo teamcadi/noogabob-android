@@ -1,7 +1,9 @@
 package com.example.noogabab.presentation.ui.start.createGroup
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -9,8 +11,12 @@ import androidx.activity.viewModels
 import androidx.core.view.size
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
+import com.example.noogabab.data.api.model.ResultData
 import com.example.noogabab.presentation.dialog.CreateGroupDialog
 import com.example.noogabab.util.DynamicTextWatcher
+import com.example.noogabab.util.SharedDog
+import com.example.noogabab.util.SharedGroup
+import com.example.noogabab.util.SharedProfile
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_create_group.*
 import kotlinx.coroutines.CoroutineScope
@@ -22,7 +28,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
     private val countTime = arrayOf("첫 끼", "두 끼", "세 끼")
-    private val viewModel: CreateGroupViewModel by viewModels()
+    private val viewModel: CreateGroupViewModel by viewModels<CreateGroupViewModel>()
     private val textWatcher = DynamicTextWatcher(
         onChanged = { _, _, _, _ ->
             viewModel.updateDogName(edit_dog_name.text.toString())
@@ -88,18 +94,43 @@ class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getKey() {
-        val dialog = CreateGroupDialog(this) { finish() }
-        CoroutineScope(Main).launch {
+        viewModel.createGroupAndDog().observe(this, { resultData ->
+            val dialog = CreateGroupDialog(this) { finish() }
             dialog.show()
-            delay(2000)
-            // todo: 서버 호출
-            dialog.setDialog(
-                progress = false,
-                btnClose = true,
-                description = "발급 완료!",
-                key = "12345678"
-            )
-        }
+            when (resultData) {
+                is ResultData.Loading -> { }
+                is ResultData.Success -> {
+                    val key = resultData.data!!.createGroupData!!.key!!
+                    val groupId = resultData.data.createGroupData!!.groupId!!
+                    val dogId = resultData.data.createGroupData.dogId!!
+                    val shared1 = getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE)
+                    val shared2 = getSharedPreferences(SharedDog.NAME, Context.MODE_PRIVATE)
+                    val editor1 = shared1.edit()
+                    val editor2 = shared2.edit()
+                    editor1.putString(SharedGroup.GROUP_UUID_KEY, key)
+                    editor1.putInt(SharedGroup.GROUP_ID_KEY, groupId)
+                    editor2.putInt(SharedDog.DOG_ID_KEY, dogId)
+                    editor1.apply()
+                    editor2.apply()
+                    dialog.setDialog(
+                        progress = false,
+                        btnClose = true,
+                        description = "발급 완료!",
+                        key = key
+                    )
+                }
+                is ResultData.Failed -> {
+                    Log.d("zzz", resultData.message!!)
+                    dialog.dismiss()
+                    Toast.makeText(this, "서버가 불안정해요!", Toast.LENGTH_SHORT).show()
+                }
+                is ResultData.Exception -> {
+                    Log.d("zzz", resultData.message!!)
+                    dialog.dismiss()
+                    Toast.makeText(this, "서버가 불안정해요!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 
 }

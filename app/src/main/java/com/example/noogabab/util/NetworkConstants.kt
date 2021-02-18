@@ -1,7 +1,7 @@
 package com.example.noogabab.util
 
 object NetworkConstants {
-    const val BASE_URL = "http://127.0.0.1:9000/api/"
+    const val BASE_URL = "http://10.0.2.2:8080/api/"
 
     // groups
     const val URL_GROUPS = "groups"
