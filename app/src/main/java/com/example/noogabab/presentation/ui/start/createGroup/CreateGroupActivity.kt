@@ -1,9 +1,7 @@
 package com.example.noogabab.presentation.ui.start.createGroup
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -14,15 +12,8 @@ import com.example.noogabab.R
 import com.example.noogabab.data.api.model.ResultData
 import com.example.noogabab.presentation.dialog.CreateGroupDialog
 import com.example.noogabab.util.DynamicTextWatcher
-import com.example.noogabab.util.SharedDog
-import com.example.noogabab.util.SharedGroup
-import com.example.noogabab.util.SharedProfile
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_create_group.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -40,11 +31,11 @@ class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_group)
-        loader()
+        load()
         observe()
     }
 
-    private fun loader() {
+    private fun load() {
         val dogs = resources.getStringArray(R.array.dogs)
         val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dogs)
         edit_dog_kind.setAdapter(arrayAdapter)
@@ -90,7 +81,7 @@ class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
             )
             bobTimeView.setCountBob(countTime[index])
             linear_bob_time.addView(bobTimeView)
-        } else Toast.makeText(this, "그만줘요", Toast.LENGTH_SHORT).show()
+        } else Toast.makeText(this, R.string.toast_create_group_add_bob, Toast.LENGTH_SHORT).show()
     }
 
     private fun getKey() {
@@ -98,22 +89,16 @@ class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
             val dialog = CreateGroupDialog(this) { finish() }
             dialog.show()
             when (resultData) {
-                is ResultData.Loading -> { }
+                is ResultData.Loading -> {}
                 is ResultData.Success -> {
                     dialog.setDialog(
-                        progress = false,
-                        btnClose = true,
-                        description = "발급 완료!",
-                        key = resultData.data!!.createGroupData!!.key!!
+                        false, true, "발급 완료!",
+                        resultData.data!!.createGroupData!!.key!!
                     )
                 }
-                is ResultData.Failed -> {
+                else -> {
                     dialog.dismiss()
-                    Toast.makeText(this, "서버가 불안정해요!", Toast.LENGTH_SHORT).show()
-                }
-                is ResultData.Exception -> {
-                    dialog.dismiss()
-                    Toast.makeText(this, "서버가 불안정해요!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, R.string.toast_server_failed, Toast.LENGTH_SHORT).show()
                 }
             }
         })

@@ -51,7 +51,7 @@ interface ApiService {
     suspend fun deleteUser()
 
     // dogs
-    @GET(NetworkConstants.URL_DOGS_DOG)
+    @GET(NetworkConstants.URL_DOGS)
     suspend fun getDog(@Header("key") key: String): GetDogModel
 
     @PUT(NetworkConstants.URL_DOGS_DOG)

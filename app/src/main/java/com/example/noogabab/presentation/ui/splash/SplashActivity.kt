@@ -45,7 +45,7 @@ class SplashActivity : AppCompatActivity() {
         val userId = sharedUser.getInt(SharedUser.USER_ID_KEY, -1)
         val groupId = sharedGroup.getInt(SharedGroup.GROUP_ID_KEY, -1)
         val groupKey = sharedGroup.getString(SharedGroup.GROUP_UUID_KEY, "")
-        return !(userId != -1 && groupId != -1 && groupKey != "")
+        return !(userId == -1 || groupId != -1 || groupKey != "")
     }
 
     private fun settingPermission() {
@@ -64,8 +64,8 @@ class SplashActivity : AppCompatActivity() {
         }
         TedPermission.with(this)
             .setPermissionListener(permission)
-            .setRationaleMessage("카메라와 갤러리 접근 권한 필요합니다.")
-            .setDeniedMessage("권한 거부로 앱을 종료합니다.")
+//            .setRationaleMessage("카메라와 갤러리 접근 권한 필요합니다.")
+            .setDeniedMessage("앱을 사용하기 위한 필수 권한 거부로 앱을 종료합니다.")
             .setPermissions(
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 android.Manifest.permission.CAMERA

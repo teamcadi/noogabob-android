@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.start.enterGroup.ViewPagerAdapter
+import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_chart.*
 
@@ -19,7 +19,7 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
     }
 
     private fun loadTab() {
-        val adapter = ViewPagerAdapter(requireActivity())
+        val adapter = EnterGroupViewPagerAdapter(requireActivity())
         adapter.addFragment(WeekChartFragment())
         adapter.addFragment(MonthChartFragment())
         vp_chart.adapter = adapter

@@ -1,11 +1,13 @@
 package com.example.noogabab.presentation.ui.start
 
-import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import com.example.noogabab.domain.usecase.DogUseCase
 
-class StartViewModel constructor() : ViewModel() {
+class StartViewModel @ViewModelInject constructor(private val useCase: DogUseCase) : ViewModel() {
     private val _currentKey = MutableLiveData<String>()
     private val _currentBtnState = MutableLiveData<Boolean>()
 
@@ -17,11 +19,14 @@ class StartViewModel constructor() : ViewModel() {
     val currentBtnState: LiveData<Boolean>
         get() = _currentBtnState
 
+    fun getDog() = liveData {
+        emit(useCase.getDog(_currentKey.value!!))
+    }
+
     fun getCurrentKey() = _currentKey.value
 
     fun updateKey(input: String) {
         _currentKey.value = input
-        Log.d("start", "updateKey: ${_currentKey.value}")
         isValidation()
     }
 

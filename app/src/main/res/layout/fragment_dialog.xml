@@ -61,7 +61,7 @@
         android:lineSpacingExtra="8sp"
         android:text="dfajipfdjso"
         android:textColor="#6c6c6c"
-        android:textSize="12sp"
+        android:textSize="10sp"
         android:textStyle="normal"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"

@@ -10,13 +10,11 @@ import com.example.noogabab.domain.usecase.GroupUseCase
 import com.example.noogabab.presentation.entity.PresenterBobTime
 
 class CreateGroupViewModel @ViewModelInject constructor(private val useCase: GroupUseCase): ViewModel() {
-    // value
     private val _currentDogName = MutableLiveData<String>()
     private val _currentDogAge = MutableLiveData<Int>()
     private val _currentDogKind = MutableLiveData<String>()
     private val _currentBobTimes = MutableLiveData<ArrayList<PresenterBobTime>>()
 
-    // validation
     private val _currentBtnState = MutableLiveData<Boolean>()
 
     init {
@@ -27,7 +25,6 @@ class CreateGroupViewModel @ViewModelInject constructor(private val useCase: Gro
         _currentBtnState.value = false
     }
 
-    // public
     fun createGroupAndDog() = liveData {
         val bobTimes = ArrayList<String>()
         for (i in _currentBobTimes.value!!) bobTimes.add(i.time)

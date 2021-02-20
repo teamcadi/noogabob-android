@@ -3,9 +3,7 @@ package com.example.noogabab.presentation.ui.start.enterGroup
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.start.createGroup.CreateGroupViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_create.*
@@ -23,9 +21,9 @@ class EnterGroupActivity : AppCompatActivity() {
     }
 
     private fun loadTab() {
-        val adapter = ViewPagerAdapter(this)
+        val adapter = EnterGroupViewPagerAdapter(this)
         adapter.addFragment(CreateUserFragment())
-        adapter.addFragment(ReadOnlyDogFragment())
+        adapter.addFragment(EnterMainFragment())
         vp_create.adapter = adapter
         TabLayoutMediator(tab_create, vp_create) { t, p -> t.text = tabTextList[p] }.attach()
     }

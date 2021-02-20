@@ -11,7 +11,7 @@ data class DogData(
     @SerializedName("kind")
     val kind: String?,
     @SerializedName("meals")
-    val meals: List<String>?,
+    val meals: ArrayList<String>?,
     @SerializedName("name")
     val name: String?
 )
