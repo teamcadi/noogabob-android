@@ -25,9 +25,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
+        android:indeterminateTint="@color/color_aa5900"
         android:indeterminateDuration="1500"
-        android:indeterminateDrawable="@drawable/indeterminate_progress"
-        android:indeterminate="true"
         android:id="@+id/progress_dialog"
         android:layout_width="100dp"
         android:layout_height="100dp"

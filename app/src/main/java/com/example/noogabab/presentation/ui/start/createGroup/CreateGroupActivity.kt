@@ -2,6 +2,7 @@ package com.example.noogabab.presentation.ui.start.createGroup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -88,18 +89,23 @@ class CreateGroupActivity : AppCompatActivity(), View.OnClickListener {
     private fun getKey() {
         viewModel.createGroupAndDog().observe(this, { resultData ->
             val dialog = CreateGroupDialog(this) { finish() }
-            dialog.show()
             when (resultData) {
-                is ResultData.Loading -> {}
+                is ResultData.Loading -> {
+                }
                 is ResultData.Success -> {
+                    dialog.show()
                     dialog.setDialog(
                         false, true, "발급 완료!",
                         resultData.data!!.createGroupData!!.key!!
                     )
                 }
+                is ResultData.Failed -> {
+                    val message =
+                        if (resultData.message == "존재하지 않은 강이지 종류입니다.") "품종을 확인해주세요!"
+                        else getString(R.string.toast_server_failed)
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                }
                 else -> {
-                    dialog.dismiss()
-                    Toast.makeText(this, R.string.toast_server_failed, Toast.LENGTH_SHORT).show()
                 }
             }
         })

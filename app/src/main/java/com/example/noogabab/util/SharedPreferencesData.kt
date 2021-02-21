@@ -22,5 +22,5 @@ object SharedDog {
     const val DOG_NAME_KEY = "dog_name"
     const val DOG_AGE_KEY = "dog_age"
     const val DOG_KIND_KEY = "dog_kind"
-    const val DOG_MEALS_KEY = "dog_meals"
+    const val DOG_MEALS_KEY = "dog_meals" // 리스트를 , 구분자를 통해서 스트링으로 저장
 }

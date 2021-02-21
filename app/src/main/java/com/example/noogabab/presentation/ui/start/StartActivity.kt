@@ -76,6 +76,7 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
                         val sharedGroup = getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE)
                         val dogEditor = sharedDog.edit()
                         val groupEditor = sharedGroup.edit()
+                        dogEditor.putInt(SharedDog.DOG_ID_KEY, dogId!!)
                         dogEditor.putString(SharedDog.DOG_NAME_KEY, name!!)
                         dogEditor.putInt(SharedDog.DOG_AGE_KEY, age!!)
                         dogEditor.putString(SharedDog.DOG_KIND_KEY, kind!!)

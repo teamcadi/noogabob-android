@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.noogabab.R
@@ -45,7 +46,7 @@ class SplashActivity : AppCompatActivity() {
         val userId = sharedUser.getInt(SharedUser.USER_ID_KEY, -1)
         val groupId = sharedGroup.getInt(SharedGroup.GROUP_ID_KEY, -1)
         val groupKey = sharedGroup.getString(SharedGroup.GROUP_UUID_KEY, "")
-        return !(userId == -1 || groupId != -1 || groupKey != "")
+        return !(userId == -1 || groupId == -1 || groupKey == "")
     }
 
     private fun settingPermission() {

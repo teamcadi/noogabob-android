@@ -27,7 +27,6 @@ class CreateGroupDialog constructor(context: Context, private val onclickCopy: (
         window!!.attributes.height = (size.heightPixels * 0.441).toInt()
         window!!.setBackgroundDrawable(ResourcesCompat.getDrawable(context.resources, R.drawable.dialog_background, null))
 
-//        progress_dialog.animation = AnimationUtils.loadAnimation(context, R.anim.animation_progress_loading)
         btn_dialog_close.setOnClickListener(this)
         btn_dialog_clone.setOnClickListener(this)
     }
@@ -47,7 +46,7 @@ class CreateGroupDialog constructor(context: Context, private val onclickCopy: (
         val clipData: ClipData = ClipData.newPlainText("create_key", text)
         clipboardManager.setPrimaryClip(clipData)
         Toast.makeText(context, "$text 복사 완료", Toast.LENGTH_SHORT).show()
-        onclickCopy() // 미쳤다
+        onclickCopy()
         dismiss()
     }
 }
