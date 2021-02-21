@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.example.noogabab.R
 import com.example.noogabab.data.api.model.ResultData
 import com.example.noogabab.presentation.dialog.CreateGroupDialog
+import com.example.noogabab.presentation.ui.start.BobTimeView
 import com.example.noogabab.util.DynamicTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_create_group.*

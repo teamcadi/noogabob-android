@@ -5,10 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.noogabab.domain.usecase.DogUseCase
-import com.example.noogabab.presentation.entity.PresenterDog
+import com.example.noogabab.data.api.model.ResultData
+import com.example.noogabab.data.api.request.CreateUserRequest
+import com.example.noogabab.domain.usecase.UserUseCase
 
-class EnterGroupViewModel @ViewModelInject constructor(private val useCase: DogUseCase): ViewModel() {
+class EnterGroupViewModel @ViewModelInject constructor(private val useCase: UserUseCase): ViewModel() {
     private val _currentName = MutableLiveData<String>()
     private val _currentRole = MutableLiveData<String>()
     private val _currentBtnState = MutableLiveData<Boolean>()
@@ -19,6 +20,12 @@ class EnterGroupViewModel @ViewModelInject constructor(private val useCase: DogU
 
     val currentBtnState: LiveData<Boolean>
         get() = _currentBtnState
+
+    fun createUser(key: String) = liveData {
+        emit(ResultData.Loading())
+        val user = CreateUserRequest(_currentName.value, _currentRole.value)
+        emit(useCase.createUser(key, user))
+    }
 
     fun updateName(input: String) {
         _currentName.value = input

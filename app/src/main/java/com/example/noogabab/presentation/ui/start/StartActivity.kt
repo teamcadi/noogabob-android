@@ -14,9 +14,9 @@ import com.example.noogabab.R
 import com.example.noogabab.data.api.model.ResultData
 import com.example.noogabab.presentation.ui.start.createGroup.CreateGroupActivity
 import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupActivity
-import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupViewModel
 import com.example.noogabab.util.DynamicTextWatcher
 import com.example.noogabab.util.SharedDog
+import com.example.noogabab.util.SharedGroup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_start.*
 import kotlin.system.exitProcess
@@ -24,7 +24,6 @@ import kotlin.system.exitProcess
 @AndroidEntryPoint
 class StartActivity : AppCompatActivity(), View.OnClickListener {
     private val startViewModel: StartViewModel by viewModels<StartViewModel>()
-    private val enterGroupViewModel: EnterGroupViewModel by viewModels<EnterGroupViewModel>()
     private var backPressedTime: Long = 0
     private val textWatcher = DynamicTextWatcher(
         onChanged = { _, _, _, _ ->
@@ -73,18 +72,27 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 is ResultData.Success -> {
                     resultData.data!!.dogData!!.apply {
-                        val shared = getSharedPreferences(SharedDog.NAME, Context.MODE_PRIVATE)
-                        val editor = shared.edit()
-                        editor.putString(SharedDog.DOG_NAME_KEY, name!!)
-                        editor.putInt(SharedDog.DOG_AGE_KEY, age!!)
-                        editor.putString(SharedDog.DOG_KIND_KEY, kind!!)
-                        editor.putString(SharedDog.DOG_MEALS_KEY, meals!!.joinToString(separator = ","))
-                        editor.apply()
+                        val sharedDog = getSharedPreferences(SharedDog.NAME, Context.MODE_PRIVATE)
+                        val sharedGroup = getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE)
+                        val dogEditor = sharedDog.edit()
+                        val groupEditor = sharedGroup.edit()
+                        dogEditor.putString(SharedDog.DOG_NAME_KEY, name!!)
+                        dogEditor.putInt(SharedDog.DOG_AGE_KEY, age!!)
+                        dogEditor.putString(SharedDog.DOG_KIND_KEY, kind!!)
+                        dogEditor.putString(
+                            SharedDog.DOG_MEALS_KEY,
+                            meals!!.joinToString(separator = ",")
+                        )
+                        groupEditor.putString(SharedGroup.GROUP_UUID_KEY, startViewModel.getGroupKey())
+                        dogEditor.apply()
+                        groupEditor.apply()
                     }
                     startActivity(Intent(this, EnterGroupActivity::class.java))
                 }
-                else -> Toast.makeText(this, R.string.toast_server_failed, Toast.LENGTH_SHORT)
-                    .show()
+                is ResultData.Failed -> {
+                    Toast.makeText(this, this.getString(R.string.toast_server_failed), Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
 
         })

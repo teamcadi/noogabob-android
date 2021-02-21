@@ -9,7 +9,9 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
+import com.example.noogabab.data.api.model.ResultData
 import com.example.noogabab.presentation.ui.main.MainActivity
+import com.example.noogabab.presentation.ui.start.BobTimeView
 import com.example.noogabab.util.SharedDog
 import com.example.noogabab.util.SharedGroup
 import com.example.noogabab.util.SharedUser
@@ -32,8 +34,19 @@ class EnterMainFragment :
         readonly_dog_name.setText(sharedDog.getString(SharedDog.DOG_NAME_KEY, ""))
         readonly_dog_age.setText(sharedDog.getInt(SharedDog.DOG_AGE_KEY, 0).toString())
         readonly_dog_kind.setText(sharedDog.getString(SharedDog.DOG_KIND_KEY, ""))
-        val meals = sharedDog.getString(SharedDog.DOG_MEALS_KEY, "")
-        for (i in meals!!.split(",")) {}
+        val meals = sharedDog.getString(SharedDog.DOG_MEALS_KEY, "")!!.split(",")
+        val countBob = arrayOf("첫 끼", "두 끼", "세 끼")
+        for (i in meals.indices) {
+            var bobTime =
+                BobTimeView(context = requireContext(), supportFM = null, viewModel = null)
+            val timeList = meals[i].split(":")
+            bobTime.setBobTime(
+                countBob[i],
+                if (timeList[0].toInt() <= 12) "오전" else "오후",
+                if (timeList[0].toInt() <= 12) meals[i] else "${timeList[0].toInt() - 12}:${timeList[1]}"
+            )
+            readonly_linear_bob_time.addView(bobTime)
+        }
     }
 
     private fun observe() {
@@ -45,6 +58,18 @@ class EnterMainFragment :
     }
 
     override fun onClick(p0: View?) {
+        val sharedGroup =
+            requireActivity().getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE)
+        enterGroupViewModel.createUser(sharedGroup.getString(SharedGroup.GROUP_UUID_KEY, "")!!)
+            .observe(requireActivity(), Observer { resultData ->
+                when(resultData) {
+                    is ResultData.Loading -> {}
+                    is ResultData.Success -> {
+                        // 모든 sharedPreferences 셋팅
+                    }
+                    else -> {}
+                }
+            })
         val i = Intent(activity, MainActivity::class.java)
         startActivity(i)
     }

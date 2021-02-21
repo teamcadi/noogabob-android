@@ -4,6 +4,7 @@ import com.example.noogabab.data.api.ApiService
 import com.example.noogabab.domain.repository.DogRepository
 import com.example.noogabab.domain.repository.GroupRepository
 import com.example.noogabab.domain.repository.TimelineRepository
+import com.example.noogabab.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,4 +21,7 @@ object RepositoryModule {
 
     @Provides
     fun provideDogRepo(apiService: ApiService) = DogRepository(apiService)
+
+    @Provides
+    fun provideUserRepo(apiService: ApiService) = UserRepository(apiService)
 }

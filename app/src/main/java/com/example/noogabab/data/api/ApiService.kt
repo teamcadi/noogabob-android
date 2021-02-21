@@ -37,8 +37,8 @@ interface ApiService {
     // users
     @POST(NetworkConstants.URL_USERS)
     suspend fun createUser(
-        @Body createUserRequest: CreateUserRequest,
-        @Header("key") key: String
+        @Header("key") key: String,
+        @Body createUserRequest: CreateUserRequest
     ): CreateUserModel
 
     @GET(NetworkConstants.URL_USERS_USER)

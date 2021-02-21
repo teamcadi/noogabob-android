@@ -3,9 +3,11 @@ package com.example.noogabab.di
 import com.example.noogabab.domain.repository.DogRepository
 import com.example.noogabab.domain.repository.GroupRepository
 import com.example.noogabab.domain.repository.TimelineRepository
+import com.example.noogabab.domain.repository.UserRepository
 import com.example.noogabab.domain.usecase.DogUseCase
 import com.example.noogabab.domain.usecase.GroupUseCase
 import com.example.noogabab.domain.usecase.TimelineUseCase
+import com.example.noogabab.domain.usecase.UserUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,4 +25,7 @@ object UseCaseModule {
 
     @Provides
     fun provideDogUseCase(dogRepository: DogRepository) = DogUseCase(dogRepository)
+
+    @Provides
+    fun provideUserUseCase(userRepository: UserRepository) = UserUseCase(userRepository)
 }
