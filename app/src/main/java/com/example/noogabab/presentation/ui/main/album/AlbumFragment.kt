@@ -1,13 +1,17 @@
 package com.example.noogabab.presentation.ui.main.album
 
+import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.noogabab.R
+import com.example.noogabab.presentation.dialog.UploadImageDialog
 import com.example.noogabab.presentation.entity.PresenterAlbumImage
 import kotlinx.android.synthetic.main.fragment_album.*
 
@@ -22,35 +26,18 @@ fun getDummy(): ArrayList<PresenterAlbumImage> {
     return items
 }
 
-class AlbumFragment : Fragment(R.layout.fragment_album) {
+class AlbumFragment : Fragment(R.layout.fragment_album), View.OnClickListener {
     private val viewModel: AlbumViewModel by activityViewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         load()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.select_album, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.select_album_camera -> {}
-            R.id.select_album_gallery -> {}
-        }
-        return true
-    }
-
     private fun load() {
         requireActivity().window.statusBarColor = Color.WHITE;
         setRecyclerView()
+        btn_upload_image.setOnClickListener(this)
 //        refreshAlbum()
     }
 
@@ -73,6 +60,30 @@ class AlbumFragment : Fragment(R.layout.fragment_album) {
             val adapter = AlbumAdapter(items)
             recycler_grid_album.adapter = adapter
             recycler_grid_album.layoutManager = GridLayoutManager(context, 3)
+        }
+    }
+
+    override fun onClick(view: View?) {
+        val dialog = UploadImageDialog(requireContext(), { getCamera() }, { getGallery() })
+        dialog.show()
+    }
+
+    fun getCamera() {
+        startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE), 11)
+    }
+
+    fun getGallery() {
+        val i = Intent(Intent.ACTION_PICK)
+        i.type = "image/*"
+        startActivityForResult(i, 12)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 11) {
+            var bmp = data?.extras?.get("data") as Bitmap
+        }else if (requestCode == 12) {
+            data?.data // image
         }
     }
 }

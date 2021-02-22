@@ -101,8 +101,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans_cjkkr_black"
             android:text="밥 먹자"
-            android:textColor="@color/color_aa5900"
             android:textSize="16sp"
+            android:textColor="@color/color_aa5900"
             android:textStyle="bold"
             app:strokeColor="@color/color_aa5900"
             app:strokeWidth="1dp" />

@@ -41,7 +41,7 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        setValues()
+        setValues()
         bobRankClick()
         snackRankClick()
     }
@@ -96,7 +96,7 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
     }
 
     // 서버에서 가져온 데이터를 셋팅
-    private fun setValues(xList: ArrayList<String>, ) {
+    private fun setValues() {
         xGroup.add("나")
         xGroup.add("엄마")
         xGroup.add("아빠")

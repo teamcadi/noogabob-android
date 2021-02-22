@@ -7,6 +7,7 @@
     tools:context=".presentation.ui.main.album.AlbumFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="2dp"
         app:layout_constraintBottom_toTopOf="@id/swipe_refresh_album"
         android:id="@+id/constraintLayout_album"
         app:layout_constraintTop_toTopOf="parent"
@@ -15,31 +16,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/white"
-            android:id="@+id/toolbar_album"
-            android:title=""
-            android:minHeight="?attr/actionBarSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <TextView
-            android:layout_marginStart="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/txt_album_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
             android:fontFamily="@font/noto_sans_cjkkr_bold"
             android:lineSpacingExtra="9sp"
+            android:text="꼬미네 추억보따리"
             android:textColor="#242424"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="꼬미네 추억보따리"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_upload_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_add_album"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
