@@ -36,7 +36,6 @@ class TimelineActivity : AppCompatActivity() {
         setContentView(R.layout.activity_time_line)
 
         load()
-//        test()
         observe()
     }
 

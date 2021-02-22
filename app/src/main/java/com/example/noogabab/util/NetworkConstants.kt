@@ -8,7 +8,7 @@ object NetworkConstants {
     const val URL_GROUPS_TIMELINE = "groups/{groupId}/timeline"
     const val URL_GROUPS_MEMBERS = "groups/{groupId}/members"
     const val URL_GROUPS_ALBUMS = "groups/{groupId}/albums"
-    const val URL_GROUPS_STATISTICS = "groups/{groupId}/statistics"
+    const val URL_GROUPS_STATISTICS = "groups/{groupId}/statics"
 
     // users
     const val URL_USERS = "users"

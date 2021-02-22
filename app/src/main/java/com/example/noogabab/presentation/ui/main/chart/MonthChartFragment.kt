@@ -1,13 +1,21 @@
 package com.example.noogabab.presentation.ui.main.chart
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.view.get
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.example.noogabab.R
+import com.example.noogabab.data.api.model.ResultData
+import com.example.noogabab.presentation.ui.main.MainViewModel
+import com.example.noogabab.util.SharedGroup
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -18,17 +26,46 @@ import kotlinx.android.synthetic.main.fragment_month_chart.*
 
 
 class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
+    private val mainViewModel: MainViewModel by activityViewModels<MainViewModel>()
     private var groupSize = 0
     private var xGroup: ArrayList<String> = ArrayList<String>()
     private lateinit var yBob: FloatArray
     private lateinit var ySnack: FloatArray
+    private lateinit var sharedGroup: SharedPreferences
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedGroup = requireActivity().getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setValues()
+//        setValues()
         bobRankClick()
         snackRankClick()
+    }
+
+    private fun observe(s: SharedPreferences) {
+        mainViewModel.getChart(
+            s.getString(SharedGroup.GROUP_UUID_KEY, "")!!,
+            s.getInt(SharedGroup.GROUP_ID_KEY, -1),
+            "week",
+            "2021-02-04"
+        ).observe(requireActivity(), Observer { resultData ->
+            when(resultData) {
+                is ResultData.Loading -> {}
+                is ResultData.Success -> {
+
+                }
+                is ResultData.Failed -> {
+                    Toast.makeText(requireContext(), getString(R.string.toast_server_failed), Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    Toast.makeText(requireContext(), getString(R.string.toast_server_failed), Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 
     private fun bobRankClick() {
@@ -59,7 +96,7 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
     }
 
     // 서버에서 가져온 데이터를 셋팅
-    private fun setValues() {
+    private fun setValues(xList: ArrayList<String>, ) {
         xGroup.add("나")
         xGroup.add("엄마")
         xGroup.add("아빠")

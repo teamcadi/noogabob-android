@@ -1,10 +1,7 @@
 package com.example.noogabab.data.api
 
-import com.example.noogabab.data.api.model.CreateGroupModel
-import com.example.noogabab.data.api.model.CreateUserModel
-import com.example.noogabab.data.api.model.GetDogModel
+import com.example.noogabab.data.api.model.*
 import com.example.noogabab.data.api.request.CreateGroupRequest
-import com.example.noogabab.data.api.model.TimelineModel
 import com.example.noogabab.data.api.request.CreateUserRequest
 import com.example.noogabab.util.NetworkConstants
 import retrofit2.http.*
@@ -22,7 +19,12 @@ interface ApiService {
     suspend fun getMembers()
 
     @GET(NetworkConstants.URL_GROUPS_STATISTICS)
-    suspend fun getStatistics()
+    suspend fun getStatistics(
+        @Header("key") key: String,
+        @Path("groupId") groupId: Int,
+        @Query("type") type: String,
+        @Query("date") date: String
+    ): StatisticsModel
 
     @GET(NetworkConstants.URL_GROUPS_ALBUMS)
     suspend fun getImages()

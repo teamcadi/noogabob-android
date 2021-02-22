@@ -13,12 +13,11 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        requireActivity().window.statusBarColor = requireActivity().getColor(R.color.color_feeedc);
-        loadTab()
+        load()
     }
 
-    private fun loadTab() {
+    private fun load() {
+        requireActivity().window.statusBarColor = requireActivity().getColor(R.color.color_feeedc);
         val adapter = EnterGroupViewPagerAdapter(requireActivity())
         adapter.addFragment(WeekChartFragment())
         adapter.addFragment(MonthChartFragment())
