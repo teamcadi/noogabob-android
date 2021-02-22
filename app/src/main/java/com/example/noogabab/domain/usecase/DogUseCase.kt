@@ -1,9 +1,7 @@
 package com.example.noogabab.domain.usecase
 
-import com.example.noogabab.data.api.model.CreateGroupModel
 import com.example.noogabab.data.api.model.GetDogModel
 import com.example.noogabab.data.api.model.ResultData
-import com.example.noogabab.data.api.request.CreateGroupRequest
 import com.example.noogabab.domain.repository.DogRepository
 import javax.inject.Inject
 

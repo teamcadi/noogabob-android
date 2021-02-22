@@ -30,13 +30,25 @@
     </LinearLayout>
 
     <ProgressBar
+        android:indeterminateTint="@color/color_aa5900"
         android:indeterminateDuration="1500"
-        android:indeterminateDrawable="@drawable/indeterminate_progress"
         android:indeterminate="true"
         android:id="@+id/progress_timeline_loading"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:textColor="#6c6c6c"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/noto_sans_cjkkr_bold"
+        android:id="@+id/txt_timline_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="간식을 줘볼까요?"
         android:visibility="gone" />
 
 </FrameLayout>

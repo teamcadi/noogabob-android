@@ -27,12 +27,14 @@ interface ApiService {
     @GET(NetworkConstants.URL_GROUPS_ALBUMS)
     suspend fun getImages()
 
-    @FormUrlEncoded
     @POST(NetworkConstants.URL_GROUPS_ALBUMS)
     suspend fun uploadImage()
 
     @GET(NetworkConstants.URL_GROUPS_TIMELINE)
-    suspend fun getTimeline(@Path("groupId") groupId: Int): TimelineModel
+    suspend fun getTimeline(
+        @Header("key") key: String,
+        @Path("groupId") groupId: Int
+    ): TimelineModel
 
     // users
     @POST(NetworkConstants.URL_USERS)
@@ -52,6 +54,10 @@ interface ApiService {
 
     // dogs
     @GET(NetworkConstants.URL_DOGS)
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
     suspend fun getDog(@Header("key") key: String): GetDogModel
 
     @PUT(NetworkConstants.URL_DOGS_DOG)

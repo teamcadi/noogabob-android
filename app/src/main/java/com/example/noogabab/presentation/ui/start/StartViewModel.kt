@@ -20,12 +20,12 @@ class StartViewModel @ViewModelInject constructor(private val useCase: DogUseCas
     val currentBtnState: LiveData<Boolean>
         get() = _currentBtnState
 
-    fun isProbablyKorean(s: String): Boolean {
+    private fun isKorean(s: String): Boolean {
         var i = 0
         while (i < s.length) {
             val c = s.codePointAt(i)
-            if (c in 0xAC00..0xD800)
-                return true
+            if (c in 0x3131..0x318E) return true
+            if (c in 0xAC00..0xD800) return true
             i += Character.charCount(c)
         }
         return false
@@ -34,8 +34,9 @@ class StartViewModel @ViewModelInject constructor(private val useCase: DogUseCas
     fun getDog() =
         liveData {
             emit(ResultData.Loading())
-            if (isProbablyKorean(_currentKey.value!!)) emit(ResultData.Failed(""))
-            else emit(useCase.getDog(_currentKey.value!!))
+            val key = _currentKey.value!!
+            if (isKorean(key)) emit(ResultData.Failed(""))
+            else emit(useCase.getDog(key))
         }
 
     fun getGroupKey() = _currentKey.value

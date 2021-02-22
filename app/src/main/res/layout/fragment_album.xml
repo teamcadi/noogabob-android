@@ -79,7 +79,7 @@
         android:id="@+id/txt_album_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/noto_sans_cjkkr_medium"
+        android:fontFamily="@font/noto_sans_cjkkr_bold"
         android:lineSpacingExtra="3sp"
         android:text="사진을 업로드 해볼까요?"
         android:textColor="#6c6c6c"

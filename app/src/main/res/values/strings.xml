@@ -12,6 +12,9 @@
     <string name="toast_exit_back_pressed">"한 번 더 누르시면 앱이 종료됩니다!"</string>
     <string name="toast_server_exception">서버가 불안정해요!</string>
 
+    <string name="mention_bob_after">"잘 먹었습니다~ 꺼억"</string>
+    <string name="mention_bob_before">"%s 꼬르륵..."</string>
+
     <array name="dogs">
         <item>말티스</item>
         <item>푸들</item>

@@ -43,7 +43,6 @@ class AlbumViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         with(view) {
             Glide.with(context).load(item.image)
                 .centerCrop()
-                .placeholder(R.drawable.indeterminate_progress)
                 .error(R.drawable.ic_background_album)
                 .into(image_album)
         }
