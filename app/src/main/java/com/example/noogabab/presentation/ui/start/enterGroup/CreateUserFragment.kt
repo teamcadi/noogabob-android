@@ -8,7 +8,7 @@ import com.example.noogabab.R
 import com.example.noogabab.util.DynamicTextWatcher
 import kotlinx.android.synthetic.main.fragment_create_user.*
 
-class CreateUserFragment : Fragment(R.layout.fragment_create_user), View.OnClickListener {
+class CreateUserFragment() : Fragment(R.layout.fragment_create_user), View.OnClickListener {
     private val viewModel: EnterGroupViewModel by activityViewModels()
     private val textWatcher = DynamicTextWatcher(
         onChanged = { _, _, _, _ ->
@@ -16,9 +16,9 @@ class CreateUserFragment : Fragment(R.layout.fragment_create_user), View.OnClick
             viewModel.updateRole(edit_start_role.text.toString())
         }
     )
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         load()
     }
 

@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.setting.GroupProfileFragment
 import kotlinx.android.synthetic.main.item_group_profile.view.*
 
 class GroupProfileAdapter(val arrayList: ArrayList<GroupProfileViewModel>) :

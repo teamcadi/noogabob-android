@@ -1,14 +1,13 @@
-package com.example.noogabab.presentation.ui.setting
+package com.example.noogabab.presentation.ui.setting.group
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.setting.group.GroupProfileAdapter
-import com.example.noogabab.presentation.ui.setting.group.GroupProfileViewModel
+import com.example.noogabab.presentation.ui.setting.SettingFragment
+import com.example.noogabab.presentation.ui.setting.SettingsActivity
 import kotlinx.android.synthetic.main.fragment_group_profile.*
-import kotlinx.android.synthetic.main.fragment_my_profile.*
 
 
 class GroupProfileFragment : Fragment(R.layout.fragment_group_profile) {
@@ -29,10 +28,8 @@ class GroupProfileFragment : Fragment(R.layout.fragment_group_profile) {
 
         val myAdapter = GroupProfileAdapter(arrayList)
 
-
         recyclerview_settings_group_profile.layoutManager = LinearLayoutManager(activity)
         recyclerview_settings_group_profile.adapter = myAdapter
-
 
     }
 

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.setting.DogProfileFragment">
+    tools:context=".presentation.ui.setting.dog.DogProfileFragment">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -112,6 +112,7 @@
                     android:inputType="textPersonName"
                     android:lineSpacingExtra="8sp"
                     android:textColor="@color/colorEditText"
+                    android:includeFontPadding="false"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -121,6 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
+                    android:includeFontPadding="false"
                     android:ems="10"
                     android:enabled="false"
                     android:fontFamily="@font/noto_sans_cjkkr_regular"
@@ -155,6 +157,7 @@
                 android:lineSpacingExtra="8sp"
                 android:textColor="@color/colorEditText"
                 android:textSize="16sp"
+                android:includeFontPadding="false"
                 android:textStyle="bold" />
 
             <LinearLayout

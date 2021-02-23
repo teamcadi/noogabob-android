@@ -21,22 +21,6 @@ import kotlinx.android.synthetic.main.fragment_craete_dog.*
 class ReadOnlyDogFragment :
     Fragment(R.layout.fragment_craete_dog), View.OnClickListener {
     private val viewModel: EnterGroupViewModel by activityViewModels()
-    private lateinit var callback: OnBackPressedCallback
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                (activity as EnterGroupActivity).prevPage()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        callback.remove()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

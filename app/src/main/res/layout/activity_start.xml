@@ -37,6 +37,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:includeFontPadding="false"
             android:id="@+id/edit_key"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
             android:backgroundTint="@color/color_ffc176"
             android:ems="10"
             android:fontFamily="@font/noto_sans_cjkkr_light"
-            android:hint="key"
+            android:hint="키를 입력하세요"
             android:inputType="textPersonName"
             android:lineSpacingExtra="8sp"
             android:textStyle="bold"

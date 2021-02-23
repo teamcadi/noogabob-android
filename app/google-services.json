@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "573829942088",
+    "project_id": "noogabob-23848",
+    "storage_bucket": "noogabob-23848.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573829942088:android:36342ab91fc731c17a817d",
+        "android_client_info": {
+          "package_name": "com.example.noogabab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573829942088-6mlhn6niaaihalnvpo48q1h43vcbnn1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHLJnIFyYIuSmMAlITjsxzeWmOmIStEek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573829942088-6mlhn6niaaihalnvpo48q1h43vcbnn1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,7 +8,7 @@
     tools:context=".presentation.ui.setting.SettingFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBarLayout_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,13 +22,13 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
+                android:layout_marginLeft="20dp"
                 android:background="#ffb254"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="20dp"
                 app:title="설정"
                 app:titleTextColor="#ffffff" />
 
@@ -38,12 +38,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="110dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout_settings">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,9 +51,9 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_marginStart="30dp"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
@@ -65,19 +65,19 @@
 
             <Switch
                 android:id="@+id/switch_setting"
-                android:layout_marginEnd="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
         <View
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="#3d3d3d" />
 
         <LinearLayout
@@ -92,8 +92,8 @@
 
             <TextView
                 android:layout_width="200dp"
-                android:layout_marginStart="30dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
@@ -104,20 +104,20 @@
                 android:textStyle="normal" />
 
             <ImageView
-                android:layout_marginEnd="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_arrow_setting_fragment" />
         </LinearLayout>
 
         <View
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="#3d3d3d" />
 
         <LinearLayout
@@ -132,8 +132,8 @@
 
             <TextView
                 android:layout_width="200dp"
-                android:layout_marginStart="30dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
@@ -144,20 +144,20 @@
                 android:textStyle="normal" />
 
             <ImageView
-                android:layout_marginEnd="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_arrow_setting_fragment" />
         </LinearLayout>
 
         <View
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="#3d3d3d" />
 
         <LinearLayout
@@ -171,9 +171,9 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_marginStart="30dp"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
@@ -184,25 +184,24 @@
                 android:textStyle="normal" />
 
             <ImageView
-                android:layout_marginEnd="30dp"
-                android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_arrow_setting_fragment" />
         </LinearLayout>
 
         <View
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="#3d3d3d" />
 
         <LinearLayout
-            android:id="@+id/iv_group_delete_setting"
+            android:id="@+id/linear_group_delete_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
@@ -212,9 +211,9 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_marginStart="30dp"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:clickable="true"
@@ -228,10 +227,10 @@
         </LinearLayout>
 
         <View
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="#3d3d3d" />
     </LinearLayout>
 

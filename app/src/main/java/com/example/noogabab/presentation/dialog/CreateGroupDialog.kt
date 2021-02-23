@@ -7,6 +7,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.view.View
 import android.view.Window
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
@@ -25,6 +27,7 @@ class CreateGroupDialog constructor(context: Context, private val onclickCopy: (
         window!!.attributes.height = (size.heightPixels * 0.441).toInt()
         window!!.setBackgroundDrawable(ResourcesCompat.getDrawable(context.resources, R.drawable.dialog_background, null))
 
+//        progress_dialog.animation = AnimationUtils.loadAnimation(context, R.anim.animation_progress_loading)
         btn_dialog_close.setOnClickListener(this)
         btn_dialog_clone.setOnClickListener(this)
     }

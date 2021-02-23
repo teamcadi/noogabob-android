@@ -1,16 +1,18 @@
 package com.example.noogabab.presentation.ui.setting
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.main.MainActivity
-import com.example.noogabab.presentation.ui.main.chart.ChartFragment
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.example.noogabab.presentation.dialog.CreateGroupDialog
+import com.example.noogabab.presentation.ui.setting.dog.DogProfileFragment
+import com.example.noogabab.presentation.ui.setting.group.GroupProfileFragment
+import com.example.noogabab.presentation.ui.setting.my.MyProfileFragment
 import kotlinx.android.synthetic.main.fragment_setting.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SettingFragment : Fragment(R.layout.fragment_setting) {
 
@@ -33,8 +35,11 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
             clickDogProfile()
         }
 
-        iv_group_delete_setting.setOnClickListener{
+        linear_group_delete_setting.setOnClickListener{
             //alert Dialog
+//            GroupDeleteDialogFragment().show(
+//                childFragmentManager, GroupDeleteDialogFragment.TAG)
+
         }
 
     }

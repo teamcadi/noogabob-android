@@ -51,6 +51,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:includeFontPadding="false"
                 android:textStyle="bold"
                 android:textColor="@color/colorEditText"
                 android:id="@+id/edit_dog_name"
@@ -67,6 +68,7 @@
                  />
 
             <EditText
+                android:includeFontPadding="false"
                 android:textStyle="bold"
                 android:textColor="@color/colorEditText"
                 android:id="@+id/edit_dog_age"
@@ -95,6 +97,7 @@
             android:textStyle="normal" />
 
         <AutoCompleteTextView
+            android:includeFontPadding="false"
             android:textColor="@color/colorEditText"
             android:id="@+id/edit_dog_kind"
             android:layout_width="match_parent"

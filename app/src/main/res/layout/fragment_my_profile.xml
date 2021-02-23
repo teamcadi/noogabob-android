@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.setting.MyProfileFragment">
+    tools:context=".presentation.ui.setting.my.MyProfileFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBarLayout_setting_my_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,11 +52,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="106dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout_setting_my_profile">
 
         <TextView
             android:layout_width="match_parent"
@@ -76,6 +76,7 @@
             android:ems="10"
             android:fontFamily="@font/noto_sans_cjkkr_regular"
             android:hint="홍길동"
+            android:includeFontPadding="false"
             android:inputType="textPersonName"
             android:lineSpacingExtra="8sp"
             android:textColor="@color/colorEditText"
@@ -100,6 +101,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#cccccc"
             android:ems="10"
+            android:includeFontPadding="false"
             android:fontFamily="@font/noto_sans_cjkkr_regular"
             android:hint="아들"
             android:inputType="textPersonName"
