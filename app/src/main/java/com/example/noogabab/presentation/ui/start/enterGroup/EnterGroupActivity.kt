@@ -17,7 +17,7 @@ class EnterGroupActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create)
 
         window.statusBarColor = Color.parseColor("#ffc176")
-        loadTab();
+        loadTab()
     }
 
     private fun loadTab() {

@@ -105,4 +105,5 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
             btn_create_group -> startActivity(Intent(this, CreateGroupActivity::class.java))
         }
     }
+
 }
