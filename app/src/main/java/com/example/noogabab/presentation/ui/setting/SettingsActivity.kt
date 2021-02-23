@@ -1,5 +1,6 @@
 package com.example.noogabab.presentation.ui.setting
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         val firstFragment = SettingFragment()
+        window.statusBarColor = Color.parseColor("#ffc176")
 
         supportFragmentManager.beginTransaction()
             .add(R.id.frameLayout_settings, firstFragment).commit()
