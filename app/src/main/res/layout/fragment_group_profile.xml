@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.setting.group.GroupProfileFragment">
+    tools:context=".presentation.ui.main.setting.group.GroupProfileFragment">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout_setting_group"
         android:layout_width="match_parent"

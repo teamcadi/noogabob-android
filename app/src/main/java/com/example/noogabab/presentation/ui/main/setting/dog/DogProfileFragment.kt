@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.setting.dog
+package com.example.noogabab.presentation.ui.main.setting.dog
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +7,9 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.setting.SettingFragment
-import com.example.noogabab.presentation.ui.setting.SettingsActivity
-import com.example.noogabab.presentation.ui.setting.my.MyProflieViewModel
+import com.example.noogabab.presentation.ui.main.setting.SettingFragment
+import com.example.noogabab.presentation.ui.main.setting.SettingsActivity
 import com.example.noogabab.util.DynamicTextWatcher
-import kotlinx.android.synthetic.main.activity_create_group.*
 import kotlinx.android.synthetic.main.fragment_dog_profile.*
 
 class DogProfileFragment : Fragment(R.layout.fragment_dog_profile) {

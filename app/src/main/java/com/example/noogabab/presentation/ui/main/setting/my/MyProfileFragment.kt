@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.setting.my
+package com.example.noogabab.presentation.ui.main.setting.my
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +7,9 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.setting.SettingFragment
-import com.example.noogabab.presentation.ui.setting.SettingsActivity
-import com.example.noogabab.presentation.ui.start.enterGroup.EnterGroupViewModel
+import com.example.noogabab.presentation.ui.main.setting.SettingFragment
+import com.example.noogabab.presentation.ui.main.setting.SettingsActivity
 import com.example.noogabab.util.DynamicTextWatcher
-import kotlinx.android.synthetic.main.activity_start.*
-import kotlinx.android.synthetic.main.fragment_create_user.*
 import kotlinx.android.synthetic.main.fragment_my_profile.*
 
 

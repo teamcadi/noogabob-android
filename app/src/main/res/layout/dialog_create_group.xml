@@ -25,9 +25,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
+        android:indeterminateTint="@color/color_aa5900"
         android:indeterminateDuration="1500"
-        android:indeterminateDrawable="@drawable/indeterminate_progress"
-        android:indeterminate="true"
         android:id="@+id/progress_dialog"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -61,8 +60,8 @@
         android:lineSpacingExtra="8sp"
         android:text="dfajipfdjso"
         android:textColor="#6c6c6c"
-        android:textSize="12sp"
-        android:textStyle="normal"
+        android:textSize="10sp"
+        android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -81,7 +80,7 @@
         android:text="복사하기"
         android:textSize="12sp"
         android:textColor="#ffffff"
-        android:textStyle="normal"
+        android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

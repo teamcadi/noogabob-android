@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.setting.group.GroupProfile">
+    tools:context=".presentation.ui.main.setting.group.GroupProfile">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_group_profile"

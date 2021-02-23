@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.setting.group
+package com.example.noogabab.presentation.ui.main.setting.group
 
 import android.view.LayoutInflater
 import android.view.View

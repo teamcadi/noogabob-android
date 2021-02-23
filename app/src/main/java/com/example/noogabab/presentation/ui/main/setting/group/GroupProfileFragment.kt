@@ -1,12 +1,12 @@
-package com.example.noogabab.presentation.ui.setting.group
+package com.example.noogabab.presentation.ui.main.setting.group
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noogabab.R
-import com.example.noogabab.presentation.ui.setting.SettingFragment
-import com.example.noogabab.presentation.ui.setting.SettingsActivity
+import com.example.noogabab.presentation.ui.main.setting.SettingFragment
+import com.example.noogabab.presentation.ui.main.setting.SettingsActivity
 import kotlinx.android.synthetic.main.fragment_group_profile.*
 
 

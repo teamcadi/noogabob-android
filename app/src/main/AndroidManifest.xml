@@ -19,30 +19,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.ui.setting.SettingsActivity">
+
+        <service
+            android:name=".NoogabobFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".presentation.ui.main.album.AlbumDetailActivity" />
+        <activity android:name=".presentation.ui.main.timeline.TimelineActivity" />
+        <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity" />
+        <activity android:name="com.example.noogabab.presentation.ui.main.setting.SettingsActivity" />
+        <activity
+            android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".presentation.ui.start.StartActivity" />
+        <activity android:name=".presentation.ui.main.MainActivity" />
+        <activity android:name=".presentation.ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- <activity android:name=".presentation.ui.tempmain.TempMainActivity"></activity> -->
-
-
-
-        <activity android:name=".presentation.ui.main.album.AlbumDetailActivity" />
-        <!-- <activity android:name=".presentation.ui.splash.SplashActivity"></activity> -->
-        <!-- <activity android:name=".presentation.ui.timeline.TimelineActivity" /> -->
-        <!-- <activity android:name=".presentation.ui.splash.SplashActivity"></activity> -->
-        <activity android:name=".presentation.ui.main.timeline.TimelineActivity" />
-        <activity android:name=".presentation.ui.start.createGroup.CreateGroupActivity" />
-        <activity
-            android:name=".presentation.ui.start.enterGroup.EnterGroupActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".presentation.ui.start.StartActivity" />
-        <activity android:name=".presentation.ui.splash.SplashActivity"></activity>
-<!--        <activity android:name=".presentation.ui.main.MainActivity" />-->
-        <activity android:name=".presentation.ui.main.MainActivity">
         </activity>
     </application>
 

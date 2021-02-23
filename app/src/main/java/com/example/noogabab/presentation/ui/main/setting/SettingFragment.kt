@@ -1,18 +1,13 @@
-package com.example.noogabab.presentation.ui.setting
+package com.example.noogabab.presentation.ui.main.setting
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import com.example.noogabab.R
-import com.example.noogabab.presentation.dialog.CreateGroupDialog
-import com.example.noogabab.presentation.ui.setting.dog.DogProfileFragment
-import com.example.noogabab.presentation.ui.setting.group.GroupProfileFragment
-import com.example.noogabab.presentation.ui.setting.my.MyProfileFragment
+import com.example.noogabab.presentation.ui.main.setting.dog.DogProfileFragment
+import com.example.noogabab.presentation.ui.main.setting.group.GroupProfileFragment
+import com.example.noogabab.presentation.ui.main.setting.my.MyProfileFragment
 import kotlinx.android.synthetic.main.fragment_setting.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class SettingFragment : Fragment(R.layout.fragment_setting) {
 

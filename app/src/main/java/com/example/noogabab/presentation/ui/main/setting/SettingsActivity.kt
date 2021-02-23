@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.setting
+package com.example.noogabab.presentation.ui.main.setting
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
