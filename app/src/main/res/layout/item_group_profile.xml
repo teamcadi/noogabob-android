@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_marginBottom="5dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/iv_user_profile_item"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_person_group_profile" />
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txt_user_name_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_cjkkr_medium"
+                android:lineSpacingExtra="9sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:text="홍길동"
+                android:textColor="#242424"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_group_name_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/noto_sans_cjkkr_medium"
+                android:lineSpacingExtra="9sp"
+                android:text="나"
+                android:textColor="#242424"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_cjkkr_medium"
+                    android:lineSpacingExtra="9sp"
+                    android:textColor="#707070"
+                    android:textSize="14sp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="normal"
+                    android:text="이번주  " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_cjkkr_medium"
+                    android:lineSpacingExtra="9sp"
+                    android:textColor="#707070"
+                    android:textSize="14sp"
+                    android:layout_marginStart="7dp"
+                    android:textStyle="normal"
+                    android:text="밥" />
+
+                <TextView
+                    android:id="@+id/txt_bob_num_cardview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_cjkkr_medium"
+                    android:lineSpacingExtra="9sp"
+                    android:textColor="#707070"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    android:layout_marginStart="5dp"
+                    android:text="10회" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_cjkkr_medium"
+                    android:lineSpacingExtra="9sp"
+                    android:textColor="#707070"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    android:layout_marginStart="10dp"
+
+                    android:text="간식" />
+
+                <TextView
+                    android:id="@+id/txt_snack_num_cardview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/noto_sans_cjkkr_medium"
+                    android:lineSpacingExtra="9sp"
+                    android:text="10회"
+                    android:textColor="#707070"
+                    android:textSize="14sp"
+
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+
+    </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
