@@ -82,7 +82,7 @@ class StartActivity : AppCompatActivity(), View.OnClickListener {
                         dogEditor.putString(SharedDog.DOG_KIND_KEY, kind!!)
                         dogEditor.putString(
                             SharedDog.DOG_MEALS_KEY,
-                            meals!!.joinToString(separator = ",")
+                            meals!!.joinToString(separator = ",") // 10:10:10,12:01:02,...
                         )
                         groupEditor.putString(SharedGroup.GROUP_UUID_KEY, startViewModel.getGroupKey())
                         dogEditor.apply()

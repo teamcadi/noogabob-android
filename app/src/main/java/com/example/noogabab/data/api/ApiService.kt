@@ -4,6 +4,7 @@ import com.example.noogabab.data.api.model.*
 import com.example.noogabab.data.api.request.CreateGroupRequest
 import com.example.noogabab.data.api.request.CreateUserRequest
 import com.example.noogabab.util.NetworkConstants
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -29,8 +30,10 @@ interface ApiService {
     @GET(NetworkConstants.URL_GROUPS_ALBUMS)
     suspend fun getImages()
 
+    @Multipart
     @POST(NetworkConstants.URL_GROUPS_ALBUMS)
-    suspend fun uploadImage()
+    @Headers("Content-Type: image/*")
+    suspend fun uploadImage(@Part("image") request: RequestBody)
 
     @GET(NetworkConstants.URL_GROUPS_TIMELINE)
     suspend fun getTimeline(

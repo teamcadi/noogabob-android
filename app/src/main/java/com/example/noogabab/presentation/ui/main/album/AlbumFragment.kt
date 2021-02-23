@@ -1,5 +1,6 @@
 package com.example.noogabab.presentation.ui.main.album
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -68,13 +69,14 @@ class AlbumFragment : Fragment(R.layout.fragment_album), View.OnClickListener {
         dialog.show()
     }
 
-    fun getCamera() {
+    private fun getCamera() {
         startActivityForResult(Intent(MediaStore.ACTION_IMAGE_CAPTURE), 11)
     }
 
-    fun getGallery() {
+    private fun getGallery() {
         val i = Intent(Intent.ACTION_PICK)
         i.type = "image/*"
+        i.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(i, 12)
     }
 
@@ -82,8 +84,10 @@ class AlbumFragment : Fragment(R.layout.fragment_album), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 11) {
             var bmp = data?.extras?.get("data") as Bitmap
-        }else if (requestCode == 12) {
-            data?.data // image
+        }else if (requestCode == 12 && requestCode == RESULT_OK && data != null) {
+            val uri =data.data
+//            val bmp = MediaStore.Images.Media.getBitmap(g)
+            data.data // image
         }
     }
 }
