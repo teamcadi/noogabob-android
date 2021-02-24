@@ -19,6 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name="com.example.noogabab.presentation.ui.main.setting.SettingsActivity" />
+
 
         <service
             android:name=".NoogabobFirebaseMessagingService"

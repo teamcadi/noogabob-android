@@ -12,7 +12,7 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
         val firstFragment = SettingFragment()
-        window.statusBarColor = Color.parseColor("#ffc176")
+        window.statusBarColor = Color.parseColor("#ffb254")
 
         supportFragmentManager.beginTransaction()
             .add(R.id.frameLayout_settings, firstFragment).commit()
