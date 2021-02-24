@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.ui.setting.SettingsActivity">
+        <activity android:name="com.example.noogabab.presentation.ui.main.setting.SettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

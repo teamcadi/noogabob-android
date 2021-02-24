@@ -1,4 +1,4 @@
-package com.example.noogabab.presentation.ui.setting.my
+package com.example.noogabab.presentation.ui.main.setting.my
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

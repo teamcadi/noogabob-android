@@ -1,11 +1,9 @@
-package com.example.noogabab.presentation.ui.setting
+package com.example.noogabab.presentation.ui.main.setting
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.provider.Settings.Global.getString
 import androidx.fragment.app.DialogFragment
-import com.example.noogabab.R
 
 class GroupDeleteDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
