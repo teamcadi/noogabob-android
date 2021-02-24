@@ -1,14 +1,17 @@
-package com.example.noogabab.presentation.ui.start.createGroup
+package com.example.noogabab.presentation.ui.start
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.view.get
+import androidx.core.view.isVisible
 import androidx.core.view.size
 import androidx.fragment.app.FragmentManager
 import com.example.noogabab.R
 import com.example.noogabab.presentation.entity.PresenterBobTime
+import com.example.noogabab.presentation.ui.start.createGroup.CreateGroupViewModel
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import kotlinx.android.synthetic.main.item_bob_time.view.*
@@ -17,8 +20,8 @@ class BobTimeView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-    private val supportFM: FragmentManager,
-    private val viewModel: CreateGroupViewModel
+    private val supportFM: FragmentManager?,
+    private val viewModel: CreateGroupViewModel?
 ) : LinearLayout(context, attrs, defStyleAttr), View.OnClickListener {
     init {
         inflate(context, R.layout.item_bob_time, this)
@@ -29,10 +32,11 @@ class BobTimeView @JvmOverloads constructor(
     }
 
     override fun onClick(view: View?) {
-        when (view) {
-            btn_remove_bob -> clickRemoveBob()
-            else -> clickBob()
-        }
+        if (supportFM != null)
+            when (view) {
+                btn_remove_bob -> clickRemoveBob()
+                else -> clickBob()
+            }
     }
 
     fun setRemoveInVisible() {
@@ -41,6 +45,16 @@ class BobTimeView @JvmOverloads constructor(
 
     fun setCountBob(text: String) {
         txt_count_bob.text = text
+    }
+
+    fun setBobTime(count: String, meridiem: String, time: String) {
+        txt_count_bob.text = count
+        txt_count_bob.setTextColor(Color.GRAY)
+        txt_meridiem_bob.text = meridiem
+        txt_meridiem_bob.setTextColor(Color.GRAY)
+        txt_time_bob.text = time
+        txt_time_bob.setTextColor(Color.GRAY)
+        btn_remove_bob.isVisible = false
     }
 
     private fun clickRemoveBob() {
@@ -58,7 +72,7 @@ class BobTimeView @JvmOverloads constructor(
             .setHour(12)
             .build()
         timePicker.show(
-            supportFM,
+            supportFM!!,
             "createGroup"
         )
         timePicker.addOnPositiveButtonClickListener {
@@ -74,7 +88,7 @@ class BobTimeView @JvmOverloads constructor(
                 if (minute.toString().length == 1) "0$minute" else minute.toString()
             txt_meridiem_bob.text = meridiem
             txt_time_bob.text = "${strHour}:${strMinute}"
-            viewModel.updateBobTimes(
+            viewModel!!.updateBobTimes(
                 PresenterBobTime(
                     txt_count_bob.text as String,
                     meridiem,

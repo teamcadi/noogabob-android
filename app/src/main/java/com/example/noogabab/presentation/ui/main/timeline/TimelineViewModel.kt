@@ -9,12 +9,9 @@ import com.example.noogabab.domain.usecase.TimelineUseCase
 class TimelineViewModel @ViewModelInject constructor(private val useCase: TimelineUseCase) :
     ViewModel() {
 
-    fun getTimeline() = getTimelineList()
-
-    private fun getTimelineList() =
+    fun getTimeline(key: String, groupId: Int) =
         liveData {
             emit(ResultData.Loading())
-            // todo: 그룹 아이디
-            emit(useCase.getTimelineList(1))
+            emit(useCase.getTimelineList(key, groupId))
         }
 }

@@ -1,9 +1,11 @@
 package com.example.noogabab.data.api.model
+
+
 import com.google.gson.annotations.SerializedName
 
-data class TimelineModel(
+data class CreateUserModel(
     @SerializedName("data")
-    val data: ArrayList<TimelineData>?,
+    val createUserData: CreateUserData?,
     @SerializedName("message")
     val message: String,
     @SerializedName("success")
