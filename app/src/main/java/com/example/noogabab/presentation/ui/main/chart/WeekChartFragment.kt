@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.view.get
 import com.example.noogabab.R
 import com.github.mikephil.charting.components.Legend
@@ -14,9 +15,14 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.google.android.material.datepicker.MaterialDatePicker
+import kotlinx.android.synthetic.main.fragment_month_chart.*
 import kotlinx.android.synthetic.main.fragment_week_chart.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
+class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickListener {
     private var groupSize = 0
     private var xGroup: ArrayList<String> = ArrayList<String>()
     private lateinit var yBob: FloatArray
@@ -26,31 +32,16 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
         super.onViewCreated(view, savedInstanceState)
 
         setValues()
-        bobRankClick()
-        snackRankClick()
+        load()
     }
 
-    private fun bobRankClick() {
-        var position = 0
-        var max = -1f
-        for (i in yBob.indices) if (max < yBob[i]) {
-            max = yBob[i]; position = i
-        }
-        btn_week_rank_bob.setOnClickListener {
-            getFirst(groupSize, position)
-        }
+    private fun load() {
+        btn_week_rank_snack.setOnClickListener(this)
+        btn_week_rank_bob.setOnClickListener(this)
+        btn_select_week_date.setOnClickListener(this)
     }
 
-    private fun snackRankClick() {
-        var position = 0
-        var max = -1f
-        for (i in ySnack.indices) if (max < ySnack[i]) {
-            max = ySnack[i]; position = i
-        }
-        btn_week_rank_snack.setOnClickListener {
-            getFirst(groupSize, position)
-        }
-    }
+
 
     private fun getFirst(size: Int, position: Int) {
         for (i in 0 until size) linear_week_rank[i].visibility = View.INVISIBLE
@@ -142,6 +133,44 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart) {
                 textSize = 14f
                 position = Legend.LegendPosition.ABOVE_CHART_CENTER
             }
+        }
+    }
+
+    override fun onClick(view: View?) {
+        when(view) {
+            btn_select_week_date -> snackRankClick()
+            btn_week_rank_bob -> bobRankClick()
+            btn_week_rank_snack -> selectDate()
+        }
+    }
+
+    private fun bobRankClick() {
+        var position = 0
+        var max = -1f
+        for (i in yBob.indices) if (max < yBob[i]) {
+            max = yBob[i]; position = i
+        }
+        getFirst(groupSize, position)
+    }
+
+    private fun snackRankClick() {
+        var position = 0
+        var max = -1f
+        for (i in ySnack.indices) if (max < ySnack[i]) {
+            max = ySnack[i]; position = i
+        }
+        getFirst(groupSize, position)
+    }
+
+    private fun selectDate() {
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("날짜를 선택하세요")
+            .build()
+        datePicker.show(requireActivity().supportFragmentManager, "DATE_PICKER")
+        datePicker.addOnPositiveButtonClickListener {
+            val sdf = SimpleDateFormat("yyyy-MM-dd")
+            val formatTime = sdf.format(Date(it))
+            Toast.makeText(requireContext(), formatTime, Toast.LENGTH_LONG).show()
         }
     }
 }

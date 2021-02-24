@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
@@ -22,10 +23,14 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.fragment_month_chart.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
-class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
+class MonthChartFragment : Fragment(R.layout.fragment_month_chart), View.OnClickListener {
     private val mainViewModel: MainViewModel by activityViewModels<MainViewModel>()
     private var groupSize = 0
     private var xGroup: ArrayList<String> = ArrayList<String>()
@@ -42,8 +47,13 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
         super.onViewCreated(view, savedInstanceState)
 
         setValues()
-        bobRankClick()
-        snackRankClick()
+        load()
+    }
+
+    private fun load() {
+        btn_select_month_date.setOnClickListener(this)
+        btn_month_rank_bob.setOnClickListener(this)
+        btn_month_rank_snack.setOnClickListener(this)
     }
 
     private fun observe(s: SharedPreferences) {
@@ -68,27 +78,7 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
         })
     }
 
-    private fun bobRankClick() {
-        var position = 0
-        var max = -1f
-        for (i in yBob.indices) if (max < yBob[i]) {
-            max = yBob[i]; position = i
-        }
-        btn_month_rank_bob.setOnClickListener {
-            getFirst(groupSize, position)
-        }
-    }
 
-    private fun snackRankClick() {
-        var position = 0
-        var max = -1f
-        for (i in ySnack.indices) if (max < ySnack[i]) {
-            max = ySnack[i]; position = i
-        }
-        btn_month_rank_snack.setOnClickListener {
-            getFirst(groupSize, position)
-        }
-    }
 
     private fun getFirst(size: Int, position: Int) {
         for (i in 0 until size) linear_month_rank[i].visibility = View.INVISIBLE
@@ -181,4 +171,44 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
         }
     }
 
+    override fun onClick(view: View?) {
+        when (view) {
+            btn_month_rank_bob -> bobRankClick()
+            btn_month_rank_snack -> snackRankClick()
+            btn_select_month_date -> selectDate()
+        }
+    }
+
+    private fun bobRankClick() {
+        var position = 0
+        var max = -1f
+        for (i in yBob.indices) if (max < yBob[i]) {
+            max = yBob[i];
+            position = i
+        }
+        getFirst(groupSize, position)
+    }
+
+    private fun snackRankClick() {
+        var position = 0
+        var max = -1f
+        for (i in ySnack.indices) if (max < ySnack[i]) {
+            max = ySnack[i];
+            position = i
+        }
+        getFirst(groupSize, position)
+    }
+
+    private fun selectDate() {
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("날짜를 선택하세요")
+            .build()
+        datePicker.show(requireActivity().supportFragmentManager, "DATE_PICKER")
+        datePicker.addOnPositiveButtonClickListener {
+            val sdf = SimpleDateFormat("yyyy-MM-dd")
+            val formatTime = sdf.format(Date(it))
+            Toast.makeText(requireContext(), formatTime, Toast.LENGTH_LONG).show()
+        }
+
+    }
 }

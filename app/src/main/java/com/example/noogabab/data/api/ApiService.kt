@@ -65,6 +65,9 @@ interface ApiService {
     )
     suspend fun getDog(@Header("key") key: String): GetDogModel
 
+    @GET(NetworkConstants.URL_DOGS_MEAL_LATEST)
+    suspend fun getMealLatest(@Path("dogId") dogId: Int): MealLatestModel
+
     @PUT(NetworkConstants.URL_DOGS_DOG)
     suspend fun modifyDog()
 

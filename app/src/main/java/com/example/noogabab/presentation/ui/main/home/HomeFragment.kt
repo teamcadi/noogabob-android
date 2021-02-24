@@ -6,10 +6,13 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.noogabab.R
+import com.example.noogabab.data.api.model.ResultData
 import com.example.noogabab.presentation.dialog.AlertDialog
 import com.example.noogabab.presentation.ui.main.MainActivity
 import com.example.noogabab.presentation.ui.main.MainViewModel
@@ -19,7 +22,7 @@ import com.example.noogabab.util.SharedProfile
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
-    private val mainViewModel: MainViewModel by activityViewModels<MainViewModel>()
+    private val homeViewModel: HomeViewModel by activityViewModels<HomeViewModel>()
     private lateinit var sharedDog: SharedPreferences
     private lateinit var sharedProfile: SharedPreferences
 
@@ -33,10 +36,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         load()
-        btn_eat.setOnClickListener(this)
-        btn_snack.setOnClickListener(this)
-        txt_time_line.setOnClickListener(this)
-        iv_select.setOnClickListener(this)
+        observe()
     }
 
     private fun load() {
@@ -47,6 +47,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
             .centerCrop().into(iv_main)
         else Glide.with(requireActivity()).load(image).error(R.drawable.ic_default_profile)
             .centerCrop().into(iv_main)
+        btn_eat.setOnClickListener(this)
+        btn_snack.setOnClickListener(this)
+        txt_time_line.setOnClickListener(this)
+        iv_select.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -56,6 +60,21 @@ class HomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
             btn_eat -> clickFeedBob()
             btn_snack -> clickFeedSnack()
         }
+    }
+
+    private fun observe() {
+        val dogId = sharedDog.getInt(SharedDog.DOG_ID_KEY, -1)
+        if (dogId == -1) return
+        homeViewModel.getMealLatest(dogId).observe(requireActivity(), Observer { resultData ->
+            when(resultData) {
+                is ResultData.Loading -> homeViewModel.updateMealLatest("로딩 중")
+                is ResultData.Success -> homeViewModel.updateMealLatest(resultData.data!!.content!!)
+                else -> homeViewModel.updateMealLatest("로딩 중")
+            }
+        })
+        homeViewModel.currentMealLatest.observe(requireActivity(), Observer {
+            txt_status_time.text = it
+        })
     }
 
     private fun clickTimeline() {

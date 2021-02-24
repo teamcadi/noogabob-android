@@ -1,7 +1,7 @@
 package com.example.noogabab.util
 
 object NetworkConstants {
-    const val BASE_URL = "http://13.125.103.179:9000/api/"
+    const val BASE_URL = "http://10.0.2.2:8080/api/"
 
     // groups
     const val URL_GROUPS = "groups"
@@ -18,5 +18,6 @@ object NetworkConstants {
     const val URL_DOGS = "dogs"
     const val URL_DOGS_DOG = "dogs/{dogId}"
     const val URL_DOGS_MEAL = "dogs/{dogId}/meal"
+    const val URL_DOGS_MEAL_LATEST = "dogs/{dogId}/meal/latest"
     const val URL_DOGS_SNACK = "dogs/{dogId}/snack"
 }

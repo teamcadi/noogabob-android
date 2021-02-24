@@ -6,4 +6,5 @@ import javax.inject.Inject
 
 class DogRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getDog(key: String) = apiService.getDog(key)
+    suspend fun getMealLatest(dogId: Int) = apiService.getMealLatest(dogId)
 }

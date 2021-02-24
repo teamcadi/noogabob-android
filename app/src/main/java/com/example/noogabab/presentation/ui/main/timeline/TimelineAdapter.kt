@@ -2,6 +2,7 @@ package com.example.noogabab.presentation.ui.main.timeline
 
 import android.icu.text.SimpleDateFormat
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +38,7 @@ class TimelineViewHolder(private val view: View): RecyclerView.ViewHolder(view) 
     fun bind(prev: PresenterTimeLine?, item: PresenterTimeLine, next: PresenterTimeLine?) {
         with(view) {
             val subContentArr = item.subContent.split(" ")
-            txt_timeline_time.text = formatDate(item.time, "hh:mm")
+            txt_timeline_time.text = formatDate(item.time, "HH:mm")
             img_timeline.setImageDrawable(item.icon)
             txt_timeline_content.text = item.content
             txt_timeline_sub_content.text = Html.fromHtml("<b>" + subContentArr[0] +"</b> " + subContentArr[1])
@@ -70,13 +71,22 @@ class TimelineViewHolder(private val view: View): RecyclerView.ViewHolder(view) 
 
         val prevDate = Date(prev.time)
         val itemDate = Date(item.time)
-
-        return itemDate.before(prevDate)
+        return (prevDate.day != itemDate.day)
     }
 
     private fun getDateString(timestamp: Long): String {
-        val nowDate = Date().time / 1000 / 60 / 60 / 24
-        val thenDate = timestamp / 1000 / 60 / 60 / 24
+        val nowDate = System.currentTimeMillis() / 1000 / 60 / 60
+        val thenDate = timestamp / 1000 / 60 / 60
+
+        /* test code
+        val testNow = System.currentTimeMillis()
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val currentDate = sdf.format(Date(testNow))
+        val latestDate = sdf.format(Date(timestamp))
+        Log.d("zzzz", "getDateString: $currentDate")
+        Log.d("zzzz", "getDateString: $latestDate")
+        Log.d("zzzz", "getDateString: $nowDate")
+        Log.d("zzzz", "getDateString: $thenDate") */
 
         return when {
             thenDate > nowDate -> view.context.getString(R.string.app_name)

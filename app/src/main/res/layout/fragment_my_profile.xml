@@ -117,9 +117,9 @@
         android:id="@+id/btn_setting_my_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
+        android:layout_marginBottom="64dp"
         android:backgroundTint="#aa5900"
         android:fontFamily="@font/noto_sans_cjkkr_regular"
         android:text="정보 편집"
@@ -127,5 +127,6 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
