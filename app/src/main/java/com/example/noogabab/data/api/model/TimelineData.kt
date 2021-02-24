@@ -1,7 +1,7 @@
 package com.example.noogabab.data.api.model
 import com.google.gson.annotations.SerializedName
 
-data class Timeline(
+data class TimelineData(
     @SerializedName("content")
     val content: String,
     @SerializedName("subContent")

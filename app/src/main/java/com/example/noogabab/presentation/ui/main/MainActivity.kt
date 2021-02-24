@@ -1,5 +1,6 @@
 package com.example.noogabab.presentation.ui.main
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,7 @@ import com.example.noogabab.R
 import com.example.noogabab.presentation.ui.main.album.AlbumFragment
 import com.example.noogabab.presentation.ui.main.chart.ChartFragment
 import com.example.noogabab.presentation.ui.main.home.HomeFragment
+import com.example.noogabab.presentation.ui.main.setting.SettingsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.system.exitProcess
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navi_home -> makeCurrentFragment(homeFragment)
                 R.id.navi_statistics -> makeCurrentFragment(chartFragment)
                 R.id.navi_album -> makeCurrentFragment(albumFragment)
+                R.id.navi_setting -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
             }
             true
         }

@@ -7,7 +7,7 @@
     tools:context=".presentation.ui.main.album.AlbumDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/constraintLayout_detail_album"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
@@ -30,7 +30,7 @@
             app:titleTextColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txt_detail_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans_cjkkr_bold"
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_detail_album"
         app:layout_constraintVertical_bias="1.0" />
 
 

@@ -6,41 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.main.album.AlbumFragment">
 
-    <TextView
-        android:fontFamily="@font/noto_sans_cjkkr_bold"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="#242424"
-        android:lineSpacingExtra="9sp"
-        android:layout_marginStart="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btn_add_album"
-        app:layout_constraintBottom_toBottomOf="@id/btn_add_album"
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="꼬미네 추억보따리" />
-
-    <ImageView
-        app:layout_constraintBottom_toTopOf="@id/swipe_refresh"
-        android:layout_margin="15dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@id/swipe_refresh_album"
+        android:id="@+id/constraintLayout_album"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        android:id="@+id/btn_add_album"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_album" />
+
+        <TextView
+            android:id="@+id/txt_album_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/noto_sans_cjkkr_bold"
+            android:lineSpacingExtra="9sp"
+            android:text="꼬미네 추억보따리"
+            android:textColor="#242424"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_upload_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_add_album"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh"
+        android:id="@+id/swipe_refresh_album"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_add_album">
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout_album">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -51,6 +66,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ImageView
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout_album"
         android:id="@+id/image_album_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,13 +74,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <TextView
         android:id="@+id/txt_album_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/noto_sans_cjkkr_medium"
+        android:fontFamily="@font/noto_sans_cjkkr_bold"
         android:lineSpacingExtra="3sp"
         android:text="사진을 업로드 해볼까요?"
         android:textColor="#6c6c6c"
