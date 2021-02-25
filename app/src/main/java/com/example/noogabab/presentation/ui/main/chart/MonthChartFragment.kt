@@ -4,18 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.get
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
-import com.example.noogabab.data.api.model.ResultData
-import com.example.noogabab.presentation.ui.main.MainViewModel
 import com.example.noogabab.util.SharedGroup
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
@@ -31,7 +27,6 @@ import kotlin.collections.ArrayList
 
 
 class MonthChartFragment : Fragment(R.layout.fragment_month_chart), View.OnClickListener {
-    private val mainViewModel: MainViewModel by activityViewModels<MainViewModel>()
     private var groupSize = 0
     private var xGroup: ArrayList<String> = ArrayList<String>()
     private lateinit var yBob: FloatArray
@@ -55,30 +50,6 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart), View.OnClick
         btn_month_rank_bob.setOnClickListener(this)
         btn_month_rank_snack.setOnClickListener(this)
     }
-
-    private fun observe(s: SharedPreferences) {
-        mainViewModel.getChart(
-            s.getString(SharedGroup.GROUP_UUID_KEY, "")!!,
-            s.getInt(SharedGroup.GROUP_ID_KEY, -1),
-            "week",
-            "2021-02-04"
-        ).observe(requireActivity(), Observer { resultData ->
-            when(resultData) {
-                is ResultData.Loading -> {}
-                is ResultData.Success -> {
-
-                }
-                is ResultData.Failed -> {
-                    Toast.makeText(requireContext(), getString(R.string.toast_server_failed), Toast.LENGTH_SHORT).show()
-                }
-                else -> {
-                    Toast.makeText(requireContext(), getString(R.string.toast_server_failed), Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
-    }
-
-
 
     private fun getFirst(size: Int, position: Int) {
         for (i in 0 until size) linear_month_rank[i].visibility = View.INVISIBLE

@@ -1,5 +1,7 @@
 package com.example.noogabab.presentation.ui.main.chart
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +10,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.get
+import androidx.fragment.app.activityViewModels
 import com.example.noogabab.R
+import com.example.noogabab.data.api.model.ResultData
+import com.example.noogabab.util.SharedGroup
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -16,23 +21,25 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
 import com.google.android.material.datepicker.MaterialDatePicker
-import kotlinx.android.synthetic.main.fragment_month_chart.*
 import kotlinx.android.synthetic.main.fragment_week_chart.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickListener {
-    private var groupSize = 0
-    private var xGroup: ArrayList<String> = ArrayList<String>()
-    private lateinit var yBob: FloatArray
-    private lateinit var ySnack: FloatArray
+    private val chartViewModel: ChartViewModel by activityViewModels<ChartViewModel>()
+    private lateinit var sharedGroup: SharedPreferences
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedGroup = requireActivity().getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE);
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setValues()
         load()
+        observe()
     }
 
     private fun load() {
@@ -41,27 +48,45 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickLi
         btn_select_week_date.setOnClickListener(this)
     }
 
+    private fun observe() {
+        chartViewModel.currentDate.observe(requireActivity(), androidx.lifecycle.Observer {
+            getStatistics(it)
+        })
+        chartViewModel.currentXGroups.observe(requireActivity(), androidx.lifecycle.Observer {
+            setBarChartValues(it, chartViewModel.currentYBobs!!, chartViewModel.currentYSnacks!!)
+            for (i in 0 until it.size) linear_week_rank.addView(createRankImage())
+        })
+    }
 
+    private fun getStatistics(date: String) {
+        val key = sharedGroup.getString(SharedGroup.GROUP_UUID_KEY, "")
+        val groupId = sharedGroup.getInt(SharedGroup.GROUP_ID_KEY, -1)
+
+        chartViewModel.getStatistics(key!!, groupId, "week", date).observe(requireActivity(), androidx.lifecycle.Observer { resultData ->
+            when(resultData) {
+                is ResultData.Loading -> {}
+                is ResultData.Success -> {
+                    val mealsData = resultData.data!!.statisticsData!!.mealRankData!!
+                    val snacksData = resultData.data!!.statisticsData!!.snackRankData!!
+                    val users = mealsData.map { it.name!! }
+                    val mealsCount = mealsData.map { it.cnt!!.toFloat() }
+                    val snacksCount = snacksData.map { it.cnt!!.toFloat() }
+                    chartViewModel.updateChart(
+                        users as ArrayList<String>,
+                        mealsCount.toFloatArray(),
+                        snacksCount.toFloatArray()
+                    )
+                }
+                else -> {
+                    Toast.makeText(requireContext(), "err", Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+    }
 
     private fun getFirst(size: Int, position: Int) {
         for (i in 0 until size) linear_week_rank[i].visibility = View.INVISIBLE
         linear_week_rank[position].visibility = View.VISIBLE
-    }
-
-    // 서버에서 가져온 데이터를 셋팅
-    private fun setValues() {
-        xGroup.add("나")
-        xGroup.add("엄마")
-        xGroup.add("아빠")
-        xGroup.add("누나")
-        groupSize = xGroup.size
-        yBob = floatArrayOf(5.0f, 6f, 7.8f, 1.4f)
-        ySnack = floatArrayOf(5.0f, 2f, 9.6f, 2.4f)
-
-        setBarChartValues(xGroup, yBob, ySnack)
-
-        // 가족 구성원에 맞춰서 INVISIBLE 뷰 셋팅
-        for (i in 0 until groupSize) linear_week_rank.addView(createRankImage())
     }
 
     private fun createRankImage(): ImageView {
@@ -76,7 +101,6 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickLi
         rankImage.layoutParams = params
         return rankImage
     }
-
 
     private fun setBarChartValues(
         xValues: ArrayList<String>,
@@ -138,29 +162,31 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickLi
 
     override fun onClick(view: View?) {
         when(view) {
-            btn_select_week_date -> snackRankClick()
-            btn_week_rank_bob -> bobRankClick()
-            btn_week_rank_snack -> selectDate()
+            btn_select_week_date -> selectDate()
+            btn_week_rank_bob -> {}
+            btn_week_rank_snack -> {}
         }
     }
 
-    private fun bobRankClick() {
-        var position = 0
-        var max = -1f
-        for (i in yBob.indices) if (max < yBob[i]) {
-            max = yBob[i]; position = i
-        }
-        getFirst(groupSize, position)
-    }
+//    private fun bobRankClick() {
+//        var position = 0
+//        var max = -1f
+//        val yBobs = chartViewModel.currentYBobs!!
+//        for (i in yBobs.indices) if (max < yBobs[i]) {
+//            max = yBobs[i]; position = i
+//        }
+//        getFirst(yBobs.size, position)
+//    }
 
-    private fun snackRankClick() {
-        var position = 0
-        var max = -1f
-        for (i in ySnack.indices) if (max < ySnack[i]) {
-            max = ySnack[i]; position = i
-        }
-        getFirst(groupSize, position)
-    }
+//    private fun snackRankClick() {
+//        var position = 0
+//        var max = -1f
+//        val ySnacks = chartViewModel.currentYSnacks!!
+//        for (i in ySnacks.indices) if (max < ySnacks[i]) {
+//            max = ySnacks[i]; position = i
+//        }
+//        getFirst(ySnacks.size, position)
+//    }
 
     private fun selectDate() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
@@ -170,7 +196,7 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickLi
         datePicker.addOnPositiveButtonClickListener {
             val sdf = SimpleDateFormat("yyyy-MM-dd")
             val formatTime = sdf.format(Date(it))
-            Toast.makeText(requireContext(), formatTime, Toast.LENGTH_LONG).show()
+            chartViewModel.updateDate(formatTime)
         }
     }
 }

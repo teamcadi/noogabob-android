@@ -75,8 +75,8 @@ class TimelineViewHolder(private val view: View): RecyclerView.ViewHolder(view) 
     }
 
     private fun getDateString(timestamp: Long): String {
-        val nowDate = System.currentTimeMillis() / 1000 / 60 / 60
-        val thenDate = timestamp / 1000 / 60 / 60
+        val nowDate = System.currentTimeMillis() / 1000 / 60 / 60 / 24
+        val thenDate = timestamp / 1000 / 60 / 60 / 24
 
         /* test code
         val testNow = System.currentTimeMillis()

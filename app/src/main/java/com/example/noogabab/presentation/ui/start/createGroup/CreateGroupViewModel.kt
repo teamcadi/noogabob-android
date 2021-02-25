@@ -27,7 +27,12 @@ class CreateGroupViewModel @ViewModelInject constructor(private val useCase: Gro
 
     fun createGroupAndDog() = liveData {
         val bobTimes = ArrayList<String>()
-        for (i in _currentBobTimes.value!!) bobTimes.add(i.time)
+        for (i in _currentBobTimes.value!!) {
+            if (i.meridiem == "오후") {
+                val temp = i.time.split(":")
+                bobTimes.add((temp[0].toInt() + 12).toString() + ":" + temp[1])
+            } else bobTimes.add(i.time)
+        }
         val createGroupRequest = CreateGroupRequest(
             _currentDogName.value,
             _currentDogAge.value,
