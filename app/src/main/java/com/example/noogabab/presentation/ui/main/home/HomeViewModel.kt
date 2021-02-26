@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.noogabab.data.api.model.ResultData
+import com.example.noogabab.data.api.request.FeedRequest
 import com.example.noogabab.domain.usecase.DogUseCase
 
 class HomeViewModel @ViewModelInject constructor(private val useCase: DogUseCase): ViewModel() {
@@ -23,6 +24,16 @@ class HomeViewModel @ViewModelInject constructor(private val useCase: DogUseCase
             emit(ResultData.Loading())
             emit(useCase.getMealLatest(dogId))
         }
+
+    fun feedMeal(key: String, dogId: Int, feed: FeedRequest) = liveData {
+        emit(ResultData.Loading())
+        emit(useCase.feedMeal(key, dogId, feed))
+    }
+
+    fun feedSnack(key: String, dogId: Int, feed: FeedRequest) = liveData {
+        emit(ResultData.Loading())
+        emit(useCase.feedSnack(key, dogId, feed))
+    }
 
     fun updateMealLatest(input: String) {
         _currentMealLatest.value = "최근 식사 $input"

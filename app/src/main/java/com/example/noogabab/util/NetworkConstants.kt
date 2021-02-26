@@ -17,7 +17,7 @@ object NetworkConstants {
     // dogs
     const val URL_DOGS = "dogs"
     const val URL_DOGS_DOG = "dogs/{dogId}"
-    const val URL_DOGS_MEAL = "dogs/{dogId}/meal"
+    const val URL_DOGS_MEAL = "dogs/{dogId}/meals"
     const val URL_DOGS_MEAL_LATEST = "dogs/{dogId}/meal/latest"
-    const val URL_DOGS_SNACK = "dogs/{dogId}/snack"
+    const val URL_DOGS_SNACK = "dogs/{dogId}/snacks"
 }
