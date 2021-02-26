@@ -193,12 +193,46 @@
                 android:src="@drawable/ic_arrow_setting_fragment" />
         </LinearLayout>
 
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:background="#3d3d3d" />
+        <LinearLayout
+            android:id="@+id/linear_group_key_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/layout_selector"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_setting_group_key"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/noto_sans_cjkkr_medium"
+                android:lineSpacingExtra="9sp"
+                android:text="그룹 키"
+                android:textColor="#1E77FC"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#3d3d3d" />
+
 
         <LinearLayout
             android:id="@+id/linear_group_delete_setting"
@@ -216,8 +250,6 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
                 android:lineSpacingExtra="9sp"
                 android:text="그룹 탈퇴"
@@ -225,7 +257,6 @@
                 android:textSize="20sp"
                 android:textStyle="normal" />
         </LinearLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
