@@ -3,17 +3,16 @@ package com.example.noogabab.presentation.ui.splash
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.noogabab.R
 import com.example.noogabab.presentation.ui.main.MainActivity
 import com.example.noogabab.presentation.ui.start.StartActivity
-import com.example.noogabab.util.SharedDog
 import com.example.noogabab.util.SharedGroup
-import com.example.noogabab.util.SharedProfile
 import com.example.noogabab.util.SharedUser
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -22,6 +21,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.system.exitProcess
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
@@ -29,15 +29,27 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor = Color.parseColor("#ffc176")
         setContentView(R.layout.activity_splash)
-        startSplash()
+        startSplash(this)
     }
 
-    private fun startSplash() {
+    private fun startSplash(splashActivity: SplashActivity) {
         this.supportActionBar?.hide()
         CoroutineScope(Dispatchers.IO).launch {
             delay(2000)
             settingPermission()
+            if (!getNetworkConnected()) {
+                Toast.makeText(applicationContext, "인터넷 사용이 불가능합니다.", Toast.LENGTH_SHORT).show()
+                ActivityCompat.finishAffinity(splashActivity);
+                exitProcess(0)
+            }
         }
+    }
+
+    private fun getNetworkConnected(): Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork : NetworkInfo? = cm.activeNetworkInfo
+
+        return activeNetwork?.isConnectedOrConnecting == true
     }
 
     private fun isUser(): Boolean {
