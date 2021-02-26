@@ -1,5 +1,6 @@
 package com.example.noogabab.presentation.ui.main.timeline
 
+import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.text.Html
 import android.util.Log
@@ -74,26 +75,24 @@ class TimelineViewHolder(private val view: View): RecyclerView.ViewHolder(view) 
         return (prevDate.day != itemDate.day)
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun getDateString(timestamp: Long): String {
-        val nowDate = System.currentTimeMillis() / 1000 / 60 / 60 / 24
-        val thenDate = timestamp / 1000 / 60 / 60 / 24
+        val sdf = SimpleDateFormat("yyyy-MM-dd 00:00:00")
+        val t = sdf.format(timestamp)
+        var today = Calendar.getInstance()
 
-        /* test code
-        val testNow = System.currentTimeMillis()
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
-        val currentDate = sdf.format(Date(testNow))
-        val latestDate = sdf.format(Date(timestamp))
-        Log.d("zzzz", "getDateString: $currentDate")
-        Log.d("zzzz", "getDateString: $latestDate")
-        Log.d("zzzz", "getDateString: $nowDate")
-        Log.d("zzzz", "getDateString: $thenDate") */
+        val nowDate = today.time.time
+        val thenDate = sdf.parse(t).time
+        val calcDate = (nowDate - thenDate) / (60 * 60 * 24 * 1000)
 
         return when {
             thenDate > nowDate -> view.context.getString(R.string.app_name)
-            thenDate == nowDate -> view.context.getString(R.string.today)
-            thenDate == nowDate - 1 -> view.context.getString(R.string.yesterday)
-            else -> view.context.getString(R.string.n_days_before, nowDate - thenDate)
+            calcDate == 0L -> view.context.getString(R.string.today)
+            calcDate == 1L -> view.context.getString(R.string.yesterday)
+            else -> view.context.getString(R.string.n_days_before, calcDate)
         }
     }
+
+
 
 }

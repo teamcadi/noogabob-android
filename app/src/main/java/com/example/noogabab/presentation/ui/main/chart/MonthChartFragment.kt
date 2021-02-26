@@ -108,6 +108,7 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart), View.OnClick
 
         // make a bar data
         val barData = BarData(xValues, finalBarDataSet as List<IBarDataSet>)
+        barData.setValueFormatter(ChartValueFormatter())
         chart_month_bar.apply {
             data = barData
             setBackgroundColor(Color.WHITE)
@@ -124,20 +125,14 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart), View.OnClick
             axisLeft.apply {
                 textSize = 10f
                 setDrawGridLines(true)
+                mAxisMinimum = 0f
+
             }
             axisRight.apply {
-                setDrawGridLines(false)
-//                setDrawAxisLine(false)
                 isEnabled = false
-                setDrawLabels(false)
             }
             legend.apply {
                 isEnabled = false
-                formSize = 15f
-                form = Legend.LegendForm.CIRCLE
-                xEntrySpace = 30f
-                textSize = 14f
-                position = Legend.LegendPosition.ABOVE_CHART_CENTER
             }
         }
     }

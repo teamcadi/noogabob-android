@@ -20,11 +20,10 @@ class ChartViewModel @ViewModelInject constructor(private val groupUseCase: Grou
     private val _currentDate = MutableLiveData<String>()
 
     init {
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
         _currentXGroups.value = ArrayList<String>()
         _currentYBobs.value = floatArrayOf()
         _currentYSnacks.value = floatArrayOf()
-        _currentDate.value = sdf.format(Date(System.currentTimeMillis()))
+        _currentDate.value = "1970-12-10"
     }
 
     fun getStatistics(key: String, groupId: Int, type: String, date: String) = liveData {
@@ -45,9 +44,9 @@ class ChartViewModel @ViewModelInject constructor(private val groupUseCase: Grou
         get() = _currentYSnacks.value
 
     fun updateChart(xGroups: ArrayList<String>, yBobs: FloatArray, ySnacks: FloatArray) {
-        _currentXGroups.value = xGroups
         _currentYBobs.value = yBobs
         _currentYSnacks.value = ySnacks
+        _currentXGroups.value = xGroups
     }
 
     fun updateDate(input: String) {
