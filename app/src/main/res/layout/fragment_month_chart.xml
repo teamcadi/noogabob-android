@@ -7,12 +7,12 @@
     tools:context=".presentation.ui.main.chart.MonthChartFragment">
 
     <LinearLayout
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
         android:id="@+id/linear_month_legend"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/chart_month_bar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,32 +20,45 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:gravity="center"
-            android:id="@+id/btn_month_rank_bob"
-            android:textStyle="normal"
+            android:fontFamily="@font/noto_sans_cjkkr_bold"
+            android:textStyle="bold"
             android:textSize="14sp"
-            android:fontFamily="@font/noto_sans_cjkkr_regular"
+            android:textColor="#4a3319"
+            android:lineSpacingExtra="6sp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/btn_select_month_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lineSpacingExtra="10sp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="1"
-            android:textColor="@color/color_aa5900"
-            android:text="⬤  밥" />
+            android:layout_weight="2"
+            android:text="📆 날짜를 선택하세요
+" />
 
         <TextView
-            android:gravity="center"
-            android:textColor="@color/color_ffb254"
-            android:layout_marginLeft="30dp"
-            android:id="@+id/btn_month_rank_snack"
-            android:textStyle="normal"
-            android:textSize="14sp"
-            android:fontFamily="@font/noto_sans_cjkkr_regular"
+            android:id="@+id/btn_month_rank_bob"
             android:layout_width="wrap_content"
-            android:lineSpacingExtra="10sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="⬤  간식" />
+            android:fontFamily="@font/noto_sans_cjkkr_regular"
+            android:gravity="center"
+            android:lineSpacingExtra="10sp"
+            android:text="⬤  밥"
+            android:textColor="@color/color_aa5900"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/btn_month_rank_snack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/noto_sans_cjkkr_regular"
+            android:gravity="center"
+            android:lineSpacingExtra="10sp"
+            android:text="⬤  간식"
+            android:textColor="@color/color_ffb254"
+            android:textSize="14sp"
+            android:textStyle="normal" />
     </LinearLayout>
 
     <com.github.mikephil.charting.charts.BarChart

@@ -60,15 +60,15 @@
                 android:lineSpacingExtra="9sp"
                 android:text="푸쉬 알림"
                 android:textColor="#3d3d3d"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="normal" />
 
             <Switch
                 android:id="@+id/switch_setting"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="30dp"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -100,17 +100,17 @@
                 android:lineSpacingExtra="9sp"
                 android:text="내 정보"
                 android:textColor="#3d3d3d"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="normal" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_arrow_setting_fragment" />
+                android:src="@drawable/ic_settings_arrow" />
         </LinearLayout>
 
         <View
@@ -140,17 +140,17 @@
                 android:lineSpacingExtra="9sp"
                 android:text="반려견 정보"
                 android:textColor="#3d3d3d"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="normal" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_arrow_setting_fragment" />
+                android:src="@drawable/ic_settings_arrow" />
         </LinearLayout>
 
         <View
@@ -180,17 +180,17 @@
                 android:lineSpacingExtra="9sp"
                 android:text="가족 정보"
                 android:textColor="#3d3d3d"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="normal" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_arrow_setting_fragment" />
+                android:src="@drawable/ic_settings_arrow" />
         </LinearLayout>
 
 
@@ -221,8 +221,8 @@
                 android:fontFamily="@font/noto_sans_cjkkr_medium"
                 android:lineSpacingExtra="9sp"
                 android:text="그룹 키"
-                android:textColor="#1E77FC"
-                android:textSize="20sp"
+                android:textColor="@color/color_cccccc"
+                android:textSize="18sp"
                 android:textStyle="normal" />
         </LinearLayout>
 
@@ -254,7 +254,7 @@
                 android:lineSpacingExtra="9sp"
                 android:text="그룹 탈퇴"
                 android:textColor="#F44336"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="normal" />
         </LinearLayout>
         <View

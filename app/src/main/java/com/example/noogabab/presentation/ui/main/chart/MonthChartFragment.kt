@@ -1,9 +1,11 @@
 package com.example.noogabab.presentation.ui.main.chart
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
@@ -14,7 +16,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
 import com.example.noogabab.data.api.model.ResultData
-import com.example.noogabab.presentation.ui.main.MainViewModel
 import com.example.noogabab.util.SharedGroup
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
@@ -22,15 +23,16 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.fragment_month_chart.*
+import kotlinx.android.synthetic.main.fragment_week_chart.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
-class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
-    private val mainViewModel: MainViewModel by activityViewModels<MainViewModel>()
-    private var groupSize = 0
-    private var xGroup: ArrayList<String> = ArrayList<String>()
-    private lateinit var yBob: FloatArray
-    private lateinit var ySnack: FloatArray
+class MonthChartFragment : Fragment(R.layout.fragment_month_chart), View.OnClickListener {
+    private val chartViewModel: ChartViewModel by activityViewModels<ChartViewModel>()
     private lateinit var sharedGroup: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,74 +43,68 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setValues()
-        bobRankClick()
-        snackRankClick()
+        observe()
+        load()
     }
 
-    private fun observe(s: SharedPreferences) {
-        mainViewModel.getChart(
-            s.getString(SharedGroup.GROUP_UUID_KEY, "")!!,
-            s.getInt(SharedGroup.GROUP_ID_KEY, -1),
-            "week",
-            "2021-02-04"
-        ).observe(requireActivity(), Observer { resultData ->
-            when(resultData) {
-                is ResultData.Loading -> {}
-                is ResultData.Success -> {
+    private fun load() {
+        btn_select_month_date.setOnClickListener(this)
+        btn_month_rank_bob.setOnClickListener(this)
+        btn_month_rank_snack.setOnClickListener(this)
+    }
 
-                }
-                is ResultData.Failed -> {
-                    Toast.makeText(requireContext(), getString(R.string.toast_server_failed), Toast.LENGTH_SHORT).show()
-                }
-                else -> {
-                    Toast.makeText(requireContext(), getString(R.string.toast_server_failed), Toast.LENGTH_SHORT).show()
-                }
+    private fun observe() {
+        chartViewModel.currentMonthDate.observe(requireActivity(), androidx.lifecycle.Observer {
+            getStatistics(it)
+        })
+        chartViewModel.currentMonthXGroups.observe(requireActivity(), androidx.lifecycle.Observer {
+            if (it.isEmpty()) getStatistics("1970-12-10")
+            else {
+                setBarChartValues(
+                    it,
+                    chartViewModel.currentMonthYBobs!!,
+                    chartViewModel.currentMonthYSnacks!!
+                )
+                linear_month_rank.removeAllViews()
+                for (i in 0 until it.size) linear_month_rank.addView(createRankImage())
             }
+
         })
     }
 
-    private fun bobRankClick() {
-        var position = 0
-        var max = -1f
-        for (i in yBob.indices) if (max < yBob[i]) {
-            max = yBob[i]; position = i
-        }
-        btn_month_rank_bob.setOnClickListener {
-            getFirst(groupSize, position)
-        }
-    }
+    private fun getStatistics(date: String) {
+        val key = sharedGroup.getString(SharedGroup.GROUP_UUID_KEY, "")
+        val groupId = sharedGroup.getInt(SharedGroup.GROUP_ID_KEY, -1)
 
-    private fun snackRankClick() {
-        var position = 0
-        var max = -1f
-        for (i in ySnack.indices) if (max < ySnack[i]) {
-            max = ySnack[i]; position = i
-        }
-        btn_month_rank_snack.setOnClickListener {
-            getFirst(groupSize, position)
-        }
+        chartViewModel.getStatistics(key!!, groupId, "month", date).observe(
+            requireActivity(),
+            androidx.lifecycle.Observer { resultData ->
+                when (resultData) {
+                    is ResultData.Loading -> {
+                    }
+                    is ResultData.Success -> {
+                        val mealsData = resultData.data!!.statisticsData!!.mealRankData!!
+                        val snacksData = resultData.data!!.statisticsData!!.snackRankData!!
+                        val users = mealsData.map { it.name!! }
+                        val mealsCount = mealsData.map { it.cnt!!.toFloat() }
+                        val snacksCount = snacksData.map { it.cnt!!.toFloat() }
+                        chartViewModel.updateChart(
+                            users as ArrayList<String>,
+                            mealsCount.toFloatArray(),
+                            snacksCount.toFloatArray(),
+                            "month"
+                        )
+                    }
+                    else -> {
+                        Toast.makeText(requireContext(), "err", Toast.LENGTH_LONG).show()
+                    }
+                }
+            })
     }
 
     private fun getFirst(size: Int, position: Int) {
         for (i in 0 until size) linear_month_rank[i].visibility = View.INVISIBLE
         linear_month_rank[position].visibility = View.VISIBLE
-    }
-
-    // 서버에서 가져온 데이터를 셋팅
-    private fun setValues() {
-        xGroup.add("나")
-        xGroup.add("엄마")
-        xGroup.add("아빠")
-        xGroup.add("누나")
-        groupSize = xGroup.size
-        yBob = floatArrayOf(2.0f, 6f, 7.8f, 3.4f)
-        ySnack = floatArrayOf(1.0f, 7f, 3.8f, 8.4f)
-
-        setBarChartValues(xGroup, yBob, ySnack)
-
-        // 가족 구성원에 맞춰서 INVISIBLE 뷰 셋팅
-        for (i in 0 until groupSize) linear_month_rank.addView(createRankImage())
     }
 
     private fun createRankImage(): ImageView {
@@ -147,6 +143,7 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
 
         // make a bar data
         val barData = BarData(xValues, finalBarDataSet as List<IBarDataSet>)
+        barData.setValueFormatter(ChartValueFormatter())
         chart_month_bar.apply {
             data = barData
             setBackgroundColor(Color.WHITE)
@@ -163,22 +160,57 @@ class MonthChartFragment : Fragment(R.layout.fragment_month_chart) {
             axisLeft.apply {
                 textSize = 10f
                 setDrawGridLines(true)
+                mAxisMinimum = 0f
+
             }
             axisRight.apply {
-                setDrawGridLines(false)
-//                setDrawAxisLine(false)
                 isEnabled = false
-                setDrawLabels(false)
             }
             legend.apply {
                 isEnabled = false
-                formSize = 15f
-                form = Legend.LegendForm.CIRCLE
-                xEntrySpace = 30f
-                textSize = 14f
-                position = Legend.LegendPosition.ABOVE_CHART_CENTER
             }
         }
     }
 
+    override fun onClick(view: View?) {
+        when (view) {
+            btn_month_rank_bob -> bobRankClick()
+            btn_month_rank_snack -> snackRankClick()
+            btn_select_month_date -> selectDate()
+        }
+    }
+
+    private fun bobRankClick() {
+        var position = 0
+        var max = -1f
+        val yBobs = chartViewModel.currentMonthYBobs!!
+        for (i in yBobs.indices) if (max < yBobs[i]) {
+            max = yBobs[i]; position = i
+        }
+        if (max != 0f) getFirst(yBobs.size, position)
+    }
+
+    private fun snackRankClick() {
+        var position = 0
+        var max = -1f
+        val ySnacks = chartViewModel.currentMonthYSnacks!!
+        for (i in ySnacks.indices) if (max < ySnacks[i]) {
+            max = ySnacks[i]; position = i
+        }
+        if (max != 0f) getFirst(ySnacks.size, position)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun selectDate() {
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("날짜를 선택하세요")
+            .build()
+        datePicker.show(requireActivity().supportFragmentManager, "DATE_PICKER")
+        datePicker.addOnPositiveButtonClickListener {
+            val sdf = SimpleDateFormat("yyyy-MM-dd")
+            val formatTime = sdf.format(Date(it))
+            chartViewModel.updateDate(formatTime, "month")
+        }
+
+    }
 }

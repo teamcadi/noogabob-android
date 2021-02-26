@@ -46,33 +46,6 @@ class TimelineActivity : AppCompatActivity() {
         btn_timeline_close.setOnClickListener { finish() }
     }
 
-    private fun test() {
-        val dummy = ArrayList<TimelineData>()
-        dummy.add(TimelineData("밥", "나 홍길동", 1613040705782, 0))
-        dummy.add(TimelineData("간식", "나 홍길동", 1613040705782, 1))
-        dummy.add(TimelineData("밥", "나 홍길동", 1613040705782, 0))
-        dummy.add(TimelineData("밥", "나 홍길동", 1612990705782, 0))
-        dummy.add(TimelineData("간식", "나 홍길동", 1612990705782, 1))
-        dummy.add(TimelineData("밥", "나 홍길동", 1613040705782, 0))
-        dummy.add(TimelineData("밥", "나 홍길동", 1612776760668, 0))
-        dummy.add(TimelineData("밥", "나 홍길동", 1612776760668, 0))
-        dummy.add(TimelineData("밥", "나 홍길동", 1612776760668, 0))
-        dummy.add(TimelineData("간식", "나 홍길동", 1612275760668, 1))
-        dummy.add(TimelineData("간식", "나 홍길동", 1612275760668, 1))
-        dummy.add(TimelineData("간식", "나 홍길동", 1612275760668, 1))
-        dummy.add(TimelineData("간식", "나 홍길동", 1612275760668, 1))
-        dummy.add(TimelineData("밥", "나 홍길동", 1612275760668, 0))
-        dummy.add(TimelineData("밥", "나 홍길동", 1612175760668, 0))
-        dummy.add(TimelineData("밥", "나 홍길동", 1612175760668, 0))
-        CoroutineScope(Dispatchers.Main).launch {
-            progress_timeline_loading.visibility = View.VISIBLE
-            val data = setPresenterTimeline(dummy)
-            delay(2000)
-            setRecyclerView(data)
-            progress_timeline_loading.visibility = View.GONE
-        }
-    }
-
     private fun observe() {
         val timeline = timelineViewModel.getTimeline(key, groupId)
         timeline.observe(this, { resultData ->
@@ -86,11 +59,11 @@ class TimelineActivity : AppCompatActivity() {
                 }
                 is ResultData.Failed -> {
                     progress_timeline_loading.visibility = View.GONE
-                    Toast.makeText(this, getString(R.string.toast_server_failed), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "서버가 불안정합니다.", Toast.LENGTH_SHORT).show()
                 }
                 is ResultData.Exception -> {
                     progress_timeline_loading.visibility = View.GONE
-                    Toast.makeText(this, getString(R.string.toast_server_failed), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "서버가 불안정합니다.", Toast.LENGTH_SHORT).show()
                 }
             }
         })

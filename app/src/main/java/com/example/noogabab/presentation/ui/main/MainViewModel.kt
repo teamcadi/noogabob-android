@@ -18,12 +18,6 @@ class MainViewModel @ViewModelInject constructor(private val groupUseCase: Group
         _currentLatestTimeline.value= "로딩 중"
         _currentDogProfile.value = null
     }
-
-    fun getChart(key: String, groupId: Int, type: String, date: String) =
-         liveData {
-            emit(ResultData.Loading())
-            emit(groupUseCase.getGroupStatistics(key, groupId, type, date))
-        }
 }
 
 

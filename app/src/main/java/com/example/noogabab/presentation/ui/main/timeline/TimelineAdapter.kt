@@ -1,7 +1,9 @@
 package com.example.noogabab.presentation.ui.main.timeline
 
+import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +39,7 @@ class TimelineViewHolder(private val view: View): RecyclerView.ViewHolder(view) 
     fun bind(prev: PresenterTimeLine?, item: PresenterTimeLine, next: PresenterTimeLine?) {
         with(view) {
             val subContentArr = item.subContent.split(" ")
-            txt_timeline_time.text = formatDate(item.time, "hh:mm")
+            txt_timeline_time.text = formatDate(item.time, "HH:mm")
             img_timeline.setImageDrawable(item.icon)
             txt_timeline_content.text = item.content
             txt_timeline_sub_content.text = Html.fromHtml("<b>" + subContentArr[0] +"</b> " + subContentArr[1])
@@ -70,20 +72,27 @@ class TimelineViewHolder(private val view: View): RecyclerView.ViewHolder(view) 
 
         val prevDate = Date(prev.time)
         val itemDate = Date(item.time)
-
-        return itemDate.before(prevDate)
+        return (prevDate.day != itemDate.day)
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun getDateString(timestamp: Long): String {
-        val nowDate = Date().time / 1000 / 60 / 60 / 24
-        val thenDate = timestamp / 1000 / 60 / 60 / 24
+        val sdf = SimpleDateFormat("yyyy-MM-dd 00:00:00")
+        val t = sdf.format(timestamp)
+        var today = Calendar.getInstance()
+
+        val nowDate = today.time.time
+        val thenDate = sdf.parse(t).time
+        val calcDate = (nowDate - thenDate) / (60 * 60 * 24 * 1000)
 
         return when {
             thenDate > nowDate -> view.context.getString(R.string.app_name)
-            thenDate == nowDate -> view.context.getString(R.string.today)
-            thenDate == nowDate - 1 -> view.context.getString(R.string.yesterday)
-            else -> view.context.getString(R.string.n_days_before, nowDate - thenDate)
+            calcDate == 0L -> view.context.getString(R.string.today)
+            calcDate == 1L -> view.context.getString(R.string.yesterday)
+            else -> view.context.getString(R.string.n_days_before, calcDate)
         }
     }
+
+
 
 }
