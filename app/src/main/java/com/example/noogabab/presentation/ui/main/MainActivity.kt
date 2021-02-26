@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.core.app.ActivityCompat
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.example.noogabab.R
 import com.example.noogabab.presentation.ui.main.album.AlbumFragment

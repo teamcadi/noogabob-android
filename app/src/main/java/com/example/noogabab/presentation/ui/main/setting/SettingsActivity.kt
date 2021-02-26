@@ -9,6 +9,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SettingsActivity : AppCompatActivity() {
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -21,7 +26,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
 
-    public fun makeCurrentFragment(fragment: Fragment) =
+    fun makeCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.frameLayout_settings, fragment)
             commit()
