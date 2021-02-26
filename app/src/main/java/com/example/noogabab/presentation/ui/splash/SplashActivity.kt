@@ -3,17 +3,17 @@ package com.example.noogabab.presentation.ui.splash
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.noogabab.R
 import com.example.noogabab.presentation.ui.main.MainActivity
 import com.example.noogabab.presentation.ui.start.StartActivity
-import com.example.noogabab.util.SharedDog
 import com.example.noogabab.util.SharedGroup
-import com.example.noogabab.util.SharedProfile
 import com.example.noogabab.util.SharedUser
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -22,6 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.system.exitProcess
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
@@ -34,10 +35,25 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startSplash() {
         this.supportActionBar?.hide()
-        CoroutineScope(Dispatchers.IO).launch {
-            delay(2000)
-            settingPermission()
+        if (!getNetworkConnected()) {
+            Handler().postDelayed({
+                Toast.makeText(this, "네트워크 연결 문제로 앱을 종료합니다.", Toast.LENGTH_SHORT).show()
+                ActivityCompat.finishAffinity(this);
+                exitProcess(0)
+            }, 1500)
+        }else {
+            CoroutineScope(Dispatchers.IO).launch {
+                delay(2000)
+                settingPermission()
+            }
         }
+    }
+
+    private fun getNetworkConnected(): Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork : NetworkInfo? = cm.activeNetworkInfo
+
+        return activeNetwork?.isConnectedOrConnecting == true
     }
 
     private fun isUser(): Boolean {
