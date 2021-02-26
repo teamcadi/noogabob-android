@@ -48,11 +48,11 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickLi
     }
 
     private fun observe() {
-        chartViewModel.currentDate.observe(requireActivity(), androidx.lifecycle.Observer {
+        chartViewModel.currentWeekDate.observe(requireActivity(), androidx.lifecycle.Observer {
             getStatistics(it)
         })
-        chartViewModel.currentXGroups.observe(requireActivity(), androidx.lifecycle.Observer {
-            setBarChartValues(it, chartViewModel.currentYBobs!!, chartViewModel.currentYSnacks!!)
+        chartViewModel.currentWeekXGroups.observe(requireActivity(), androidx.lifecycle.Observer {
+            setBarChartValues(it, chartViewModel.currentWeekYBobs!!, chartViewModel.currentWeekYSnacks!!)
             linear_week_rank.removeAllViews()
             for (i in 0 until it.size) linear_week_rank.addView(createRankImage())
         })
@@ -77,7 +77,8 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickLi
                         chartViewModel.updateChart(
                             users as ArrayList<String>,
                             mealsCount.toFloatArray(),
-                            snacksCount.toFloatArray()
+                            snacksCount.toFloatArray(),
+                            "week"
                         )
                     }
                     else -> {
@@ -167,21 +168,21 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickLi
     private fun bobRankClick() {
         var position = 0
         var max = -1f
-        val yBobs = chartViewModel.currentYBobs!!
+        val yBobs = chartViewModel.currentWeekYBobs!!
         for (i in yBobs.indices) if (max < yBobs[i]) {
             max = yBobs[i]; position = i
         }
-        getFirst(yBobs.size, position)
+        if (max != 0f) getFirst(yBobs.size, position)
     }
 
     private fun snackRankClick() {
         var position = 0
         var max = -1f
-        val ySnacks = chartViewModel.currentYSnacks!!
+        val ySnacks = chartViewModel.currentWeekYSnacks!!
         for (i in ySnacks.indices) if (max < ySnacks[i]) {
             max = ySnacks[i]; position = i
         }
-        getFirst(ySnacks.size, position)
+        if (max != 0f) getFirst(ySnacks.size, position)
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -193,7 +194,7 @@ class WeekChartFragment : Fragment(R.layout.fragment_week_chart), View.OnClickLi
         datePicker.addOnPositiveButtonClickListener {
             val sdf = SimpleDateFormat("yyyy-MM-dd")
             val formatTime = sdf.format(Date(it))
-            chartViewModel.updateDate(formatTime)
+            chartViewModel.updateDate(formatTime, "week")
         }
     }
 }

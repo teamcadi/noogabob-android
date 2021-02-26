@@ -3,6 +3,7 @@ package com.example.noogabab.data.api
 import com.example.noogabab.data.api.model.*
 import com.example.noogabab.data.api.request.CreateGroupRequest
 import com.example.noogabab.data.api.request.CreateUserRequest
+import com.example.noogabab.data.api.request.FeedRequest
 import com.example.noogabab.util.NetworkConstants
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -72,8 +73,16 @@ interface ApiService {
     suspend fun modifyDog()
 
     @POST(NetworkConstants.URL_DOGS_MEAL)
-    suspend fun feedMealDog()
+    suspend fun feedMealDog(
+        @Header("key") key: String,
+        @Path("dogId") dogId: Int,
+        @Body feed: FeedRequest
+    ): FeedModel
 
     @POST(NetworkConstants.URL_DOGS_SNACK)
-    suspend fun feedSnackDog()
+    suspend fun feedSnackDog(
+        @Header("key") key: String,
+        @Path("dogId") dogId: Int,
+        @Body feed: FeedRequest
+    ): FeedModel
 }
