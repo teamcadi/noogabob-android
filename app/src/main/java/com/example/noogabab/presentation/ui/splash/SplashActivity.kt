@@ -7,6 +7,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.noogabab.R
@@ -29,18 +30,21 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor = Color.parseColor("#ffc176")
         setContentView(R.layout.activity_splash)
-        startSplash(this)
+        startSplash()
     }
 
-    private fun startSplash(splashActivity: SplashActivity) {
+    private fun startSplash() {
         this.supportActionBar?.hide()
-        CoroutineScope(Dispatchers.IO).launch {
-            delay(2000)
-            settingPermission()
-            if (!getNetworkConnected()) {
-                Toast.makeText(applicationContext, "인터넷 사용이 불가능합니다.", Toast.LENGTH_SHORT).show()
-                ActivityCompat.finishAffinity(splashActivity);
+        if (!getNetworkConnected()) {
+            Handler().postDelayed({
+                Toast.makeText(this, "네트워크 연결 문제로 앱을 종료합니다.", Toast.LENGTH_SHORT).show()
+                ActivityCompat.finishAffinity(this);
                 exitProcess(0)
+            }, 1500)
+        }else {
+            CoroutineScope(Dispatchers.IO).launch {
+                delay(2000)
+                settingPermission()
             }
         }
     }
