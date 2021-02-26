@@ -20,15 +20,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name="com.example.noogabab.presentation.ui.main.setting.SettingsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
-
-
 
         <service
             android:name=".NoogabobFirebaseMessagingService"
@@ -47,7 +39,11 @@
         <activity android:name=".presentation.ui.start.StartActivity" />
         <activity android:name=".presentation.ui.main.MainActivity" />
         <activity android:name=".presentation.ui.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

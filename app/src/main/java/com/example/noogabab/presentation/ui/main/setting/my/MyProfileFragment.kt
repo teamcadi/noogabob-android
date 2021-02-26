@@ -1,5 +1,8 @@
 package com.example.noogabab.presentation.ui.main.setting.my
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -7,14 +10,16 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.noogabab.R
+import com.example.noogabab.data.api.model.ResultData
+import com.example.noogabab.presentation.ui.main.MainActivity
 import com.example.noogabab.presentation.ui.main.setting.SettingFragment
 import com.example.noogabab.presentation.ui.main.setting.SettingsActivity
-import com.example.noogabab.util.DynamicTextWatcher
+import com.example.noogabab.util.*
+import kotlinx.android.synthetic.main.fragment_dog_profile.*
 import kotlinx.android.synthetic.main.fragment_my_profile.*
 
 
 class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
-    //뒤로 가기 버튼
     private val viewModel: MyProflieViewModel by activityViewModels()
     private val textWatcher = DynamicTextWatcher(
         onChanged = { _, _, _, _ ->
@@ -27,6 +32,11 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+     //   val sharedGroup = requireActivity().getSharedPreferences(SharedGroup.NAME, Context.MODE_PRIVATE)
+     //   val sharedUser = requireActivity().getSharedPreferences(SharedUser.NAME, Context.MODE_PRIVATE)
+        // edit_setting_role.setText(sharedGroup.getString(SharedGroup.GROUP_ID_KEY, ""))
+        //  edit_setting_name.setText(sharedUser.getString(SharedUser.USER_ID_KEY,""))
+
 
         edit_setting_name.addTextChangedListener(textWatcher)
         edit_setting_role.addTextChangedListener(textWatcher)
@@ -36,7 +46,6 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
         }
 
         btn_setting_my_edit.setOnClickListener{
-
             if(btn_setting_my_edit.text =="정보 편집") {
                 btn_setting_my_edit.text = "정보 수정"
                 btn_setting_my_edit.isEnabled =false
@@ -52,17 +61,13 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
             }
             observe()
-
         }
     }
     private fun observe() {
         viewModel.currentBtnState.observe(requireActivity(), Observer {
             btn_setting_my_edit.isEnabled = it
-
                 if (it) btn_setting_my_edit.setBackgroundColor(requireActivity().getColor(R.color.color_aa5900))
                 else btn_setting_my_edit.setBackgroundColor(requireActivity().getColor(R.color.color_e7d0b7))
-
-
         })
     }
 
